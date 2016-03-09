@@ -1,0 +1,21 @@
+target
+classes
+bin
+*.log
+
+# Eclipse
+.classpath
+.project
+.settings
+.metadata
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+
+# User-specific stuff:
+.idea
+out
+MANIFEST.MF
+
