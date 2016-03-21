@@ -7,6 +7,10 @@
 
     <display-name>Spring Web MVC Application</display-name>
 
+    <welcome-file-list>
+        <welcome-file>test.jsp</welcome-file>
+    </welcome-file-list>
+
     <servlet>
         <servlet-name>spring</servlet-name>
         <servlet-class>
