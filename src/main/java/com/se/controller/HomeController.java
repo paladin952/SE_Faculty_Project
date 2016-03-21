@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @RequestMapping(value = "/")
     public String home() {
-        return "Hello Spring World";
+        return "{1:Hello Spring World}";
     }
 }
