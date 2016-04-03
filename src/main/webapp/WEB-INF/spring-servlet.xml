@@ -38,7 +38,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="userDao" class="com.se.model.UserDAOImpl">
+    <bean id="userDao" class="com.se.detabase.dao.daoImplementation.UserDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory"/>
         </constructor-arg>

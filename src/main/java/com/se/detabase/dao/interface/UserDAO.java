@@ -1,4 +1,6 @@
-package com.se.model;
+package com.se.detabase.dao;
+
+import com.se.detabase.dao.model.User;
 
 import java.util.List;
 
