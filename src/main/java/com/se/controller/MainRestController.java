@@ -20,7 +20,7 @@ public class MainRestController {
     @Autowired
     private UserDAO userDao;
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String home(Model model) {
         List<User> listUsers = userDao.list();
         model.addAttribute(JsonConstants.ROOT_USERS, listUsers);
