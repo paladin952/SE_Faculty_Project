@@ -53,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `degree` (
   `DegreeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Field` varchar(255) NOT NULL,
   `Type` int(11) DEFAULT NULL,
-  `Language` varchar(10) DEFAULT NULL,
   `Duration` int(10) unsigned NOT NULL,
   `FacultyID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`DegreeID`),
@@ -64,6 +63,19 @@ CREATE TABLE IF NOT EXISTS `degree` (
 -- Dumping data for table ubbdb.degree: ~0 rows (approximately)
 /*!40000 ALTER TABLE `degree` DISABLE KEYS */;
 /*!40000 ALTER TABLE `degree` ENABLE KEYS */;
+
+
+-- Dumping structure for table ubbdb.degreelanguage
+CREATE TABLE IF NOT EXISTS `degreelanguage` (
+  `LanguageID` int(10) unsigned NOT NULL,
+  `DegreeID` int(10) unsigned NOT NULL,
+  KEY `FK_DegreeID` (`DegreeID`),
+  CONSTRAINT `FK_DegreeID` FOREIGN KEY (`DegreeID`) REFERENCES `degree` (`DegreeID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table ubbdb.degreelanguage: ~0 rows (approximately)
+/*!40000 ALTER TABLE `degreelanguage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `degreelanguage` ENABLE KEYS */;
 
 
 -- Dumping structure for table ubbdb.department
