@@ -1,11 +1,12 @@
 package com.se.model.users;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Student database entity. Any StudentVO is a PersonVO.
  */
-public class StudentVO extends PersonVO {
+public class StudentVO extends PersonVO implements Serializable {
     private int groupID;
     private String status;
     private boolean isExtended;

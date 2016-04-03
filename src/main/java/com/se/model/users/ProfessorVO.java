@@ -1,11 +1,12 @@
 package com.se.model.users;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Professor database entity. Any ProfessorVO is a PersonVO.
  */
-public class ProfessorVO extends PersonVO {
+public class ProfessorVO extends PersonVO implements Serializable {
     private final int departmentID;
     private boolean isChief;
     private float wage;

@@ -1,9 +1,11 @@
 package com.se.model.users;
 
+import java.io.Serializable;
+
 /**
  * Base class for the application's users.
  */
-public class UserVO {
+public class UserVO implements Serializable {
     private final int id;
     private String username;
     private String password;

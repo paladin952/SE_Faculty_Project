@@ -1,11 +1,12 @@
 package com.se.model.users;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * PersonVO database entity. Any PersonVO is a UserVO.
  */
-public class PersonVO extends UserVO {
+public class PersonVO extends UserVO implements Serializable {
     private String firstName;
     private String lastName;
     private Date dob;
