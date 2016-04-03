@@ -1,7 +1,7 @@
 package com.se.controller;
 
+import com.se.detabase.dao.interfaces.UserDAO;
 import com.se.detabase.dao.model.User;
-import com.se.detabase.dao.UserDAO;
 import com.se.util.JsonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

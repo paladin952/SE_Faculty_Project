@@ -1,4 +1,4 @@
-package com.se.detabase.dao;
+package com.se.detabase.dao.interfaces;
 
 import com.se.detabase.dao.model.User;
 

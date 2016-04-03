@@ -2,8 +2,8 @@ package com.se.detabase.dao.daoImplementation;
 
 import java.util.List;
 
+import com.se.detabase.dao.interfaces.UserDAO;
 import com.se.detabase.dao.model.User;
-import com.se.detabase.dao.UserDAO;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
