@@ -1,4 +1,4 @@
-package com.se.model;
+package com.se.detabase.dao.model;
 
 import java.io.Serializable;
 
@@ -7,21 +7,43 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
+    /**
+     * The user's id
+     */
     private int id;
-    private String username;
-    private String password;
-    private String email;
 
-    public User(int id, String username, String password, String email) {
+    /**
+     * The username
+     */
+    private String username;
+
+    /**
+     * The password
+     */
+    private String password;
+
+    /**
+     * The constructor
+     * @param id The id
+     * @param username The username
+     * @param password The pasword
+     */
+    public User(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.email = email;
     }
 
+    /**
+     * Default constructor for serialization
+     * DO NOT REMOVE IT
+     */
     public User() {
     }
 
+    /**
+     * GETTERS AND SETTERS used for hibernate
+     */
     public int getId() {
         return id;
     }
@@ -44,13 +66,5 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }
