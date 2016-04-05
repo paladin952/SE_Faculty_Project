@@ -1,12 +1,9 @@
 package com.se.controller;
 
-import com.se.detabase.dao.interfaces.IPersonDAO;
-import com.se.detabase.dao.interfaces.IUserDAO;
-import com.se.detabase.dao.model.users.PersonVO;
-import com.se.detabase.dao.model.users.UserVO;
+import com.se.database.dao.interfaces.IUserDAO;
+import com.se.database.dao.model.users.UserVO;
 import com.se.util.JsonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

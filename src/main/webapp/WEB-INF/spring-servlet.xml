@@ -38,13 +38,13 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="userDao" class="com.se.detabase.dao.daoImplementation.UserDAOImpl">
+    <bean id="userDao" class="com.se.database.dao.daoImplementation.UserDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory"/>
         </constructor-arg>
     </bean>
 
-    <!--<bean id="personDao" class="com.se.detabase.dao.daoImplementation.PersonDAOImpl">-->
+    <!--<bean id="personDao" class="PersonDAOImpl">-->
         <!--<constructor-arg>-->
             <!--<ref bean="sessionFactory"/>-->
         <!--</constructor-arg>-->
