@@ -1,4 +1,4 @@
-package com.se.model.academic.course.activities;
+package com.se.detabase.dao.model.academic.course.activities;
 
 /**
  * Created by Catalin on 03-Apr-16.

@@ -1,11 +1,11 @@
-package com.se.detabase.dao.model;
+package com.se.detabase.dao.model.users;
 
 import java.io.Serializable;
 
 /**
  * Created by Clapa Lucian on 4/3/2016.
  */
-public class User implements Serializable {
+public class UserVO implements Serializable {
 
     /**
      * The user's id
@@ -28,7 +28,7 @@ public class User implements Serializable {
      * @param username The username
      * @param password The pasword
      */
-    public User(int id, String username, String password) {
+    public UserVO(int id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -38,7 +38,7 @@ public class User implements Serializable {
      * Default constructor for serialization
      * DO NOT REMOVE IT
      */
-    public User() {
+    public UserVO() {
     }
 
     /**

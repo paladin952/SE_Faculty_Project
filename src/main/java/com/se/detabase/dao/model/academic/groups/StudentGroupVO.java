@@ -1,6 +1,9 @@
-package com.se.model.academic.groups;
+package com.se.detabase.dao.model.academic.groups;
+
+import com.se.detabase.dao.model.users.StudentVO;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Catalin on 03-Apr-16.

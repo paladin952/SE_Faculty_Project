@@ -1,6 +1,4 @@
-package com.se.model.academic.faculty;
-
-import com.se.model.academic.faculty.DegreeVO;
+package com.se.detabase.dao.model.academic.faculty;
 
 import java.io.Serializable;
 import java.util.List;

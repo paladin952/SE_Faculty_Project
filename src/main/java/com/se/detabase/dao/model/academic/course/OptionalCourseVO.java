@@ -1,6 +1,6 @@
-package com.se.model.academic.course;
+package com.se.detabase.dao.model.academic.course;
 
-import com.se.model.academic.course.activities.ActivityVO;
+import com.se.detabase.dao.model.academic.course.activities.ActivityVO;
 import com.se.util.enums.EvaluationTypeEnum;
 
 import java.util.List;

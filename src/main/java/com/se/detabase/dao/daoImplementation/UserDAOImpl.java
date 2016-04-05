@@ -3,7 +3,7 @@ package com.se.detabase.dao.daoImplementation;
 import java.util.List;
 
 import com.se.detabase.dao.interfaces.UserDAO;
-import com.se.detabase.dao.model.User;
+import com.se.detabase.dao.model.users.UserVO;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +18,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Transactional
-    public List<User> list() {
+    public List<UserVO> list() {
         @SuppressWarnings("unchecked")
-        List<User> listUser = (List<User>) sessionFactory.getCurrentSession()
-                .createCriteria(User.class)
+        List<UserVO> listUser = (List<UserVO>) sessionFactory.getCurrentSession()
+                .createCriteria(UserVO.class)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 
         return listUser;

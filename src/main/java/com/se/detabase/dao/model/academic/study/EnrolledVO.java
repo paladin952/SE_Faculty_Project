@@ -1,4 +1,4 @@
-package com.se.model.academic.study;
+package com.se.detabase.dao.model.academic.study;
 
 import java.io.Serializable;
 

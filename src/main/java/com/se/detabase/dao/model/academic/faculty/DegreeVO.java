@@ -1,6 +1,6 @@
-package com.se.model.academic.faculty;
+package com.se.detabase.dao.model.academic.faculty;
 
-import com.se.model.academic.course.CourseVO;
+import com.se.detabase.dao.model.academic.course.CourseVO;
 import com.se.util.enums.DegreeTypesEnum;
 import com.se.util.enums.LanguageTypesEnum;
 

@@ -1,6 +1,6 @@
 package com.se.detabase.dao.interfaces;
 
-import com.se.detabase.dao.model.User;
+import com.se.detabase.dao.model.users.UserVO;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface UserDAO {
 
-    List<User> list();
+    List<UserVO> list();
 
 }

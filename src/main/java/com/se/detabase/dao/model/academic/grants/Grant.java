@@ -1,4 +1,4 @@
-package com.se.model.academic.grants;
+package com.se.detabase.dao.model.academic.grants;
 
 import java.io.Serializable;
 

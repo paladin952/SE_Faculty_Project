@@ -1,4 +1,4 @@
-package com.se.model.academic.course;
+package com.se.detabase.dao.model.academic.course;
 
 import com.se.util.enums.ExamTypesEnum;
 

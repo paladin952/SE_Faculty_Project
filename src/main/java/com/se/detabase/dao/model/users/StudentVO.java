@@ -1,4 +1,4 @@
-package com.se.model.users;
+package com.se.detabase.dao.model.users;
 
 import java.io.Serializable;
 import java.util.Date;
