@@ -24,6 +24,9 @@ public class PersonVO extends UserVO implements Serializable {
         this.phoneNo   = phoneNo;
     }
 
+    public PersonVO() {
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -1,9 +1,12 @@
 package com.se.controller;
 
-import com.se.detabase.dao.interfaces.UserDAO;
+import com.se.detabase.dao.interfaces.IPersonDAO;
+import com.se.detabase.dao.interfaces.IUserDAO;
+import com.se.detabase.dao.model.users.PersonVO;
 import com.se.detabase.dao.model.users.UserVO;
 import com.se.util.JsonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +21,24 @@ import java.util.List;
 public class MainRestController {
 
     @Autowired
-    private UserDAO userDao;
+    private IUserDAO iUserDao;
+
+//    @Autowired
+//    private IPersonDAO iPersonDAO;
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String home(Model model) {
-        List<UserVO> listUsers = userDao.list();
+        List<UserVO> listUsers = iUserDao.list();
         model.addAttribute(JsonConstants.ROOT_USERS, listUsers);
         return JsonConstants.JSON_TEMPLATE;
     }
+
+//    @RequestMapping(value = "/persons", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String getPersons(Model model) {
+//        List<PersonVO> listUsers = iPersonDAO.list();
+//        model.addAttribute(JsonConstants.ROOT_PERSONS, listUsers);
+//        return JsonConstants.JSON_TEMPLATE;
+//    }
 
 }
 

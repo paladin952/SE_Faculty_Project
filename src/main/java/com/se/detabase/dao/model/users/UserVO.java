@@ -1,25 +1,33 @@
 package com.se.detabase.dao.model.users;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by Clapa Lucian on 4/3/2016.
  */
+@Entity
+@Table(name="User")
 public class UserVO implements Serializable {
 
     /**
      * The user's id
      */
+    @Id
+    @GeneratedValue
+    @Column(name="UserID")
     private int id;
 
     /**
      * The username
      */
+    @Column(name="Username")
     private String username;
 
     /**
      * The password
      */
+    @Column(name="Password")
     private String password;
 
     /**

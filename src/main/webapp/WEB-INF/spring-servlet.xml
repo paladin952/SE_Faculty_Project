@@ -44,4 +44,10 @@
         </constructor-arg>
     </bean>
 
+    <!--<bean id="personDao" class="com.se.detabase.dao.daoImplementation.PersonDAOImpl">-->
+        <!--<constructor-arg>-->
+            <!--<ref bean="sessionFactory"/>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+
 </beans>

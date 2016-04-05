@@ -12,4 +12,9 @@ public class JsonConstants {
      */
     public static final String ROOT_USERS = "users";
 
+    /**
+     * The root string for persons json
+     */
+    public static final String ROOT_PERSONS = "persons";
+
 }
