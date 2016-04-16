@@ -11,8 +11,8 @@ public class StudentVO extends PersonVO implements Serializable {
     private String status;
     private boolean isExtended;
 
-    public StudentVO(int id, String username, String password, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo, int groupID, String status, Boolean isExtended) {
-        super(id, username, password, firstName, lastName, dob, ssn, address, phoneNo);
+    public StudentVO(UserVO userVO, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo, int groupID, String status, Boolean isExtended) {
+        super(userVO, firstName, lastName, dob, ssn, address, phoneNo);
         this.groupID    = groupID;
         this.status     = status;
         this.isExtended = isExtended;

@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by Clapa Lucian on 4/3/2016.
  */
 @Entity
-@Table(name="User")
+@Table(name="user")
 public class UserVO implements Serializable {
 
     /**

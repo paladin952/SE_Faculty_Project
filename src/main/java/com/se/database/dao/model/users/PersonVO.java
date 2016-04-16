@@ -1,27 +1,52 @@
 package com.se.database.dao.model.users;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+import org.springframework.context.annotation.Primary;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * PersonVO database entity. Any PersonVO is a UserVO.
  */
-public class PersonVO extends UserVO implements Serializable {
+@Entity
+@Table(name = "person")
+public class PersonVO implements Serializable {
+
+    @Column(name = "FirstName")
     private String firstName;
+
+    @Column(name = "LastName")
     private String lastName;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "DoB")
     private Date dob;
+
+    @Id
+    @Column(name = "SSN")
     private long ssn; // CNP
+
+    @Column(name = "Address")
     private String address;
+
+    @Column(name = "PhoneNo")
     private int phoneNo;
 
-    public PersonVO(int id, String username, String password, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo) {
-        super(id, username, password);
+    @OneToOne
+    @JoinColumn(name="UserId")
+    private UserVO userVO;
+
+    public PersonVO(UserVO userVO, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo) {
+        this.userVO = userVO;
         this.firstName = firstName;
-        this.lastName  = lastName;
-        this.dob       = dob;
-        this.ssn       = ssn;
-        this.address   = address;
-        this.phoneNo   = phoneNo;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.ssn = ssn;
+        this.address = address;
+        this.phoneNo = phoneNo;
     }
 
     public PersonVO() {
@@ -85,6 +110,14 @@ public class PersonVO extends UserVO implements Serializable {
         this.phoneNo = phoneNo;
 
         return this;
+    }
+
+    public UserVO getUserVO() {
+        return userVO;
+    }
+
+    public void setUserVO(UserVO userVO) {
+        this.userVO = userVO;
     }
 
     @Override

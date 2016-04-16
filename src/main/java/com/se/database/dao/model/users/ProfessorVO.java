@@ -11,8 +11,8 @@ public class ProfessorVO extends PersonVO implements Serializable {
     private boolean isChief;
     private float wage;
 
-    public ProfessorVO(int id, String username, String password, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo, int departmentID, boolean isChief, float wage) {
-        super(id, username, password, firstName, lastName, dob, ssn, address, phoneNo);
+    public ProfessorVO(UserVO userVO, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo, int departmentID, boolean isChief, float wage) {
+        super(userVO, firstName, lastName, dob, ssn, address, phoneNo);
         this.departmentID = departmentID;
         this.isChief      = isChief;
         this.wage         = wage;

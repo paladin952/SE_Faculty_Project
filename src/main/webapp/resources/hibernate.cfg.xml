@@ -7,5 +7,6 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="show_sql">true</property>
         <mapping class="com.se.database.dao.model.users.UserVO"/>
+        <mapping class="com.se.database.dao.model.users.PersonVO"/>
     </session-factory>
 </hibernate-configuration>

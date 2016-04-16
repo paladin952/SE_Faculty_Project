@@ -1,6 +1,8 @@
 package com.se.controller;
 
+import com.se.database.dao.interfaces.IPersonDAO;
 import com.se.database.dao.interfaces.IUserDAO;
+import com.se.database.dao.model.users.PersonVO;
 import com.se.database.dao.model.users.UserVO;
 import com.se.util.JsonConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,8 @@ public class MainRestController {
     @Autowired
     private IUserDAO iUserDao;
 
-//    @Autowired
-//    private IPersonDAO iPersonDAO;
+    @Autowired
+    private IPersonDAO iPersonDAO;
 
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String home(Model model) {
@@ -30,12 +32,12 @@ public class MainRestController {
         return JsonConstants.JSON_TEMPLATE;
     }
 
-//    @RequestMapping(value = "/persons", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public String getPersons(Model model) {
-//        List<PersonVO> listUsers = iPersonDAO.list();
-//        model.addAttribute(JsonConstants.ROOT_PERSONS, listUsers);
-//        return JsonConstants.JSON_TEMPLATE;
-//    }
+    @RequestMapping(value = "/persons", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getPersons(Model model) {
+        List<PersonVO> listUsers = iPersonDAO.list();
+        model.addAttribute(JsonConstants.ROOT_PERSONS, listUsers);
+        return JsonConstants.JSON_TEMPLATE;
+    }
 
 }
 
