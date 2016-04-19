@@ -1,31 +1,28 @@
 package com.se.database.dao.daoImplementation;
 
-import com.se.database.dao.interfaces.IUserDAO;
-import com.se.database.dao.model.users.UserVO;
+import com.se.database.dao.interfaces.IProfessorDAO;
+import com.se.database.dao.model.users.ProfessorVO;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Clapa Lucian on 4/3/2016.
- */
-public class UserDAOImpl implements IUserDAO {
+public class ProfessorDAOImpl implements IProfessorDAO {
     /**
      * The session factory from spring
      */
     private SessionFactory sessionFactory;
 
-    public UserDAOImpl(SessionFactory sessionFactory) {
+    public ProfessorDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
 
     @Transactional
-    public List<UserVO> list() {
+    public List<ProfessorVO> list() {
         @SuppressWarnings("unchecked")
-        List<UserVO> listUser = (List<UserVO>) sessionFactory.getCurrentSession()
-                .createCriteria(UserVO.class)
+        List<ProfessorVO> listUser = (List<ProfessorVO>) sessionFactory.getCurrentSession()
+                .createCriteria(ProfessorVO.class)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
 
         return listUser;
