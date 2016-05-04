@@ -32,12 +32,10 @@ public class UserVO implements Serializable {
 
     /**
      * The constructor
-     * @param id The id
      * @param username The username
      * @param password The pasword
      */
-    public UserVO(int id, String username, String password) {
-        this.id = id;
+    public UserVO(String username, String password) {
         this.username = username;
         this.password = password;
     }

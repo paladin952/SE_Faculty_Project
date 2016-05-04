@@ -2,36 +2,47 @@ package com.se.database.dao.model.academic.groups;
 
 import com.se.database.dao.model.users.StudentVO;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
+@Entity
+@Table(name = "studentgroup")
 public class StudentGroupVO implements Serializable {
 
-    private int number;
+    @Id
+    @GeneratedValue
+    @Column(name = "StudentGroupId")
+    private int groupId;
 
-    private List<StudentVO> students;
-
+    @Column(name = "CurrentSemester")
     private int currentSemester;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "group")
+    private List<StudentVO> students;
 
     public StudentGroupVO() {
     }
 
-    public StudentGroupVO(int number, List<StudentVO> students, int currentSemester) {
+    public StudentGroupVO(int groupId, int currentSemester) {
 
-        this.number = number;
+        this.groupId = groupId;
+        this.currentSemester = currentSemester;
+    }
+
+    public StudentGroupVO(int groupId, List<StudentVO> students, int currentSemester) {
+
+        this.groupId = groupId;
         this.students = students;
         this.currentSemester = currentSemester;
     }
 
-    public int getNumber() {
-        return number;
+    public int getGroupId() {
+        return groupId;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
     }
 
     public List<StudentVO> getStudents() {
@@ -53,7 +64,7 @@ public class StudentGroupVO implements Serializable {
     @Override
     public String toString() {
         return "StudentGroup{" +
-                "number=" + number +
+                "groupId=" + groupId +
                 ", students=" + students +
                 ", currentSemester=" + currentSemester +
                 '}';

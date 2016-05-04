@@ -8,9 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Clapa Lucian on 4/5/2016.
- */
 public class PersonDAOImpl implements IPersonDAO {
     /**
      * The session factory from spring

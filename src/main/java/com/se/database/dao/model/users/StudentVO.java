@@ -1,29 +1,60 @@
 package com.se.database.dao.model.users;
 
+import com.se.database.dao.model.academic.groups.StudentGroupVO;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Student database entity. Any StudentVO is a PersonVO.
  */
+@Entity
+@Table(name = "student")
 public class StudentVO extends PersonVO implements Serializable {
-    private int groupID;
+    //    private int group;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "GroupID")
+    private StudentGroupVO group;
+
+    @Column(name = "Status")
     private String status;
+
+    @Column(name = "IsExtended")
     private boolean isExtended;
 
-    public StudentVO(UserVO userVO, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo, int groupID, String status, Boolean isExtended) {
-        super(userVO, firstName, lastName, dob, ssn, address, phoneNo);
-        this.groupID    = groupID;
-        this.status     = status;
+    @OneToOne
+    @JoinColumn(name = "PersonID")
+    private PersonVO personVO;
+
+    public StudentVO(PersonVO personVO, StudentGroupVO group, String status, Boolean isExtended) {
+        this.personVO = personVO;
+        this.group = group;
+        this.status = status;
         this.isExtended = isExtended;
     }
 
-    public int getGroupID() {
-        return groupID;
+    public boolean isExtended() {
+        return isExtended;
     }
 
-    public StudentVO setGroupID(int groupID) {
-        this.groupID = groupID;
+    public void setExtended(boolean extended) {
+        isExtended = extended;
+    }
+
+    public PersonVO getPersonVO() {
+        return personVO;
+    }
+
+    public void setPersonVO(PersonVO personVO) {
+        this.personVO = personVO;
+    }
+
+    public StudentGroupVO getGroup() {
+        return group;
+    }
+
+    public StudentVO setGroup(StudentGroupVO group) {
+        this.group = group;
 
         return this;
     }
@@ -52,7 +83,7 @@ public class StudentVO extends PersonVO implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder(super.toString());
         sb.append("\n. Group ID: ");
-        sb.append(groupID);
+        sb.append(group);
         sb.append(". Status: ");
         sb.append(status);
         sb.append(". Is extended: ");
