@@ -12,13 +12,14 @@ import java.io.Serializable;
 @Table(name = "student")
 public class StudentVO extends PersonVO implements Serializable {
     //    private int group;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "GroupID")
     private StudentGroupVO group;
 
     @Column(name = "Status")
     private String status;
 
+    //// FIXME: 08.05.2016
     @Column(name = "IsExtended")
     private boolean isExtended;
 
@@ -26,7 +27,16 @@ public class StudentVO extends PersonVO implements Serializable {
     @JoinColumn(name = "PersonID")
     private PersonVO personVO;
 
-    public StudentVO(PersonVO personVO, StudentGroupVO group, String status, Boolean isExtended) {
+    public StudentVO() {
+    }
+
+    public StudentVO(String status, PersonVO personVO, boolean isExtended) {
+        this.status = status;
+        this.personVO = personVO;
+        this.isExtended = isExtended;
+    }
+
+    public StudentVO(PersonVO personVO, StudentGroupVO group, String status, boolean isExtended) {
         this.personVO = personVO;
         this.group = group;
         this.status = status;

@@ -18,7 +18,7 @@ public class StudentGroupVO implements Serializable {
     @Column(name = "CurrentSemester")
     private int currentSemester;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "group")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
     private List<StudentVO> students;
 
     public StudentGroupVO() {

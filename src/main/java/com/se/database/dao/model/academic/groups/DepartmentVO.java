@@ -2,19 +2,30 @@ package com.se.database.dao.model.academic.groups;
 
 import com.se.database.dao.model.users.ProfessorVO;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
+@Entity
+@Table(name = "department")
 public class DepartmentVO implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "DepartmentID")
+    private int departmentId;
+
+    @Column(name = "Name")
     private String name;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "departmentVO")
     private List<ProfessorVO> professors;
 
     public DepartmentVO() {
+    }
+
+    public DepartmentVO(String name) {
+        this.name = name;
     }
 
     public DepartmentVO(String name, List<ProfessorVO> professors) {
@@ -36,6 +47,14 @@ public class DepartmentVO implements Serializable {
 
     public void setProfessors(List<ProfessorVO> professors) {
         this.professors = professors;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     @Override
