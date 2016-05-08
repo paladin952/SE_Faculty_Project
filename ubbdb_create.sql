@@ -94,8 +94,8 @@ CREATE TABLE IF NOT EXISTS `department` (
 CREATE TABLE IF NOT EXISTS `enrolled` (
   `StudentID` int(10) unsigned NOT NULL,
   `CourseID` varchar(30) NOT NULL,
-  KEY `FK_EnrolledStudentID` (`StudentID`),
   KEY `FK_EnrolledCourseID` (`CourseID`),
+  KEY `FK_EnrolledStudentID` (`StudentID`),
   CONSTRAINT `FK_EnrolledCourseID` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_EnrolledStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `optionalcourse` (
 
 -- Dumping structure for table ubbdb.person
 CREATE TABLE IF NOT EXISTS `person` (
-  `PersonID` int(10) unsigned NOT NULL,
+  `PersonID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,
   `DoB` date DEFAULT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `person` (
 
 -- Dumping structure for table ubbdb.professor
 CREATE TABLE IF NOT EXISTS `professor` (
-  `ProfessorID` int(10) unsigned NOT NULL,
+  `ProfessorID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `DepartmentID` int(10) unsigned NOT NULL DEFAULT '0',
   `IsChief` int(10) NOT NULL DEFAULT '0',
   `Wage` float NOT NULL DEFAULT '0',
@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `scholarship` (
 
 -- Dumping structure for table ubbdb.student
 CREATE TABLE IF NOT EXISTS `student` (
-  `StudentID` int(10) unsigned NOT NULL DEFAULT '0',
+  `StudentID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `GroupID` int(10) unsigned NOT NULL,
   `Status` varchar(30) DEFAULT NULL,
   `IsExtended` int(11) DEFAULT '0',
@@ -212,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `studentevaluation` (
   KEY `FK_StudentEvaluationEvaluationID` (`EvaluationID`),
   KEY `FK_StudentEvaluationStudentID` (`StudentID`),
   CONSTRAINT `FK_StudentEvaluationEvaluationID` FOREIGN KEY (`EvaluationID`) REFERENCES `evaluation` (`EvaluationID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `FK_StudentEvaluationStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_StudentEvaluationStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.studentevaluation: ~0 rows (approximately)
@@ -239,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `studentoptionalcourse` (
   KEY `FK_StudentOptionalCourseCourseID` (`CourseID`),
   KEY `FK_StudentOptionalCourseStudentID` (`StudentID`),
   CONSTRAINT `FK_StudentOptionalCourseCourseID` FOREIGN KEY (`CourseID`) REFERENCES `optionalcourse` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_StudentOptionalCourseStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `FK_StudentOptionalCourseStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.studentoptionalcourse: ~0 rows (approximately)
@@ -254,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `studentscholarship` (
   KEY `FK_StudentScholarshipScholarshipID` (`ScholarshipID`),
   KEY `FK_StudentScholarshipStudentID` (`StudentID`),
   CONSTRAINT `FK_StudentScholarshipScholarshipID` FOREIGN KEY (`ScholarshipID`) REFERENCES `scholarship` (`ScholarshipID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `FK_StudentScholarshipStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_StudentScholarshipStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.studentscholarship: ~0 rows (approximately)
