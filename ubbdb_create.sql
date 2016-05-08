@@ -150,11 +150,14 @@ CREATE TABLE IF NOT EXISTS `person` (
   `SSN` bigint(20) NOT NULL,
   `Address` varchar(255) DEFAULT NULL,
   `PhoneNo` int(11) DEFAULT NULL,
+  `UserID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`PersonID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.person: ~0 rows (approximately)
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
+INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Address`, `PhoneNo`, `UserID`) VALUES
+	(1, 'Bob', 'Snow', '2016-05-08', 1950602081817, '108 Awesome St, Wisconsin, US', 743760319, 1);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 
 
@@ -164,6 +167,7 @@ CREATE TABLE IF NOT EXISTS `professor` (
   `DepartmentID` int(10) unsigned NOT NULL DEFAULT '0',
   `IsChief` int(10) NOT NULL DEFAULT '0',
   `Wage` float NOT NULL DEFAULT '0',
+  `PersonID` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`ProfessorID`),
   KEY `FK_ProfessorDepartmentID` (`DepartmentID`),
   CONSTRAINT `FK_ProfessorDepartmentID` FOREIGN KEY (`DepartmentID`) REFERENCES `department` (`DepartmentID`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -193,6 +197,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `GroupID` int(10) unsigned NOT NULL,
   `Status` varchar(30) DEFAULT NULL,
   `IsExtended` int(11) DEFAULT '0',
+  `PersonID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`StudentID`),
   KEY `FK_StudentGroupID` (`GroupID`),
   CONSTRAINT `FK_StudentGroupID` FOREIGN KEY (`GroupID`) REFERENCES `studentgroup` (`StudentGroupID`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -268,10 +273,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `Username` varchar(30) NOT NULL DEFAULT 'admin',
   `Password` varchar(30) NOT NULL DEFAULT 'admin',
   PRIMARY KEY (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.user: ~0 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES
+	(1, 'admin', 'admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
