@@ -8,13 +8,23 @@ import java.util.List;
 /**
  * Created by Catalin on 03-Apr-16.
  */
-public class OptionalCourseVO extends CourseVO {
+public class OptionalCourseVO {
 
     private int groupNo;
 
-    public OptionalCourseVO(String abstractName, String name, int credits, EvaluationTypeEnum evaluationType, List<ActivityVO> activities, int assignedSemester, int groupNo) {
-        super(abstractName, name, credits, evaluationType, activities, assignedSemester);
+    private CourseVO course;
+
+    public OptionalCourseVO(CourseVO course, int assignedSemester, int groupNo) {
         this.groupNo = groupNo;
+        this.course = course;
+    }
+
+    public CourseVO getCourse() {
+        return course;
+    }
+
+    public void setCourse(CourseVO course) {
+        this.course = course;
     }
 
     public int getGroupNo() {
@@ -28,13 +38,8 @@ public class OptionalCourseVO extends CourseVO {
     @Override
     public String toString() {
         return "OptionalCourseVO{" +
-                "abstractName='" + getAbstractName() + '\'' +
-                ", name='" + getName() + '\'' +
-                ", credits=" + getCredits() +
-                ", evaluationType=" + getEvaluationType() +
-                ", activities=" + getActivities() +
-                ", assignedSemester=" + getAssignedSemester() +
-                ", groupNO=" + groupNo +
+                "groupNo=" + groupNo +
+                ", course=" + course +
                 '}';
     }
 }
