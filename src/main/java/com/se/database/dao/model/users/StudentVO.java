@@ -10,7 +10,13 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "student")
-public class StudentVO extends PersonVO implements Serializable {
+public class StudentVO implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "StudentID")
+    private int id;
+
     //    private int group;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "GroupID")
@@ -41,6 +47,14 @@ public class StudentVO extends PersonVO implements Serializable {
         this.group = group;
         this.status = status;
         this.isExtended = isExtended;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isExtended() {

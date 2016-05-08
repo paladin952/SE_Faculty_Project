@@ -15,6 +15,11 @@ import java.util.Date;
 @Table(name = "person")
 public class PersonVO implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "PersonID")
+    private int id;
+
     @Column(name = "FirstName")
     private String firstName;
 
@@ -25,7 +30,6 @@ public class PersonVO implements Serializable {
     @Column(name = "DoB")
     private Date dob;
 
-    @Id
     @Column(name = "SSN")
     private long ssn; // CNP
 
@@ -50,6 +54,14 @@ public class PersonVO implements Serializable {
     }
 
     public PersonVO() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

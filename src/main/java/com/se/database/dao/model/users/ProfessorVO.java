@@ -10,7 +10,12 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "professor")
-public class ProfessorVO extends PersonVO implements Serializable {
+public class ProfessorVO implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "ProfessorID")
+    private int id;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "DepartmentID")
@@ -42,6 +47,14 @@ public class ProfessorVO extends PersonVO implements Serializable {
         this.departmentVO = departmentID;
         this.isChief = isChief;
         this.wage = wage;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public DepartmentVO getDepartmentVO() {
