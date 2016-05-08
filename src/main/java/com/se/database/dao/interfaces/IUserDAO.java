@@ -15,4 +15,23 @@ public interface IUserDAO {
      */
     List<UserVO> list();
 
+    /**
+     * Get a user by id
+     * @return The user
+     */
+    UserVO getById(int id);
+
+    /**
+     * Delete a user by id
+     * @param id The id
+     * @return "Success" or "Failure"
+     */
+    void deleteById(int id);
+
+    /**
+     * Update the user with a new one
+     * @param newUser The user to be updated
+     */
+    UserVO updateUser(UserVO newUser);
+
 }
