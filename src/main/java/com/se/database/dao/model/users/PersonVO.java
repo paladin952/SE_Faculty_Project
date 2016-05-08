@@ -1,9 +1,5 @@
 package com.se.database.dao.model.users;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-import org.springframework.context.annotation.Primary;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;

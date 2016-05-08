@@ -38,25 +38,25 @@ public class PersonDAOImpl implements IPersonDAO {
 
     @Override
     @Transactional
-    public PersonVO updateOrSave(int id, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo, UserVO userVO) {
+    public PersonVO updateOrSave(PersonVO person) {
         Session session = sessionFactory.getCurrentSession();
-        PersonVO person = (PersonVO) session.load(PersonVO.class, id);
-        if (person == null)
+        PersonVO tmp = (PersonVO) session.load(PersonVO.class, person.getId());
+        if (tmp == null)
         {
-            PersonVO tmp = new PersonVO(userVO, firstName, lastName, dob, ssn, address, phoneNo);
-            session.save(tmp);
+            PersonVO new_person = new PersonVO(person.getUserVO(), person.getFirstName(), person.getLastName(), person.getDob(), person.getSsn(), person.getAddress(), person.getPhoneNo());
+            session.save(new_person);
 
-            return tmp;
+            return new_person;
         }
         else
         {
-            person.setFirstName(firstName)
-                .setLastName(lastName)
-                .setDob(dob)
-                .setSsn(ssn)
-                .setAddress(address)
-                .setPhoneNo(phoneNo)
-                .setUserVO(userVO);
+            tmp.setFirstName(person.getFirstName())
+                .setLastName(person.getLastName())
+                .setDob(person.getDob())
+                .setSsn(person.getSsn())
+                .setAddress(person.getAddress())
+                .setPhoneNo(person.getPhoneNo())
+                .setUserVO(person.getUserVO());
 
             return person;
         }

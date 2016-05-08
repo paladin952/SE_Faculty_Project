@@ -23,10 +23,10 @@ public interface IPersonDAO {
 
     /**
      * Updates a person, using the id passed as argument to identify it
-     * @param id the person's id
+     * @param person the updated person
      * @return true if a person having the id was updated, false otherwise (false means a new person is added)
      */
-    PersonVO updateOrSave(int id, String firstName, String lastName, Date dob, long ssn, String address, int phoneNo, UserVO userVO);
+    PersonVO updateOrSave(PersonVO person);
 
     /**
      * Deletes a person, using the id passed as argument to identify it
