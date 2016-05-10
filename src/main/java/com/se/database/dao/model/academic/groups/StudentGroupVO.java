@@ -17,10 +17,10 @@ public class StudentGroupVO implements Serializable {
 
     @Column(name = "CurrentSemester")
     private int currentSemester;
-
+/*
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
     private List<StudentVO> students;
-
+*/
     public StudentGroupVO() {
     }
 
@@ -33,7 +33,7 @@ public class StudentGroupVO implements Serializable {
     public StudentGroupVO(int groupId, List<StudentVO> students, int currentSemester) {
 
         this.groupId = groupId;
-        this.students = students;
+//        this.students = students;
         this.currentSemester = currentSemester;
     }
 
@@ -44,7 +44,7 @@ public class StudentGroupVO implements Serializable {
     public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
-
+/*
     public List<StudentVO> getStudents() {
         return students;
     }
@@ -52,7 +52,7 @@ public class StudentGroupVO implements Serializable {
     public void setStudents(List<StudentVO> students) {
         this.students = students;
     }
-
+*/
     public int getCurrentSemester() {
         return currentSemester;
     }
@@ -65,7 +65,7 @@ public class StudentGroupVO implements Serializable {
     public String toString() {
         return "StudentGroup{" +
                 "groupId=" + groupId +
-                ", students=" + students +
+//                ", students=" + students +
                 ", currentSemester=" + currentSemester +
                 '}';
     }

@@ -10,4 +10,10 @@ public interface IStudentDAO {
      * @return The list
      */
     List<StudentVO> list();
+
+    StudentVO getById(int id);
+
+    void deleteById(int id);
+
+    StudentVO updateStudent(StudentVO newStudent);
 }

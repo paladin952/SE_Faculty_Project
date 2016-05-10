@@ -4,14 +4,95 @@ import com.se.database.dao.model.academic.course.CourseVO;
 import com.se.util.enums.DegreeTypesEnum;
 import com.se.util.enums.LanguageTypesEnum;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Catalin on 03-Apr-16.
  */
+@Entity
+@Table(name = "degree")
 public class DegreeVO implements Serializable {
+    @Id
+    @GeneratedValue
+    @Column(name = "DegreeID")
+    private int degreeId;
 
+    @Column(name = "Field")
+    private String field;
+
+    @Column(name = "Type")
+    private int type;
+
+    @Column(name = "Duration")
+    private int duration;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "FacultyID")
+    private FacultyVO faculty;
+
+    public DegreeVO() {
+    }
+
+    public DegreeVO(String field, int type, int duration, FacultyVO faculty) {
+        this.field = field;
+        this.type = type;
+        this.duration = duration;
+        this.faculty = faculty;
+    }
+
+    public int getDegreeId() {
+        return degreeId;
+    }
+
+    public void setDegreeId(int degreeId) {
+        this.degreeId = degreeId;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public FacultyVO getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(FacultyVO faculty) {
+        this.faculty = faculty;
+    }
+
+    @Override
+    public String toString() {
+        return "DegreeVO{" +
+                "degreeId=" + degreeId +
+                ", field='" + field + '\'' +
+                ", type=" + type +
+                ", duration=" + duration +
+                ", faculty=" + faculty +
+                '}';
+    }
+/*
     private String field;
 
     private DegreeTypesEnum type;
@@ -80,4 +161,5 @@ public class DegreeVO implements Serializable {
                 ", courses=" + courses +
                 '}';
     }
+    */
 }

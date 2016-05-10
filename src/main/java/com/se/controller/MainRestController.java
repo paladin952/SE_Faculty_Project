@@ -1,8 +1,12 @@
 package com.se.controller;
 
 import com.se.database.dao.interfaces.*;
+import com.se.database.dao.model.academic.course.CourseVO;
 import com.se.database.dao.model.academic.course.EvaluationVO;
 import com.se.database.dao.model.academic.course.OptionalCourseVO;
+import com.se.database.dao.model.academic.course.activities.ActivityVO;
+import com.se.database.dao.model.academic.faculty.DegreeVO;
+import com.se.database.dao.model.academic.faculty.FacultyVO;
 import com.se.database.dao.model.users.PersonVO;
 import com.se.database.dao.model.users.ProfessorVO;
 import com.se.database.dao.model.users.StudentVO;
@@ -38,6 +42,18 @@ public class MainRestController {
 
     @Autowired
     private IOptionalCourseDAO iOptionalCourseDAO;
+
+    @Autowired
+    private IActivityDAO iActivityDAO;
+
+    @Autowired
+    private ICourseDAO iCourseDAO;
+
+    @Autowired
+    private IDegreeDAO iDegreeDAO;
+
+    @Autowired
+    private IFacultyDAO iFacultyDAO;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<UserVO>> home() {
@@ -166,5 +182,106 @@ public class MainRestController {
 
         return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
+    public ResponseEntity<StudentVO> getStudentById ( @PathVariable(value = "id") int id){
+        StudentVO studentVO = iStudentDAO.getById(id);
+        return new ResponseEntity<>(studentVO, studentVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/student/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<StudentVO> deleteStudentById ( @PathVariable(value = "id") int id){
+        iStudentDAO.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    /*
+    @RequestMapping(value = "/student/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<StudentVO> updateStudent ( @PathVariable("id") int id, @RequestBody StudentVO student){
+        System.out.println("Updating Student " + id);
+        iStudentDAO.updateStudent(student);
+        return new ResponseEntity<>(student, HttpStatus.OK);
+    }
+    */
+
+    @RequestMapping(value = "/activities", method = RequestMethod.GET)
+    public ResponseEntity<List<ActivityVO>> getActivities() {
+        List<ActivityVO> activities = iActivityDAO.list();
+        return new ResponseEntity<>(activities, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/activity/{id}", method = RequestMethod.GET)
+    public ResponseEntity<ActivityVO> getActivityById ( @PathVariable(value = "id") int id){
+        ActivityVO activityVO = iActivityDAO.getById(id);
+        return new ResponseEntity<>(activityVO, activityVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/activity/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<ActivityVO> deleteActivityById ( @PathVariable(value = "id") int id){
+        iActivityDAO.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/courses", method = RequestMethod.GET)
+    public ResponseEntity<List<CourseVO>> getCourses() {
+        List<CourseVO> courses = iCourseDAO.list();
+        return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
+    public ResponseEntity<CourseVO> getCourseById ( @PathVariable(value = "id") String id){
+        CourseVO courseVO = iCourseDAO.getById(id);
+        return new ResponseEntity<>(courseVO, courseVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/course/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<CourseVO> deleteCourseById ( @PathVariable(value = "id") String id){
+        iCourseDAO.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/degrees", method = RequestMethod.GET)
+    public ResponseEntity<List<DegreeVO>> getDegrees() {
+        List<DegreeVO> courses = iDegreeDAO.list();
+        return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/degree/{id}", method = RequestMethod.GET)
+    public ResponseEntity<DegreeVO> getDegreeById ( @PathVariable(value = "id") int id){
+        DegreeVO degreeVO = iDegreeDAO.getById(id);
+        return new ResponseEntity<>(degreeVO, degreeVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/degree/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<DegreeVO> deleteDegreeById ( @PathVariable(value = "id") int id){
+        iDegreeDAO.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/faculties", method = RequestMethod.GET)
+    public ResponseEntity<List<FacultyVO>> getFaculties() {
+        List<FacultyVO> courses = iFacultyDAO.list();
+        return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(value = "/faculty/{id}", method = RequestMethod.GET)
+    public ResponseEntity<FacultyVO> getFacultyById ( @PathVariable(value = "id") int id){
+        FacultyVO facultyVO = iFacultyDAO.getById(id);
+        return new ResponseEntity<>(facultyVO, facultyVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/faculty/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<FacultyVO> deleteFacultyById ( @PathVariable(value = "id") int id){
+        iFacultyDAO.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/faculty/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<FacultyVO> updateFaculty ( @PathVariable("id") int id, @RequestBody FacultyVO faculty){
+        System.out.println("Updating Faculty " + id);
+        iFacultyDAO.updateFaculty(faculty);
+        return new ResponseEntity<>(faculty, HttpStatus.OK);
+    }
+
 }
 

@@ -5,6 +5,7 @@ import com.se.util.enums.EvaluationTypeEnum;
 import org.hibernate.annotations.CollectionId;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "optionalcourse")
-public class OptionalCourseVO {
+public class OptionalCourseVO implements Serializable {
 
     @Column(name = "GroupNo")
     private int groupNo;
