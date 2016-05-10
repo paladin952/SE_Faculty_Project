@@ -3,6 +3,7 @@ package com.se.database.dao.daoImplementation;
 import com.se.database.dao.interfaces.IOptionalCourseDAO;
 import com.se.database.dao.model.academic.course.OptionalCourseVO;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,21 +39,20 @@ public class OptionalCourseDAOImpl implements IOptionalCourseDAO {
     @Transactional
     public OptionalCourseVO updateOrSave(OptionalCourseVO optionalCourse) {
         Session session = sessionFactory.getCurrentSession();
-        OptionalCourseVO tmp = (OptionalCourseVO) session.load(OptionalCourseVO.class, optionalCourse.getCourse());
-        if (tmp == null)
-        {
-            OptionalCourseVO new_optionalCourse = new OptionalCourseVO(optionalCourse.getGroupNo(), optionalCourse.getCourse());
-            session.save(new_optionalCourse);
 
-            return new_optionalCourse;
-        }
-        else
-        {
+        try {
+            OptionalCourseVO tmp = (OptionalCourseVO) session.load(OptionalCourseVO.class, optionalCourse.getCourse());
+
             tmp.setCourse(optionalCourse.getCourse());
             tmp.setGroupNo(optionalCourse.getGroupNo());
 
             //tmp
             return optionalCourse;
+        } catch (HibernateException e){
+            OptionalCourseVO new_optionalCourse = new OptionalCourseVO(optionalCourse.getGroupNo(), optionalCourse.getCourse());
+            session.save(new_optionalCourse);
+
+            return new_optionalCourse;
         }
     }
 

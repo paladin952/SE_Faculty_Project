@@ -33,6 +33,12 @@ public class DepartmentVO implements Serializable {
         this.professors = professors;
     }
 
+//    public DepartmentVO(int departmentId, String name, List<ProfessorVO> professors) {
+//        this.departmentId = departmentId;
+//        this.name = name;
+//        this.professors = professors;
+//    }
+
     public String getName() {
         return name;
     }

@@ -3,6 +3,7 @@ package com.se.controller;
 import com.se.database.dao.interfaces.*;
 import com.se.database.dao.model.academic.course.EvaluationVO;
 import com.se.database.dao.model.academic.course.OptionalCourseVO;
+import com.se.database.dao.model.academic.groups.DepartmentVO;
 import com.se.database.dao.model.users.PersonVO;
 import com.se.database.dao.model.users.ProfessorVO;
 import com.se.database.dao.model.users.StudentVO;
@@ -38,6 +39,9 @@ public class MainRestController {
 
 //    @Autowired
 //    private IOptionalCourseDAO iOptionalCourseDAO;
+
+    @Autowired
+    private IDepartmentDAO iDepartmentDAO;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<UserVO>> home() {
@@ -97,11 +101,34 @@ public class MainRestController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/professors", method = RequestMethod.GET)
-    public ResponseEntity<List<ProfessorVO>> getProfessors () {
-        List<ProfessorVO> professors = iProfessorDAO.list();
-        return new ResponseEntity<>(professors, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/professors", method = RequestMethod.GET)
+//    public ResponseEntity<List<ProfessorVO>> getProfessors () {
+//        List<ProfessorVO> professors = iProfessorDAO.list();
+//        return new ResponseEntity<>(professors, HttpStatus.OK);
+//    }
+//
+//    @RequestMapping(value = "/professor/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<ProfessorVO> getProfessor(
+//            @PathVariable("id") int id) {
+//        ProfessorVO professorVO = iProfessorDAO.getByID(id);
+//        return new ResponseEntity<>(professorVO, professorVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+//    }
+//
+//    @RequestMapping(value = "/professor", method = RequestMethod.PUT)
+//    public ResponseEntity<ProfessorVO> updateProfessor(
+//            @RequestBody ProfessorVO professorVO) {
+//        ProfessorVO res = iProfessorDAO.updateOrSave(professorVO);
+//        return new ResponseEntity<>(res, HttpStatus.OK);
+//    }
+//
+//    @RequestMapping(value = "/professor/{id}", method = RequestMethod.DELETE)
+//    public ResponseEntity<String> deleteProfessor (
+//            @PathVariable("id") int id)
+//    {
+//        Boolean res = iProfessorDAO.deleteByID(id);
+//
+//        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
+//    }
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public ResponseEntity<List<StudentVO>> getStudents() {
@@ -166,5 +193,34 @@ public class MainRestController {
 //
 //        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
 //    }
+
+    @RequestMapping(value = "/departments", method = RequestMethod.GET)
+    public ResponseEntity<List<DepartmentVO>> getDepartments () {
+        List<DepartmentVO> departmentVOs = iDepartmentDAO.list();
+        return new ResponseEntity<>(departmentVOs, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/department/{id}", method = RequestMethod.GET)
+    public ResponseEntity<DepartmentVO> getDepartment(
+            @PathVariable("id") int id) {
+        DepartmentVO departmentVO = iDepartmentDAO.getByID(id);
+        return new ResponseEntity<>(departmentVO, departmentVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/department", method = RequestMethod.PUT)
+    public ResponseEntity<DepartmentVO> updateDepartment(
+            @RequestBody DepartmentVO departmentVO) {
+        DepartmentVO res = iDepartmentDAO.updateOrSave(departmentVO);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/department/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteDepartment (
+            @PathVariable("id") int id)
+    {
+        Boolean res = iDepartmentDAO.deleteByID(id);
+
+        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
+    }
 }
 
