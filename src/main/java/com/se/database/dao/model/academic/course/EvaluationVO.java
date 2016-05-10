@@ -2,23 +2,45 @@ package com.se.database.dao.model.academic.course;
 
 import com.se.util.enums.ExamTypesEnum;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by Catalin on 03-Apr-16.
  */
+@Entity
+@Table(name = "evaluation")
 public class EvaluationVO implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "EvaluationID")
     private int id;
 
+    @Enumerated(EnumType.ORDINAL)
     private ExamTypesEnum type;
 
+//    @Column(name = )
+// FIXME: 10.05.2016
+    //check db
+//    @Column(insertable = "Grade")
     private float grade;
 
+    // FIXME: 10.05.2016
+//    @Column(name = "IsAbsent")
     private Boolean isAbsent;
+
+    public EvaluationVO() {
+    }
 
     public EvaluationVO(int id) {
         this.id = id;
+    }
+
+    public EvaluationVO(ExamTypesEnum type, float grade, Boolean isAbsent) {
+        this.type = type;
+        this.grade = grade;
+        this.isAbsent = isAbsent;
     }
 
     public EvaluationVO(int id, ExamTypesEnum type, float grade, Boolean isAbsent) {
