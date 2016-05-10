@@ -8,5 +8,11 @@
         <property name="show_sql">true</property>
         <mapping class="com.se.database.dao.model.users.UserVO"/>
         <mapping class="com.se.database.dao.model.users.PersonVO"/>
+        <mapping class="com.se.database.dao.model.users.StudentVO"/>
+        <mapping class="com.se.database.dao.model.users.ProfessorVO"/>
+        <mapping class="com.se.database.dao.model.academic.groups.DepartmentVO"/>
+        <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
+        <mapping class="com.se.database.dao.model.academic.course.EvaluationVO"/>
+        <mapping class="com.se.database.dao.model.academic.course.OptionalCourseVO"/>
     </session-factory>
 </hibernate-configuration>
