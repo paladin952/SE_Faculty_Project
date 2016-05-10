@@ -18,17 +18,18 @@ public class EvaluationVO implements Serializable {
     private int id;
 
     @Enumerated(EnumType.ORDINAL)
+    @Column(name = "EvaluationType")
     private ExamTypesEnum type;
 
 //    @Column(name = )
 // FIXME: 10.05.2016
     //check db
 //    @Column(insertable = "Grade")
-    private float grade;
+//    private float grade;
 
     // FIXME: 10.05.2016
 //    @Column(name = "IsAbsent")
-    private Boolean isAbsent;
+//    private Boolean isAbsent;
 
     public EvaluationVO() {
     }
@@ -37,17 +38,21 @@ public class EvaluationVO implements Serializable {
         this.id = id;
     }
 
+    public EvaluationVO(ExamTypesEnum type) {
+        this.type = type;
+    }
+
     public EvaluationVO(ExamTypesEnum type, float grade, Boolean isAbsent) {
         this.type = type;
-        this.grade = grade;
-        this.isAbsent = isAbsent;
+//        this.grade = grade;
+//        this.isAbsent = isAbsent;
     }
 
     public EvaluationVO(int id, ExamTypesEnum type, float grade, Boolean isAbsent) {
         this.id = id;
         this.type = type;
-        this.grade = grade;
-        this.isAbsent = isAbsent;
+//        this.grade = grade;
+//        this.isAbsent = isAbsent;
     }
 
     public int getId() {
@@ -62,29 +67,29 @@ public class EvaluationVO implements Serializable {
         this.type = type;
     }
 
-    public float getGrade() {
-        return grade;
-    }
-
-    public void setGrade(float grade) {
-        this.grade = grade;
-    }
-
-    public Boolean isAbsent() {
-        return isAbsent;
-    }
-
-    public void setIsAbsent(Boolean absent) {
-        isAbsent = absent;
-    }
+//    public float getGrade() {
+//        return grade;
+//    }
+//
+//    public void setGrade(float grade) {
+//        this.grade = grade;
+//    }
+//
+//    public Boolean isAbsent() {
+//        return isAbsent;
+//    }
+//
+//    public void setIsAbsent(Boolean absent) {
+//        isAbsent = absent;
+//    }
 
     @Override
     public String toString() {
         return "EvaluationVO{" +
                 "id=" + id +
                 ", type=" + type +
-                ", grade=" + grade +
-                ", isAbsent=" + isAbsent +
+//                ", grade=" + grade +
+//                ", isAbsent=" + isAbsent +
                 '}';
     }
 }

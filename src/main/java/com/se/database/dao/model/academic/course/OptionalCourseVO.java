@@ -10,16 +10,16 @@ import java.util.List;
 /**
  * Created by Catalin on 03-Apr-16.
  */
-@Entity
-@Table(name = "optionalcourse")
+//@Entity
+//@Table(name = "optionalcourse")
 public class OptionalCourseVO {
 
-    @Column(name = "GroupNo")
+//    @Column(name = "GroupNo")
     private int groupNo;
 
-    @Id
-    @OneToOne
-    @JoinColumn(name = "CourseID")
+//    @Id
+//    @OneToOne
+//    @JoinColumn(name = "CourseID")
     private CourseVO course;
 
     public OptionalCourseVO() {
