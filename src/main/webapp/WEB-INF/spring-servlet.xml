@@ -68,7 +68,13 @@
         </constructor-arg>
     </bean>
 
-    <bean id="optionalCourseDAO" class="com.se.database.dao.daoImplementation.OptionalCourseDAOImpl">
+    <bean id="optionalCourseDao" class="com.se.database.dao.daoImplementation.OptionalCourseDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="departmentDao" class="com.se.database.dao.daoImplementation.DepartmentDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory"/>
         </constructor-arg>
