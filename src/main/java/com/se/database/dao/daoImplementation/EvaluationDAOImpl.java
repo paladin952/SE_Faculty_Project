@@ -41,7 +41,8 @@ public class EvaluationDAOImpl implements IEvaluationDAO {
         EvaluationVO tmp = (EvaluationVO) session.load(EvaluationVO.class, evaluation.getId());
         if (tmp == null)
         {
-            EvaluationVO new_evaluation = new EvaluationVO(evaluation.getType(), evaluation.getGrade(), evaluation.isAbsent());
+//            EvaluationVO new_evaluation = new EvaluationVO(evaluation.getType(), evaluation.getGrade(), evaluation.isAbsent());
+            EvaluationVO new_evaluation = new EvaluationVO(evaluation.getType());
             session.save(new_evaluation);
 
             return new_evaluation;
@@ -49,8 +50,8 @@ public class EvaluationDAOImpl implements IEvaluationDAO {
         else
         {
             tmp.setType(evaluation.getType());
-            tmp.setGrade(evaluation.getGrade());
-            tmp.setIsAbsent(evaluation.isAbsent());
+//            tmp.setGrade(evaluation.getGrade());
+//            tmp.setIsAbsent(evaluation.isAbsent());
 
             //tmp?
             return evaluation;
