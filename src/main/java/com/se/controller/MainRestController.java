@@ -22,83 +22,16 @@ import java.util.List;
 
 @Controller("/")
 public class MainRestController {
-    @Autowired
-    private IUserDAO iUserDAO;
-
-    @Autowired
-    private IPersonDAO iPersonDAO;
-
-    @Autowired
-    private IStudentDAO iStudentDAO;
 
     @Autowired
     private IProfessorDAO iProfessorDAO;
 
-    @Autowired
-    private IEvaluationDAO iEvaluationDAO;
-
 //    @Autowired
 //    private IOptionalCourseDAO iOptionalCourseDAO;
 
-    @Autowired
-    private IDepartmentDAO iDepartmentDAO;
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<List<UserVO>> home() {
-        List<UserVO> users = iUserDAO.list();
-        return new ResponseEntity<>(users, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/persons", method = RequestMethod.GET)
-    public ResponseEntity<List<PersonVO>> getPersons() {
-        List<PersonVO> persons = iPersonDAO.list();
-        return new ResponseEntity<>(persons, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
-    public ResponseEntity<PersonVO> getPerson(
-            @PathVariable("id") int id) {
-        PersonVO person = iPersonDAO.getByID(id);
-        return new ResponseEntity<>(person, person != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
-
-    @RequestMapping(value = "/person", method = RequestMethod.PUT)
-    public ResponseEntity<PersonVO> updatePerson(
-            @RequestBody PersonVO person) {
-        PersonVO tmp = iPersonDAO.getByID(person.getId());
-        if (tmp != null)
-            person.setUserVO(tmp.getUserVO());
-        PersonVO res = iPersonDAO.updateOrSave(person);
-        return new ResponseEntity<>(res, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/person/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deletePerson (
-            @PathVariable("id") int id)
-    {
-        Boolean res = iPersonDAO.deleteByID(id);
-
-        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UserVO> getUserById ( @PathVariable(value = "id") int id){
-        UserVO userVO = iUserDAO.getById(id);
-        return new ResponseEntity<>(userVO, userVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
-
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<UserVO> deleteUserById ( @PathVariable(value = "id") int id){
-        iUserDAO.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<UserVO> updateUser ( @PathVariable("id") int id, @RequestBody UserVO user){
-        System.out.println("Updating User " + id);
-        iUserDAO.updateUser(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+    @RequestMapping("/")
+    public ResponseEntity<String> home(){
+        return new ResponseEntity<>("Welcome!!!", HttpStatus.OK);
     }
 
 //    @RequestMapping(value = "/professors", method = RequestMethod.GET)
@@ -130,40 +63,6 @@ public class MainRestController {
 //        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
 //    }
 
-    @RequestMapping(value = "/students", method = RequestMethod.GET)
-    public ResponseEntity<List<StudentVO>> getStudents() {
-        List<StudentVO> students = iStudentDAO.list();
-        return new ResponseEntity<>(students, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/evaluations", method = RequestMethod.GET)
-    public ResponseEntity<List<EvaluationVO>> getEvaluations() {
-        List<EvaluationVO> evaluationVOList = iEvaluationDAO.list();
-        return new ResponseEntity<>(evaluationVOList, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/evaluation/{id}", method = RequestMethod.GET)
-    public ResponseEntity<EvaluationVO> getEvaluation(
-            @PathVariable("id") int id) {
-        EvaluationVO evaluationVO = iEvaluationDAO.getByID(id);
-        return new ResponseEntity<>(evaluationVO, evaluationVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
-
-    @RequestMapping(value = "/evaluation", method = RequestMethod.PUT)
-    public ResponseEntity<EvaluationVO> updateEvaluation(
-            @RequestBody EvaluationVO evaluationVO) {
-        EvaluationVO res = iEvaluationDAO.updateOrSave(evaluationVO);
-        return new ResponseEntity<>(res, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/evaluation/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteEvaluation (
-            @PathVariable("id") int id)
-    {
-        Boolean res = iEvaluationDAO.deleteByID(id);
-
-        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
-    }
 
 //    @RequestMapping(value = "/optionalCourses", method = RequestMethod.GET)
 //    public ResponseEntity<List<OptionalCourseVO>> getOptionalCourses() {
@@ -194,33 +93,6 @@ public class MainRestController {
 //        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
 //    }
 
-    @RequestMapping(value = "/departments", method = RequestMethod.GET)
-    public ResponseEntity<List<DepartmentVO>> getDepartments () {
-        List<DepartmentVO> departmentVOs = iDepartmentDAO.list();
-        return new ResponseEntity<>(departmentVOs, HttpStatus.OK);
-    }
 
-    @RequestMapping(value = "/department/{id}", method = RequestMethod.GET)
-    public ResponseEntity<DepartmentVO> getDepartment(
-            @PathVariable("id") int id) {
-        DepartmentVO departmentVO = iDepartmentDAO.getByID(id);
-        return new ResponseEntity<>(departmentVO, departmentVO != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
-    }
-
-    @RequestMapping(value = "/department", method = RequestMethod.PUT)
-    public ResponseEntity<DepartmentVO> updateDepartment(
-            @RequestBody DepartmentVO departmentVO) {
-        DepartmentVO res = iDepartmentDAO.updateOrSave(departmentVO);
-        return new ResponseEntity<>(res, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/department/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteDepartment (
-            @PathVariable("id") int id)
-    {
-        Boolean res = iDepartmentDAO.deleteByID(id);
-
-        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
-    }
 }
 
