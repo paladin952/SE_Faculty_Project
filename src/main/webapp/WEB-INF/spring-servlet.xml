@@ -23,7 +23,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/ubbdb"/>
         <property name="username" value="root"/>
-        <property name="password" value="admin"/>
+        <property name="password" value="RESILIENCEWILLFIXIT"/>
     </bean>
 
     <bean id="sessionFactory"
@@ -47,6 +47,12 @@
     <bean id="personDao" class="com.se.database.dao.daoImplementation.PersonDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="adminDao" class="com.se.database.dao.daoImplementation.AdminDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
         </constructor-arg>
     </bean>
 
