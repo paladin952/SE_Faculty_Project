@@ -30,6 +30,20 @@ CREATE TABLE IF NOT EXISTS `activity` (
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 
 
+-- Dumping structure for table ubbdb.admin
+CREATE TABLE IF NOT EXISTS `admin` (
+  `AdminID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `UserID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`AdminID`),
+  KEY `FK_AdminUserID` (`UserID`),
+  CONSTRAINT `FK_AdminUserID` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table ubbdb.admin: ~0 rows (approximately)
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+
+
 -- Dumping structure for table ubbdb.course
 CREATE TABLE IF NOT EXISTS `course` (
   `CourseID` varchar(10) NOT NULL,
@@ -152,12 +166,12 @@ CREATE TABLE IF NOT EXISTS `person` (
   `PhoneNo` int(11) DEFAULT NULL,
   `UserID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`PersonID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.person: ~0 rows (approximately)
+-- Dumping data for table ubbdb.person: ~1 rows (approximately)
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Address`, `PhoneNo`, `UserID`) VALUES
-	(1, 'Bob', 'Snow', '2016-05-08', 1950602081817, '108 Awesome St, Wisconsin, US', 743760319, 1);
+	(2, 'asdf', 'asf', '2016-05-08', 5555, 'jooooo', 815, 1);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 
 
@@ -275,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.user: ~0 rows (approximately)
+-- Dumping data for table ubbdb.user: ~1 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES
 	(1, 'admin', 'admin');
