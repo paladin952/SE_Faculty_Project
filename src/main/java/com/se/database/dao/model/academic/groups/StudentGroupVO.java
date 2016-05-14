@@ -65,7 +65,7 @@ public class StudentGroupVO implements Serializable {
     @Override
     public String toString() {
         return "StudentGroup{" +
-                "scholarshipId=" + groupId +
+                "scholarshipId=" + id +
                 ", students=" + students +
                 ", currentSemester=" + currentSemester +
                 '}';
