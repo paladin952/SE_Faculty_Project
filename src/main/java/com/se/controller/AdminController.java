@@ -20,9 +20,9 @@ public class AdminController {
     private IAdminDAO iAdminDAO;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<AdminVO> deleteAdmin(@PathVariable(value = "id") int id) {
-        iAdminDAO.deleteByID(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<String> deleteAdmin(@PathVariable(value = "id") int id) {
+        Boolean res = iAdminDAO.deleteByID(id);
+        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", res ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.PUT)

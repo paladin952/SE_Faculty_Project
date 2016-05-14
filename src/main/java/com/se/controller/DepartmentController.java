@@ -47,7 +47,7 @@ public class DepartmentController {
     {
         Boolean res = iDepartmentDAO.deleteByID(id);
 
-        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
+        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", res ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 
 }
