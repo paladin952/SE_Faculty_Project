@@ -30,6 +30,20 @@ CREATE TABLE IF NOT EXISTS `activity` (
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 
 
+-- Dumping structure for table ubbdb.admin
+CREATE TABLE IF NOT EXISTS `admin` (
+  `AdminID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `UserID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`AdminID`),
+  KEY `FK_AdminUserID` (`UserID`),
+  CONSTRAINT `FK_AdminUserID` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table ubbdb.admin: ~0 rows (approximately)
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+
+
 -- Dumping structure for table ubbdb.course
 CREATE TABLE IF NOT EXISTS `course` (
   `CourseID` varchar(10) NOT NULL,
@@ -80,13 +94,17 @@ CREATE TABLE IF NOT EXISTS `degreelanguage` (
 
 -- Dumping structure for table ubbdb.department
 CREATE TABLE IF NOT EXISTS `department` (
-  `DepartmentID` int(10) unsigned NOT NULL,
+  `DepartmentID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
   PRIMARY KEY (`DepartmentID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.department: ~0 rows (approximately)
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
+INSERT INTO `department` (`DepartmentID`, `Name`) VALUES
+	(1, 'computer science'),
+	(2, 'matemathics'),
+	(7, 'maths and comp sci');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 
 
@@ -131,9 +149,12 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 
 -- Dumping structure for table ubbdb.optionalcourse
 CREATE TABLE IF NOT EXISTS `optionalcourse` (
+  `OptionalCourseID` int(11) NOT NULL AUTO_INCREMENT,
   `CourseID` varchar(30) NOT NULL,
-  `GroupNo` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`CourseID`)
+  `GroupNo` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`OptionalCourseID`),
+  KEY `FK_OptionalCourseCourseID` (`CourseID`),
+  CONSTRAINT `FK_OptionalCourseCourseID` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.optionalcourse: ~0 rows (approximately)
@@ -152,12 +173,12 @@ CREATE TABLE IF NOT EXISTS `person` (
   `PhoneNo` int(11) DEFAULT NULL,
   `UserID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`PersonID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.person: ~0 rows (approximately)
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Address`, `PhoneNo`, `UserID`) VALUES
-	(1, 'Bob', 'Snow', '2016-05-08', 1950602081817, '108 Awesome St, Wisconsin, US', 743760319, 1);
+	(2, 'asdf', 'asf', '2016-05-08', 5555, 'jooooo', 815, 1);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 
 
@@ -170,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `professor` (
   `PersonID` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`ProfessorID`),
   KEY `FK_ProfessorDepartmentID` (`DepartmentID`),
-  CONSTRAINT `FK_ProfessorDepartmentID` FOREIGN KEY (`DepartmentID`) REFERENCES `department` (`DepartmentID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `FK_ProfessorDepartmentID` FOREIGN KEY (`DepartmentID`) REFERENCES `department` (`DepartmentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.professor: ~0 rows (approximately)
@@ -227,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `studentevaluation` (
 
 -- Dumping structure for table ubbdb.studentgroup
 CREATE TABLE IF NOT EXISTS `studentgroup` (
-  `StudentGroupID` int(10) unsigned NOT NULL,
+  `StudentGroupID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `CurrentSemester` int(10) unsigned NOT NULL,
   PRIMARY KEY (`StudentGroupID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -239,11 +260,11 @@ CREATE TABLE IF NOT EXISTS `studentgroup` (
 
 -- Dumping structure for table ubbdb.studentoptionalcourse
 CREATE TABLE IF NOT EXISTS `studentoptionalcourse` (
-  `CourseID` varchar(50) NOT NULL,
+  `OptionalCourseID` int(11) NOT NULL,
   `StudentID` int(10) unsigned NOT NULL,
-  KEY `FK_StudentOptionalCourseCourseID` (`CourseID`),
   KEY `FK_StudentOptionalCourseStudentID` (`StudentID`),
-  CONSTRAINT `FK_StudentOptionalCourseCourseID` FOREIGN KEY (`CourseID`) REFERENCES `optionalcourse` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  KEY `FK_StudentOptionalCourseOptionalCourseID` (`OptionalCourseID`),
+  CONSTRAINT `FK_StudentOptionalCourseOptionalCourseID` FOREIGN KEY (`OptionalCourseID`) REFERENCES `optionalcourse` (`OptionalCourseID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_StudentOptionalCourseStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

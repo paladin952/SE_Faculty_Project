@@ -17,79 +17,35 @@ public class EvaluationVO implements Serializable {
     @Column(name = "EvaluationID")
     private int id;
 
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "EvaluationType")
-    private ExamTypesEnum type;
-
-//    @Column(name = )
-// FIXME: 10.05.2016
-    //check db
-//    @Column(insertable = "Grade")
-//    private float grade;
-
-    // FIXME: 10.05.2016
-//    @Column(name = "IsAbsent")
-//    private Boolean isAbsent;
+    private int type;
 
     public EvaluationVO() {
     }
 
-    public EvaluationVO(int id) {
-        this.id = id;
-    }
-
-    public EvaluationVO(ExamTypesEnum type) {
+    public EvaluationVO(int type) {
         this.type = type;
-    }
-
-    public EvaluationVO(ExamTypesEnum type, float grade, Boolean isAbsent) {
-        this.type = type;
-//        this.grade = grade;
-//        this.isAbsent = isAbsent;
-    }
-
-    public EvaluationVO(int id, ExamTypesEnum type, float grade, Boolean isAbsent) {
-        this.id = id;
-        this.type = type;
-//        this.grade = grade;
-//        this.isAbsent = isAbsent;
     }
 
     public int getId() {
         return id;
     }
 
-    public ExamTypesEnum getType() {
+    public int getType() {
         return type;
     }
 
-    public void setType(ExamTypesEnum type) {
+    public EvaluationVO setType(int type) {
         this.type = type;
-    }
 
-//    public float getGrade() {
-//        return grade;
-//    }
-//
-//    public void setGrade(float grade) {
-//        this.grade = grade;
-//    }
-//
-//    public Boolean isAbsent() {
-//        return isAbsent;
-//    }
-//
-//    public void setIsAbsent(Boolean absent) {
-//        isAbsent = absent;
-//    }
+        return this;
+    }
 
     @Override
     public String toString() {
         return "EvaluationVO{" +
                 "id=" + id +
                 ", type=" + type +
-//                ", grade=" + grade +
-//                ", isAbsent=" + isAbsent +
                 '}';
     }
 }

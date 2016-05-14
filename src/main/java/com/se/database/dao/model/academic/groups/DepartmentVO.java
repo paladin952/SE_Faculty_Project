@@ -4,7 +4,9 @@ import com.se.database.dao.model.users.ProfessorVO;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "department")
@@ -13,13 +15,13 @@ public class DepartmentVO implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "DepartmentID")
-    private int departmentId;
+    private int id;
 
     @Column(name = "Name")
     private String name;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "departmentVO")
-    private List<ProfessorVO> professors;
+    private Set<ProfessorVO> professors = new HashSet<>();
 
     public DepartmentVO() {
     }
@@ -28,16 +30,10 @@ public class DepartmentVO implements Serializable {
         this.name = name;
     }
 
-    public DepartmentVO(String name, List<ProfessorVO> professors) {
+    public DepartmentVO(String name, Set<ProfessorVO> professors) {
         this.name = name;
         this.professors = professors;
     }
-
-//    public DepartmentVO(int departmentId, String name, List<ProfessorVO> professors) {
-//        this.departmentId = departmentId;
-//        this.name = name;
-//        this.professors = professors;
-//    }
 
     public String getName() {
         return name;
@@ -47,20 +43,20 @@ public class DepartmentVO implements Serializable {
         this.name = name;
     }
 
-    public List<ProfessorVO> getProfessors() {
+    public Set<ProfessorVO> getProfessors() {
         return professors;
     }
 
-    public void setProfessors(List<ProfessorVO> professors) {
+    public void setProfessors(Set<ProfessorVO> professors) {
         this.professors = professors;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public int getId() {
+        return id;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setId(int departmentId) {
+        this.id = departmentId;
     }
 
     @Override

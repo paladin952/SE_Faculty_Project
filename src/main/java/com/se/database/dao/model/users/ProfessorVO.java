@@ -20,7 +20,6 @@ public class ProfessorVO implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "DepartmentID")
     private DepartmentVO departmentVO;
-//    private final int departmentVO;
 
     //// FIXME: 08.05.2016
     @Column(name = "IsChief")

@@ -21,7 +21,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/ubbdb"/>
+        <property name="url" value="jdbc:mysql://localhost:3307/ubbdb"/>
         <property name="username" value="root"/>
         <property name="password" value="admin"/>
     </bean>
@@ -50,6 +50,12 @@
         </constructor-arg>
     </bean>
 
+    <bean id="adminDao" class="com.se.database.dao.daoImplementation.AdminDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
+        </constructor-arg>
+    </bean>
+
     <bean id="studentDao" class="com.se.database.dao.daoImplementation.StudentDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory"/>
@@ -75,6 +81,12 @@
     </bean>
 
     <bean id="departmentDao" class="com.se.database.dao.daoImplementation.DepartmentDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="scholarshipDao" class="com.se.database.dao.daoImplementation.ScholarshipDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory"/>
         </constructor-arg>
