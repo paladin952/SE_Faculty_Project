@@ -1,5 +1,6 @@
 package com.se.database.dao.model.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.database.dao.model.academic.groups.DepartmentVO;
 
 import javax.persistence.*;
@@ -21,7 +22,6 @@ public class ProfessorVO implements Serializable {
     @JoinColumn(name = "DepartmentID")
     private DepartmentVO departmentVO;
 
-    //// FIXME: 08.05.2016
     @Column(name = "IsChief")
     private boolean isChief;
 

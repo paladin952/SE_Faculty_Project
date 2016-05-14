@@ -1,5 +1,6 @@
 package com.se.database.dao.model.academic.groups;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.database.dao.model.users.ProfessorVO;
 
 import javax.persistence.*;
@@ -20,6 +21,7 @@ public class DepartmentVO implements Serializable {
     @Column(name = "Name")
     private String name;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "departmentVO")
     private Set<ProfessorVO> professors = new HashSet<>();
 
