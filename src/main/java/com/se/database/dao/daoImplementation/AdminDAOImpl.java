@@ -43,18 +43,9 @@ public class AdminDAOImpl implements IAdminDAO {
         if (exists != null)
         {
             AdminVO admin = (AdminVO) session.load(AdminVO.class, adminVO.getId());
-            if (admin == null)
-            {
-                AdminVO tmp = new AdminVO(adminVO.getUserVO());
-                session.save(tmp);
-                return tmp;
-            }
-            else
-            {
-                admin.setUserVO(adminVO.getUserVO());
+            admin.setUserVO(adminVO.getUserVO());
 
-                return admin;
-            }
+            return admin;
         }
         else
         {
