@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Transactional
 public class StudentDAOImpl implements IStudentDAO {
     /**
      * The session factory from spring

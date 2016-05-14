@@ -17,7 +17,6 @@ public class StudentVO implements Serializable {
     @Column(name = "StudentID")
     private int id;
 
-    //    private int group;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "GroupID")
     private StudentGroupVO group;

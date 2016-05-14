@@ -10,7 +10,7 @@ public interface IPersonDAO {
 
     /**
      * Returns a list of persons
-     * @return The list
+     * @return the list of persons
      */
     List<PersonVO> list();
 
