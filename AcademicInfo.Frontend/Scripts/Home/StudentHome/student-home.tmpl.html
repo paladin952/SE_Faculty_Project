@@ -1,0 +1,96 @@
+<div ng-controller="studentHome" ng-init="init()">
+    <div>
+        <table>
+            <tr class="page-header">
+                <th class="col-md-8">
+                    <h1 >Welcome, {{userToLogin.username}}!</h1>
+                </th>
+                <th class="col-md-8"></th>
+                <th class="col-md-1">
+                    <div>
+                        <button type="button" class="btn btn-info" ng-click="goToLogin()">Sign Out</button>
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td class="col-md-5">
+                <div id="gradesModal" class="modal" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                Grades
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="watchGrades()">Next</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-info" data-toggle="modal" data-target="#gradesModal">Consult Grades</button>
+            </td>
+
+            <td class="col-md-5">
+                <div id="studyContractModal" class="modal" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                Study Contract
+                            </div>
+                            <div class="modal-body">
+                                <table class="table-hover">
+                                    <tr ng-repeat="c in mandatoryCourses">
+                                        <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{c.ssn}}">
+                                            <span>{{c.name}} </span>
+                                        </td>
+                                        <td class="col-md-2 pull-right">
+                                            <button class="btn btn-success disabled">
+                                                <span class="glyphicon glyphicon-check"></span>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr ng-repeat="oc in optionalCourses">
+                                        <td class="col-md-3">
+                                            <span>{{oc.course.name}} </span>
+                                        </td>
+                                        <td class="col-md-2 pull-right">
+                                            <button id="addOptionalCourse{{oc.course.name}}Button" class="btn btn-info" ng-click="addCourse(oc)">
+                                                <span id="addOptionalCourse{{oc.course.name}}Span" class="glyphicon glyphicon-plus"></span>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="saveContract()">Save</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-info" data-toggle="modal" data-target="#studyContractModal">Study Contract</button>
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+

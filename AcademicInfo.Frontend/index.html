@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AcademicInfoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="Styles/styles.css" rel="stylesheet"/>
+    <title>Academic Info</title>
+</head>
+<body >
+
+    <div ng-view></div>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="Scripts/Model/admin.js"></script>
+    <script src="Scripts/Model/student.js"></script>
+    <script src="Scripts/Model/teacher.js"></script>
+    <script src="Scripts/Model/optionalCourse.js"></script>
+    <script src="Scripts/Model/course.js"></script>
+    <script src="Scripts/Model/user.js"></script>
+
+    <script src="Scripts/Home/StudentHome/module.js"></script>
+    <script src="Scripts/Home/StudentHome/student-home-ctrl.js"></script>
+
+    <script src="Scripts/Home/AdminHome/module.js"></script>
+    <script src="Scripts/Home/AdminHome/admin-home-ctrl.js"></script>
+
+    <script src="Scripts/Home/DepartmentChiefHome/module.js"></script>
+    <script src="Scripts/Home/DepartmentChiefHome/departmentChief-home-ctrl.js"></script>
+
+    <script src="Scripts/Home/TeacherHome/module.js"></script>
+    <script src="Scripts/Home/TeacherHome/teacher-home-ctrl.js"></script>
+
+    <script src="Scripts/Login/module.js"></script>
+    <script src="Scripts/Login/remember-me-factory.js"></script>
+    <script src="Scripts/Login/login-ctrl.js"></script>
+
+    <script src="Scripts/app.js"></script>
+</body>
+</html>
