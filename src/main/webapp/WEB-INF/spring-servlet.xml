@@ -92,4 +92,10 @@
         </constructor-arg>
     </bean>
 
+    <bean id="studentScholarship" class="com.se.database.dao.daoImplementation.StudentScholarshipDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+
 </beans>
