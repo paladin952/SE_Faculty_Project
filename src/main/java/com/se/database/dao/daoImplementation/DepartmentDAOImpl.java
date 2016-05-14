@@ -24,7 +24,8 @@ public class DepartmentDAOImpl implements IDepartmentDAO {
         @SuppressWarnings("unchecked")
         List<DepartmentVO> departmentVOList = (List<DepartmentVO>) sessionFactory.getCurrentSession()
                 .createCriteria(DepartmentVO.class)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .list();
 
         return departmentVOList;
     }
@@ -39,18 +40,19 @@ public class DepartmentDAOImpl implements IDepartmentDAO {
     @Transactional
     public DepartmentVO updateOrSave(DepartmentVO departmentVO) {
         Session session = sessionFactory.getCurrentSession();
-        try {
-            DepartmentVO tmp = (DepartmentVO) session.load(DepartmentVO.class, departmentVO.getDepartmentId());
+        DepartmentVO exists = (DepartmentVO) session.get(DepartmentVO.class, departmentVO.getId());
+        if (exists != null)
+        {
+            DepartmentVO department = (DepartmentVO) session.load(DepartmentVO.class, departmentVO.getId());
+            department.setName(departmentVO.getName());
+            department.setProfessors(departmentVO.getProfessors());
 
-            tmp.setName(departmentVO.getName());
-            tmp.setProfessors(departmentVO.getProfessors());
-
-            //tmp?
-            return departmentVO;
-        } catch (HibernateException e){
+            return department;
+        }
+        else
+        {
             DepartmentVO new_department = new DepartmentVO(departmentVO.getName(), departmentVO.getProfessors());
             session.save(new_department);
-
             return new_department;
         }
     }
@@ -59,7 +61,7 @@ public class DepartmentDAOImpl implements IDepartmentDAO {
     @Transactional
     public Boolean deleteByID(int id) {
         Session session = sessionFactory.getCurrentSession();
-        DepartmentVO departmentVO = (DepartmentVO) session.load(DepartmentVO.class, id);
+        DepartmentVO departmentVO = (DepartmentVO) session.get(DepartmentVO.class, id);
         if (departmentVO == null)
             return false;
         else
