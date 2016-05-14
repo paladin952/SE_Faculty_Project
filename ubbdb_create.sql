@@ -104,10 +104,6 @@ CREATE TABLE IF NOT EXISTS `department` (
 INSERT INTO `department` (`DepartmentID`, `Name`) VALUES
 	(1, 'computer science'),
 	(2, 'matemathics'),
-	(3, 'computer science'),
-	(4, 'matemathics'),
-	(5, 'computer science'),
-	(6, 'matemathics'),
 	(7, 'maths and comp sci');
 /*!40000 ALTER TABLE `department` ENABLE KEYS */;
 

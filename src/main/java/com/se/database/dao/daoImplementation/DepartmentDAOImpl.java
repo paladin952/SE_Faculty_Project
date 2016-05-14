@@ -21,6 +21,7 @@ public class DepartmentDAOImpl implements IDepartmentDAO {
     @Override
     @Transactional
     public List<DepartmentVO> list() {
+        @SuppressWarnings("unchecked")
         List<DepartmentVO> departmentVOList = (List<DepartmentVO>) sessionFactory.getCurrentSession()
                 .createCriteria(DepartmentVO.class)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
