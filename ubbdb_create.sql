@@ -145,9 +145,12 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 
 -- Dumping structure for table ubbdb.optionalcourse
 CREATE TABLE IF NOT EXISTS `optionalcourse` (
+  `OptionalCourseID` int(11) NOT NULL AUTO_INCREMENT,
   `CourseID` varchar(30) NOT NULL,
-  `GroupNo` int(10) unsigned DEFAULT NULL,
-  PRIMARY KEY (`CourseID`)
+  `GroupNo` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`OptionalCourseID`),
+  KEY `FK_OptionalCourseCourseID` (`CourseID`),
+  CONSTRAINT `FK_OptionalCourseCourseID` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.optionalcourse: ~0 rows (approximately)
@@ -168,7 +171,7 @@ CREATE TABLE IF NOT EXISTS `person` (
   PRIMARY KEY (`PersonID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.person: ~1 rows (approximately)
+-- Dumping data for table ubbdb.person: ~0 rows (approximately)
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Address`, `PhoneNo`, `UserID`) VALUES
 	(2, 'asdf', 'asf', '2016-05-08', 5555, 'jooooo', 815, 1);
@@ -257,7 +260,6 @@ CREATE TABLE IF NOT EXISTS `studentoptionalcourse` (
   `StudentID` int(10) unsigned NOT NULL,
   KEY `FK_StudentOptionalCourseCourseID` (`CourseID`),
   KEY `FK_StudentOptionalCourseStudentID` (`StudentID`),
-  CONSTRAINT `FK_StudentOptionalCourseCourseID` FOREIGN KEY (`CourseID`) REFERENCES `optionalcourse` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_StudentOptionalCourseStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -289,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.user: ~1 rows (approximately)
+-- Dumping data for table ubbdb.user: ~0 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES
 	(1, 'admin', 'admin');
