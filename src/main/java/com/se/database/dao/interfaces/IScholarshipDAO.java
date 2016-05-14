@@ -30,6 +30,6 @@ public interface IScholarshipDAO {
      * Update the user with a new one
      * @param newScolarship The ScholarshipVO to be updated
      */
-    ScholarshipVO updateUser(ScholarshipVO newScolarship);
+    ScholarshipVO updateScholarship(ScholarshipVO newScolarship);
 
 }
