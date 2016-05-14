@@ -5,24 +5,27 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name="scholarship")
+@Table(name = "scholarship")
 public class ScholarshipVO implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name="ScholarshipID")
+    @Column(name = "ScholarshipID")
     private int id;
 
-    @Column(name="Name")
+    @Column(name = "Name")
     private String name;
 
-    @Column(name="Award")
+    @Column(name = "Award")
     private float sum;
 
     public ScholarshipVO(int id, String name, float sum) {
         this.id = id;
         this.name = name;
         this.sum = sum;
+    }
+
+    public ScholarshipVO() {
     }
 
     public int getId() {
@@ -35,6 +38,18 @@ public class ScholarshipVO implements Serializable {
 
     public float getSum() {
         return sum;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSum(float sum) {
+        this.sum = sum;
     }
 
     @Override
