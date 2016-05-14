@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name="scholarhip")
+@Table(name="scholarship")
 public class ScholarshipVO implements Serializable {
 
     @Id
