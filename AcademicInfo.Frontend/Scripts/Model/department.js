@@ -11,7 +11,7 @@
         this.teachers = teachers;
     }
 
-    S.fromDto = function (dto) {
+    Department.fromDto = function (dto) {
         var department = new Department();
         department.name = dto.getName();
         department.teachers = dto.getTeachers();

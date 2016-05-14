@@ -17,7 +17,7 @@
         this.isChief = isChief;
     }
 
-    S.fromDto = function (dto) {
+    Teacher.fromDto = function (dto) {
         var teacher = new Teacher();
         teacher.id= dto.getId();
         teacher.person= dto.getPerson();

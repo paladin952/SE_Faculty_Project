@@ -9,7 +9,7 @@
         this.person = person;
     }
 
-    S.fromDto = function (dto) {
+    Admin.fromDto = function (dto) {
         var admin = new Admin();
         admin.person = dto.getPerson();
         return admin;

@@ -11,7 +11,7 @@
         this.password = password;
     }
 
-    S.fromDto = function (dto) {
+    User.fromDto = function (dto) {
         var user = new User();
         user.username = dto.getUsername();
         user.password = dto.getPassword();

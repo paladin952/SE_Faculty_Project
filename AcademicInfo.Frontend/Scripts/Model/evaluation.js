@@ -11,7 +11,7 @@
         this.type = type;
     }
 
-    S.fromDto = function (dto) {
+    Evaluation.fromDto = function (dto) {
         var ev = new AccessRule();
         ev.id = dto.getId();
         ev.type = dto.getType();

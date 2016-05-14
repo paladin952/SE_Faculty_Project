@@ -19,7 +19,7 @@
         this.assignedSemester = assignedSemester;
     }
 
-    S.fromDto = function (dto) {
+    Course.fromDto = function (dto) {
         var course = new AccessRule();
         course.abstractName = dto.getAbstractName();
         course.name = dto.getName();

@@ -11,7 +11,7 @@
         this.degrees = degrees;
     }
 
-    S.fromDto = function (dto) {
+    Faculty.fromDto = function (dto) {
         var faculty = new Faculty();
         faculty.name = dto.getName();
         faculty.dateAdded = dto.getDegrees();
@@ -27,6 +27,6 @@
     //};
 
     this.Model = this.Model || {};
-    this.Model.Admin = Admin;
+    this.Model.Faculty = Faculty;
 
 }).call(this, this.Model.Degree);
