@@ -1,19 +1,25 @@
 package com.se.database.dao.model.academic.grants;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
-public class Grant implements Serializable {
 
+@Entity
+@Table(name="scholarhip")
+public class ScholarshipVO implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name="ScholarshipID")
     private int id;
 
+    @Column(name="Name")
     private String name;
 
+    @Column(name="Award")
     private float sum;
 
-    public Grant(int id, String name, float sum) {
+    public ScholarshipVO(int id, String name, float sum) {
         this.id = id;
         this.name = name;
         this.sum = sum;
@@ -33,7 +39,7 @@ public class Grant implements Serializable {
 
     @Override
     public String toString() {
-        return "Grant{" +
+        return "ScholarshipVO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", sum=" + sum +
