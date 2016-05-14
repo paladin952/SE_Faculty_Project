@@ -17,7 +17,7 @@
         this.status = status;
     }
 
-    S.fromDto = function (dto) {
+    Student.fromDto = function (dto) {
         var student = new Student();
         student.id = dto.getId();
         student.person = dto.getPerson();

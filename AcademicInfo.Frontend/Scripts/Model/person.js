@@ -21,7 +21,7 @@
         this.phone = phone;
     }
 
-    S.fromDto = function (dto) {
+    Person.fromDto = function (dto) {
         var person = new Person();
         person.user = dto.getUser();
         person.firstName = dto.getFirstName();

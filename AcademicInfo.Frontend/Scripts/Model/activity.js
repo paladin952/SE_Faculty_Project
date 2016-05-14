@@ -9,7 +9,7 @@
         this.hoursPerWeek = hours;
     }
 
-    S.fromDto = function (dto) {
+    Activity.fromDto = function (dto) {
         var activity = new Activity();
         activity.hoursPerWeek = dto.getHoursPerWeek();
         return activity;

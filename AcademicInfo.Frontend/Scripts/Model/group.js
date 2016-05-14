@@ -13,7 +13,7 @@
         this.currentSemester = sem;
     }
 
-    S.fromDto = function (dto) {
+    Group.fromDto = function (dto) {
         var group = new Group();
         group.id = dto.getId();
         group.name = dto.getStudents();

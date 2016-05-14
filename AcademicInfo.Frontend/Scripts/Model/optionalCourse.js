@@ -11,7 +11,7 @@
         this.course = course;
     }
 
-    S.fromDto = function (dto) {
+    OptionalCourse.fromDto = function (dto) {
         var oc = new OptionalCourse();
         oc.groupNumber = dto.getGroupNumber();
         oc.course = dto.getCourse();

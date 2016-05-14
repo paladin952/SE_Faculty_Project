@@ -17,7 +17,7 @@
         this.courses = courses;
     }
 
-    S.fromDto = function (dto) {
+    Degree.fromDto = function (dto) {
         var degree = new Degree();
         degree.field = dto.getField();
         degree.type = dto.getType();
