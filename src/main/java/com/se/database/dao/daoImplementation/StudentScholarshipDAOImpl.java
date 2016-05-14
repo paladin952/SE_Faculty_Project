@@ -1,7 +1,9 @@
 package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IStudentScholarshipDAO;
+import com.se.database.dao.model.academic.grants.ScholarshipVO;
 import com.se.database.dao.model.academic.grants.StudentScholarshipVO;
+import com.se.database.dao.model.users.StudentVO;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,17 +33,13 @@ public class StudentScholarshipDAOImpl implements IStudentScholarshipDAO {
     }
 
     @Override
-    public StudentScholarshipVO getById(int id) {
+    public List<ScholarshipVO> getScholarshipsForStudent(StudentVO studentVO) {
         return null;
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteScholarshipForStudent(int scholarshipId, int studentId) {
 
     }
-
-    @Override
-    public StudentScholarshipVO updateUser(StudentScholarshipVO newUser) {
-        return null;
-    }
+    
 }

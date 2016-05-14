@@ -24,4 +24,5 @@ public interface IStudentScholarshipDAO {
      */
     List<ScholarshipVO> getScholarshipsForStudent(StudentVO studentVO);
 
+    void deleteScholarshipForStudent(int scholarshipId, int studentId);
 }
