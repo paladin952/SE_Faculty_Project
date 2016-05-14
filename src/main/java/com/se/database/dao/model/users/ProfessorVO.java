@@ -1,6 +1,5 @@
 package com.se.database.dao.model.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.database.dao.model.academic.groups.DepartmentVO;
 
 import javax.persistence.*;
