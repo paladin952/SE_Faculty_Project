@@ -1,27 +1,30 @@
-/**
- * Created by DianaCosma on 21-Mar-16.
- */
 (function (ng, console, _,  Course) {
     'use strict';
 
     ng.module('departmentChiefHome')
         .controller('departmentChiefHome', ['$rootScope', '$scope', '$location', function ($root, $s, $location) {
             $root.acceptedCourses=[];
-
+            $s.isLoadingData = true;
             $s.goToLogin = function(){
                 $location.path('/login');
                 $root.userToLogin = null;
             };
 
-            $s.existingCourses = [
-                new Course('sdi', 'SDI', 5, 'practical', 'activities', 4),
-                new Course('se', 'SE', 5, 'written', 'activities', 4),
-                new Course('ai', 'AI', 5, 'written', 'activities', 4)
-            ];
+            $s.existingCourses = [];
 
             $s.existingCourses.concat($root.proposedCourses);
 
             $s.acceptedCourses = [];
+
+            $http.get('/api/Courses')
+                .success(function (coursesFromServer) {
+                    $s.existingCourses = _.map(coursesFromServer, Course.fromDto);
+                    $s.isLoadingData = false;
+                })
+                .error(function (err) {
+                    console.error(err);
+                    $s.isLoadingData = false;
+                });
 
             $s.acceptCourse = function(course){
                 var idx = $s.existingCourses.indexOf(course);
