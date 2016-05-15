@@ -21,7 +21,6 @@ public class ProfessorVO implements Serializable {
     @JoinColumn(name = "DepartmentID")
     private DepartmentVO departmentVO;
 
-    //// FIXME: 08.05.2016
     @Column(name = "IsChief")
     private boolean isChief;
 

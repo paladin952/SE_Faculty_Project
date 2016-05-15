@@ -97,9 +97,9 @@ CREATE TABLE IF NOT EXISTS `department` (
   `DepartmentID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) NOT NULL,
   PRIMARY KEY (`DepartmentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.department: ~0 rows (approximately)
+-- Dumping data for table ubbdb.department: ~3 rows (approximately)
 /*!40000 ALTER TABLE `department` DISABLE KEYS */;
 INSERT INTO `department` (`DepartmentID`, `Name`) VALUES
 	(1, 'computer science'),
@@ -128,10 +128,14 @@ CREATE TABLE IF NOT EXISTS `evaluation` (
   `EvaluationID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `EvaluationType` int(10) unsigned NOT NULL,
   PRIMARY KEY (`EvaluationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.evaluation: ~0 rows (approximately)
+-- Dumping data for table ubbdb.evaluation: ~3 rows (approximately)
 /*!40000 ALTER TABLE `evaluation` DISABLE KEYS */;
+INSERT INTO `evaluation` (`EvaluationID`, `EvaluationType`) VALUES
+	(1, 1),
+	(2, 1),
+	(3, 2);
 /*!40000 ALTER TABLE `evaluation` ENABLE KEYS */;
 
 
@@ -192,10 +196,12 @@ CREATE TABLE IF NOT EXISTS `professor` (
   PRIMARY KEY (`ProfessorID`),
   KEY `FK_ProfessorDepartmentID` (`DepartmentID`),
   CONSTRAINT `FK_ProfessorDepartmentID` FOREIGN KEY (`DepartmentID`) REFERENCES `department` (`DepartmentID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.professor: ~0 rows (approximately)
+-- Dumping data for table ubbdb.professor: ~1 rows (approximately)
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
+INSERT INTO `professor` (`ProfessorID`, `DepartmentID`, `IsChief`, `Wage`, `PersonID`) VALUES
+	(1, 1, 1, 1000, 2);
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 
 
@@ -205,10 +211,15 @@ CREATE TABLE IF NOT EXISTS `scholarship` (
   `Name` varchar(30) DEFAULT NULL,
   `Award` float unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`ScholarshipID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.scholarship: ~0 rows (approximately)
+-- Dumping data for table ubbdb.scholarship: ~4 rows (approximately)
 /*!40000 ALTER TABLE `scholarship` DISABLE KEYS */;
+INSERT INTO `scholarship` (`ScholarshipID`, `Name`, `Award`) VALUES
+	(1, 'study scholarship', 350),
+	(2, 'premium scholarship', 400),
+	(3, 'gold scholarship', 450),
+	(4, 'platinum scholarship', 500);
 /*!40000 ALTER TABLE `scholarship` ENABLE KEYS */;
 
 
@@ -248,13 +259,17 @@ CREATE TABLE IF NOT EXISTS `studentevaluation` (
 
 -- Dumping structure for table ubbdb.studentgroup
 CREATE TABLE IF NOT EXISTS `studentgroup` (
-  `StudentGroupID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `StudentGroupID` int(10) unsigned NOT NULL,
   `CurrentSemester` int(10) unsigned NOT NULL,
   PRIMARY KEY (`StudentGroupID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.studentgroup: ~0 rows (approximately)
 /*!40000 ALTER TABLE `studentgroup` DISABLE KEYS */;
+INSERT INTO `studentgroup` (`StudentGroupID`, `CurrentSemester`) VALUES
+	(913, 1),
+	(923, 3),
+	(933, 5);
 /*!40000 ALTER TABLE `studentgroup` ENABLE KEYS */;
 
 
