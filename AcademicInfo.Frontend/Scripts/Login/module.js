@@ -1,6 +1,3 @@
-/**
- * Created by DianaCosma on 21-Mar-16.
- */
 (function (ng) {
     'use strict';
 

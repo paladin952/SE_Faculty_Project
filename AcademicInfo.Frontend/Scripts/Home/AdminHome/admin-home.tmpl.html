@@ -34,7 +34,7 @@
                 <table>
                     <tr>
                         <th class="col-xs-1"> Teachers: </th>
-                        <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button></th>
+                        <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addTeacher">Add</button></th>
                     </tr>
                 </table>
             </th>
@@ -42,7 +42,7 @@
                 <table>
                     <tr>
                         <th class="col-xs-1"> Students: </th>
-                        <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addModal">Add</button></th>
+                        <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addStudent">Add</button></th>
                     </tr>
                 </table>
             </th>
@@ -53,16 +53,15 @@
                 <td class="col-md-5">
                     <table class="table-hover">
                     <tr ng-repeat="c in existingDepartmentChiefs">
-                        <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{c.ssn}}">
-                            <span>{{c.firstName}} </span>
-                            <span>{{c.lastName}}</span>
-
-                            <div id="#editModal{{c.username}}" class="modal fade" role="dialog">
+                        <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{c.id}}">
+                            <span>{{c.person.firstName}} </span>
+                            <span>{{c.person.lastName}}</span>
+                            <div id="#editChiefModal{{c.id}}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Add new Department Chief</h4>
+                                            <h4 class="modal-title">Edit {{c.person.firstName}}</h4>
                                         </div>
                                         <div class="modal-body">
                                             <table>
@@ -95,10 +94,7 @@
                                                     <td class="col-md-2">Date of birth</td>
                                                     <td class="col-md-2">
                                                         <div class='input-group date' id='datetimepicker1'>
-                                                            <input type="text" class="form-control">
-                                    <span class="input-group-addon" ng-click="launchDatePicker()">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                     </span>
+                                                            <input type="text" class="form-control"/>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -123,7 +119,7 @@
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-success" ng-click="addRole()" data-dismiss="modal">OK</button>
+                                            <button type="button" class="btn btn-success" ng-click="updateChief(c)" data-dismiss="modal">OK</button>
                                             <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
                                         </div>
                                     </div>
@@ -132,7 +128,6 @@
                             </div>
                         </td>
                         <td class="col-md-2 pull-right">
-
                             <div id="deleteChiefConfirmModal{{c.ssn}}" class="modal" role="dialog">
                                 <div class="modal-dialog modal-sm">
                                     <div class="modal-content">
@@ -146,97 +141,21 @@
                                     </div>
                                 </div>
                             </div>
-
                             <button class="btn btn-info" data-toggle="modal" data-target="#deleteChiefConfirmModal{{c.ssn}}">
                                 <span class="glyphicon glyphicon-trash"></span>
                             </button>
-
-                            <div class="modal fade hide" id="editModal{{c.username}}">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <table>
-                                                <tr>
-                                                    <td class="col-md-2">Username</td>
-                                                    <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="Username" title="Username" ng-model="c.username">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-md-2">Password</td>
-                                                    <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="Password" title="Password" ng-model="c.password">
-                                                    </td>
-                                                </tr>
-                                                <tr></tr>
-                                                <tr>
-                                                    <td class="col-md-2">First Name</td>
-                                                    <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="First Name" title="First Name" ng-model="c.firstName">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-md-2">Last Name</td>
-                                                    <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="c.lastName">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-md-2">Date of birth</td>
-                                                    <td class="col-md-2">
-                                                        <div>
-                                                            <p class="input-group">
-                                                            <input type="text" class="form-control" name="Date of Birth" title="Date of Birth" ng-model="c.dob" datepicker-popup="mediumDate"
-                                                                   is-open="valuationDatePickerIsOpen"
-                                                                   ng-click="valuationDatePickerOpen()"/>
-                                                            <span class="input-group-btn">
-                                                                <button type="button" class="btn btn-default" ng-click="valuationDatePickerOpen($event)">
-                                                                    <i class="glyphicon glyphicon-calendar"></i>
-                                                                </button>
-                                                            </span>
-                                                            </p>
-
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-md-2">SSN</td>
-                                                    <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="c.ssn">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-md-2">Address</td>
-                                                    <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="Address" title="Address" ng-model="c.address">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="col-md-2">Phone</td>
-                                                    <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="Phone" title="Phone" ng-model="c.phone">
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-success" ng-click="updateChief(c)" data-dismiss="modal">Save</button>
-                                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </td>
 
                     </tr>
-                </table></td>
-
+                </table>
+                </td>
 
                 <td class="col-md-4">
                     <table class="table-hover">
                         <tr ng-repeat="t in existingTeachers">
                             <td class="col-sm-1">
-                                <span>{{t.username}} </span>
+                                <span>{{t.person}} </span>
+                                <span>{{t.person.lastName}} </span>
                             </td>
                             <td class="col-sm-1">
 
@@ -329,11 +248,8 @@
                         <tr>
                             <td class="col-md-2">Date of birth</td>
                             <td class="col-md-2">
-                                <div class='input-group date' id='datetimepicker'>
+                                <div class='input-group date'>
                                     <input type="text" class="form-control">
-                                    <span class="input-group-addon" ng-click="launchDatePicker">
-                                        <span class="glyphicon glyphicon-calendar"></span>
-                                     </span>
                                 </div>
                             </td>
                         </tr>
@@ -355,10 +271,208 @@
                                 <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.phone">
                             </td>
                         </tr>
+                        <tr>
+                            <td class="col-md-2">Department</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Department" title="Department" ng-model="chiefToAdd.department">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Wage</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Wage" title="Wage" ng-model="chiefToAdd.wage">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Is Chief:</td>
+                            <td class="col-md-2">
+                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="chiefToAdd.isChief" checked>
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" ng-click="addRole()" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-success" ng-click="addChief()" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="addTeacher" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add new Teacher</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td class="col-md-2">Username</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="teacherToAdd.person.user.username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Password</td>
+                            <td class="col-md-2">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="teacherToAdd.person.user.assword">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td class="col-md-2">First Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="teacherToAdd.person.firstName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Last Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="teacherToAdd.person.lastName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Date of birth</td>
+                            <td class="col-md-2">
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">SSN</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="teacherToAdd.person.ssn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Address</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="teacherToAdd.person.address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Phone</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="teacherToAdd.person.phone">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Department</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Department" title="Department" ng-model="teacherToAdd.department">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Wage</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Wage" title="Wage" ng-model="teacherToAdd.wage">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Is Chief:</td>
+                            <td class="col-md-2">
+                                <div class="btn btn-info disabled">
+                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="teacherToAdd.isChief">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="addTeacher()" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="addStudent" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add new Student</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td class="col-md-2">Username</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="studentToAdd.person.user.username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Password</td>
+                            <td class="col-md-2">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="studentToAdd.person.user.password">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td class="col-md-2">First Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="studentToAdd.person.firstName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Last Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="studentToAdd.person.lastName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Date of birth</td>
+                            <td class="col-md-2">
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">SSN</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="studentToAdd.person.ssn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Address</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="studentToAdd.person.address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Phone</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="studentToAdd.person.phone">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Group</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Group" title="Group" ng-model="studentToAdd.group" checked>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Is extended</td>
+                            <td class="col-md-2">
+                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" ng-model="studentToAdd.isExtended" checked>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Status</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Status" title="Status" ng-model="studentToAdd.status" checked>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="addChief()" data-dismiss="modal">OK</button>
                     <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
                 </div>
             </div>
