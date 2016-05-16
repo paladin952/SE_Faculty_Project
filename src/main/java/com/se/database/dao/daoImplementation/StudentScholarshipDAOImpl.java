@@ -41,5 +41,5 @@ public class StudentScholarshipDAOImpl implements IStudentScholarshipDAO {
     public void deleteScholarshipForStudent(int scholarshipId, int studentId) {
 
     }
-    
+
 }
