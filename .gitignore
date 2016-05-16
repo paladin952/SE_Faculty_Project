@@ -2,7 +2,6 @@ target
 classes
 bin
 *.log
-bower_components
 
 # Eclipse
 .classpath
