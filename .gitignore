@@ -10,7 +10,6 @@ bin
 .metadata
 
 # IntelliJ IDEA
-*.iml
 *.ipr
 *.iws
 
