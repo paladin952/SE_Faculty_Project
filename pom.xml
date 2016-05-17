@@ -4,48 +4,48 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <scholarshipId>com.se</scholarshipId>
+    <groupId>com.se</groupId>
     <artifactId>ProjectSe</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <java-version>1.7</java-version>
-        <org.springframework-version>4.1.4.RELEASE</org.springframework-version>
+        <org.springframework-version>4.2.2.RELEASE</org.springframework-version>
     </properties>
 
     <url>http://maven.apache.org</url>
 
     <dependencies>
         <dependency>
-            <scholarshipId>org.springframework</scholarshipId>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
-            <scholarshipId>org.springframework</scholarshipId>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
 
         <dependency>
-            <scholarshipId>org.springframework</scholarshipId>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
-            <scholarshipId>org.springframework</scholarshipId>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${org.springframework-version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <scholarshipId>org.springframework</scholarshipId>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
         <dependency>
-            <scholarshipId>org.springframework</scholarshipId>
+            <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${org.springframework-version}</version>
             <type>jar</type>
@@ -53,38 +53,38 @@
         </dependency>
 
         <dependency>
-            <scholarshipId>org.hibernate</scholarshipId>
+            <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>4.3.5.Final</version>
         </dependency>
 
         <dependency>
-            <scholarshipId>javax.servlet</scholarshipId>
+            <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <scholarshipId>javax.servlet.jsp</scholarshipId>
+            <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>2.3.1</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
-            <scholarshipId>jstl</scholarshipId>
+            <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
 
         <dependency>
-            <scholarshipId>org.apache.commons</scholarshipId>
+            <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>2.0</version>
         </dependency>
 
         <dependency>
-            <scholarshipId>mysql</scholarshipId>
+            <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.30</version>
         </dependency>
@@ -92,12 +92,12 @@
         <!--For jackson json-->
 
         <dependency>
-            <scholarshipId>com.fasterxml.jackson.core</scholarshipId>
+            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.4.1</version>
         </dependency>
         <dependency>
-            <scholarshipId>commons-lang</scholarshipId>
+            <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>2.5</version>
         </dependency>
@@ -107,7 +107,7 @@
         <finalName>test</finalName>
         <plugins>
             <plugin>
-                <scholarshipId>org.apache.maven.plugins</scholarshipId>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>1.8</source>
