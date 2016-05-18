@@ -1,4 +1,4 @@
-(function (ng, console, _,  Course) {
+(function (ng, console, _,  Course, Student, User, Person) {
     'use strict';
 
     ng.module('teacherHome')
@@ -37,11 +37,29 @@
                 $("#saveButton").removeClass("btn-info").addClass("btn-danger");
                 $("#saveSpan").removeClass("glyphicon-floppy-save").addClass("glyphicon-check");
                 console.log($root.acceptedCourses);
-            }
+            };
+
+            $s.availableStudents = [
+                new Student(1, new Person(new User ('user1', 'pass1'), 'fname1', 'lanme1', '15/02/2000', '2951203245030','addr1', '0740000000' )),
+                new Student(2, new Person(new User ('user2', 'pass2'), 'fname2', 'lanme2', '15/02/2000', '2951203245030','addr2', '0740000000' )),
+                new Student(3, new Person(new User ('user3', 'pass3'), 'fname3', 'lanme3', '15/02/2000', '2951203245030','addr3', '0740000000' )),
+                new Student(4, new Person(new User ('user4', 'pass4'), 'fname4', 'lanme4', '15/02/2000', '2951203245030','addr4', '0740000000' )),
+                new Student(5, new Person(new User ('user5', 'pass5'), 'fname5', 'lanme5', '15/02/2000', '2951203245030','addr5', '0740000000' )),
+                new Student(6, new Person(new User ('user6', 'pass6'), 'fname6', 'lanme6', '15/02/2000', '2951203245030','addr6', '0740000000' )),
+                new Student(7, new Person(new User ('user7', 'pass7'), 'fname7', 'lanme7', '15/02/2000', '2951203245030','addr7', '0740000000' )),
+                new Student(8, new Person(new User ('user8', 'pass8'), 'fname8', 'lanme8', '15/02/2000', '2951203245030','addr8', '0740000000' ))
+            ];
+
+
+            $s.selectedStdent = $s.availableStudents[0];
+
+            $s.goNext = function(){
+
+            };
 
 
 
 
         }]);
 
-})(this.angular,  this.console, this._, this.Model.Course);
+})(this.angular,  this.console, this._, this.Model.Course, this.Model.Student, this.Model.User, this.Model.Person);

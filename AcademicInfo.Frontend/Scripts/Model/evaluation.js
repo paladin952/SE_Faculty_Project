@@ -12,7 +12,7 @@
     }
 
     Evaluation.fromDto = function (dto) {
-        var ev = new AccessRule();
+        var ev = new Evaluation();
         ev.id = dto.getId();
         ev.type = dto.getType();
         return ev;

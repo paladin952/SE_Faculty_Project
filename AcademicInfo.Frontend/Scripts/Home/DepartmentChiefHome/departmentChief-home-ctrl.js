@@ -2,12 +2,16 @@
     'use strict';
 
     ng.module('departmentChiefHome')
-        .controller('departmentChiefHome', ['$rootScope', '$scope', '$location', function ($root, $s, $location) {
+        .controller('departmentChiefHome', ['$rootScope', '$scope', '$location', '$http',function ($root, $s, $location, $http) {
             $root.acceptedCourses=[];
             $s.isLoadingData = true;
             $s.goToLogin = function(){
                 $location.path('/login');
                 $root.userToLogin = null;
+            };
+
+            $s.goToTeachers = function(){
+                $location.path('/teacherHome');
             };
 
             $s.existingCourses = [];
