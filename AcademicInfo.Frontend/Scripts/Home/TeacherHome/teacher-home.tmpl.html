@@ -79,6 +79,31 @@
                     <button class="btn btn-info" data-toggle="modal" data-target="#proposeCourseModal">Propose new optional course</button>
                 </td>
 
+                <td>
+                    <div id="assignGradesModal" class="modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    Assign Grades
+                                </div>
+                                <div class="modal-body">
+                                    <label for="selectStudent">Select student:</label>
+                                    <select class="form-control" id="selectStudent" ng-options="student.person for students in availableStudents" ng-model="selectedStudent">
+                                        <option></option>
+                                    </select>
+                                    {{selectedStudent}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="goNext()">Next</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-info" data-toggle="modal" data-target="#assignGradesModal">Assign Grades</button>
+                </td>
+
             </tr>
         </tbody>
     </table>
