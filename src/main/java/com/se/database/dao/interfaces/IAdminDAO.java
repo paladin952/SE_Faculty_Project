@@ -1,6 +1,7 @@
 package com.se.database.dao.interfaces;
 
 import com.se.database.dao.model.users.AdminVO;
+import com.se.database.dao.model.users.UserVO;
 
 import java.util.List;
 
@@ -30,4 +31,6 @@ public interface IAdminDAO {
      * @return true if an admin having AdminID equal to id was deleted, false otherwise
      */
     Boolean deleteByID(int id);
+
+    AdminVO getByUser(UserVO userVO);
 }

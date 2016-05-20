@@ -1,7 +1,11 @@
 package com.se.controller;
 
 
+import com.se.database.dao.interfaces.IAdminDAO;
+import com.se.database.dao.interfaces.IPersonDAO;
 import com.se.database.dao.interfaces.IUserDAO;
+import com.se.database.dao.model.users.AdminVO;
+import com.se.database.dao.model.users.LoginUserVo;
 import com.se.database.dao.model.users.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,17 +24,42 @@ public class LoginController {
     @Autowired
     IUserDAO iUserDAO;
 
+    @Autowired
+    IAdminDAO iAdminDAO;
+
+    @Autowired
+    IPersonDAO iPersonDAO;
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<UserVO> login(@RequestBody UserVO user){
+    public ResponseEntity<LoginUserVo> login(@RequestBody UserVO user){
         System.out.println("Login: " + user.getUsername() + "-" + user.getPassword());
 
         UserVO existingUser = iUserDAO.getByNameAndPass(user.getUsername(), user.getPassword());
 
         if(existingUser == null){
-            return new ResponseEntity<UserVO>(new UserVO(), HttpStatus.NOT_FOUND);
+            System.out.println("USER DOES NOT EXIST");
+            return new ResponseEntity<>(new LoginUserVo(), HttpStatus.NOT_FOUND);
         }else{
-            return new ResponseEntity<UserVO>(existingUser, HttpStatus.OK);
+            System.out.println("USER EXIST");
+            LoginUserVo.UserType userType = getUserType(existingUser);
+            return new ResponseEntity<>(new LoginUserVo(existingUser, userType), HttpStatus.OK);
         }
+    }
+
+    /**
+     * Returns the usertype of the user
+     * @param userVO The user to be checked
+     * @return {@link LoginUserVo.UserType}
+     */
+    private LoginUserVo.UserType getUserType(UserVO userVO){
+        AdminVO adminVO = iAdminDAO.getByUser(userVO);
+        if (adminVO != null){
+            System.out.println("UserType=ADMIN");
+            return LoginUserVo.UserType.ADMIN;
+        }
+
+        System.out.println("UserType=STUDENT");
+        return LoginUserVo.UserType.STUDENT;
     }
 
 }

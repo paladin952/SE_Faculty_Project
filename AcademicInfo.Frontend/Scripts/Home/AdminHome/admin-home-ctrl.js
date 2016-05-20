@@ -15,13 +15,16 @@
             $scope.existingTeachers = [];
             $scope.existingDepartmentChiefs = [];
 
-            $http.get('/api/Students')
-                .success(function (studentsFromServer) {
-                    $scope.existingStudents= _.map(studentsFromServer, Student.fromDto);
+
+            $http.get('http://localhost:9001/student/all')
+            .then(
+                function(response) {
+                    $scope.existingStudents= _.map(response.data, Student.fromDto);
                     $scope.isLoadingData = false;
-                })
-                .error(function (err) {
-                    console.error(err);
+                    console.log($scope.existingStudents);
+                },
+                function errorCallback(response) {
+                    console.error(response);
                     $scope.isLoadingData = false;
                 });
 

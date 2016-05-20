@@ -5,6 +5,7 @@
         this.id = '';
         this.username = '';
         this.password = '';
+        this.userType = '';
     }
 
     function User(username, password) {
@@ -14,9 +15,10 @@
 
     User.fromDto = function (dto) {
         var user = new User();
-        user.id = dto.getId();
-        user.username = dto.getUsername();
-        user.password = dto.getPassword();
+        user.id = dto.id;
+        user.username =  dto.username;
+        user.password =  dto.password;
+        user.userType =  dto.userType;
         return user;
     };
 
@@ -24,7 +26,8 @@
         return {
             "id": this.id,
             "username": this.username,
-            "password": this.password
+            "password": this.password,
+            "userType": this.userType
         };
     };
 

@@ -40,6 +40,11 @@ public class UserVO implements Serializable {
         this.password = password;
     }
 
+    public UserVO(UserVO userVO){
+        this.username = userVO.getUsername();
+        this.password = userVO.getPassword();
+    }
+
     /**
      * Default constructor for serialization
      * DO NOT REMOVE IT
