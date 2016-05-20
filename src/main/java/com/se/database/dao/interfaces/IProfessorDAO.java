@@ -2,6 +2,7 @@ package com.se.database.dao.interfaces;
 
 import com.se.database.dao.model.users.PersonVO;
 import com.se.database.dao.model.users.ProfessorVO;
+import com.se.database.dao.model.users.UserVO;
 
 import java.util.List;
 
@@ -31,4 +32,6 @@ public interface IProfessorDAO {
      * @return true if a professor having the id was deleted, false otherwise
      */
     Boolean deleteByID(int id);
+
+    ProfessorVO getByUser(UserVO userVO);
 }

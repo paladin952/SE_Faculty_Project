@@ -28,21 +28,24 @@
                     $scope.isLoadingData = false;
                 });
 
-            $http.get('/api/Teachers')
-                .success(function (teachersFromServer) {
-                    $scope.existingTeachers = _.map(teachersFromServer, Teacher.fromDto);
-                    for (var teacher in $scope.existingTeachers)
-                    {
-                        if (teacher.ischief){
-                            $scope.existingDepartmentChiefs.push(teacher);
+            $http.get('http://localhost:9001/professor/all')
+                .then(
+                    function(teachersFromServer) {
+                        $scope.existingTeachers = _.map(teachersFromServer.data, Teacher.fromDto);
+                        console.log("Teachers=");
+                        console.log($scope.existingTeachers);
+                        for (var i in $scope.existingTeachers)
+                        {
+                            if ($scope.existingTeachers[i].isChief){
+                                $scope.existingDepartmentChiefs.push($scope.existingTeachers[i]);
+                            }
                         }
-                    }
-                    $scope.isLoadingData = false;
-                })
-                .error(function (err) {
-                    console.error(err);
-                    $scope.isLoadingData = false;
-                });
+                        $scope.isLoadingData = false;
+                    },
+                    function errorCallback(err) {
+                        console.error(err);
+                        $scope.isLoadingData = false;
+                    });
 
             $scope.addChief = function () {
                 $http.post('/api/Teachers/', $scope.chiefToAdd.toDto())

@@ -1,11 +1,10 @@
 package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IProfessorDAO;
+import com.se.database.dao.model.users.AdminVO;
 import com.se.database.dao.model.users.ProfessorVO;
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import com.se.database.dao.model.users.UserVO;
+import org.hibernate.*;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -70,5 +69,20 @@ public class ProfessorDAOImpl implements IProfessorDAO {
             session.delete(professorVO);
 
         return true;
+    }
+
+    @Override
+    @Transactional
+    public ProfessorVO getByUser(UserVO userVO) {
+        Query query = sessionFactory.getCurrentSession().createSQLQuery(
+                "select * from professor p where p.PersonID in (select PersonID from person pp where pp.UserID = :UserID)")
+                .addEntity(ProfessorVO.class)
+                .setString("UserID", String.valueOf(userVO.getId()));
+        List<ProfessorVO> result = (List<ProfessorVO>) query.list();
+
+        if (result.size() == 1) {
+            return result.get(0);
+        }
+        return null;
     }
 }
