@@ -36,7 +36,7 @@
                         console.log($scope.existingTeachers);
                         for (var i in $scope.existingTeachers)
                         {
-                            if ($scope.existingTeachers[i].isChief){
+                            if ($scope.existingTeachers[i].chief){
                                 $scope.existingDepartmentChiefs.push($scope.existingTeachers[i]);
                             }
                         }
@@ -48,7 +48,7 @@
                     });
 
             $scope.addChief = function () {
-                $http.post('/api/Teachers/', $scope.chiefToAdd.toDto())
+                $http.post('http://localhost:9001/professor/add', $scope.chiefToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingDepartmentChiefs.push(Teacher.fromDto(chief));
                         $scope.existingTeachers.push(Teacher.fromDto(chief));

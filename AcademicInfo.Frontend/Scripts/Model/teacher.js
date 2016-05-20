@@ -6,7 +6,7 @@
         this.person = null;
         this.department = null;
         this.wage = 0;
-        this.isChief = false;
+        this.chief = false;
     }
 
     function Teacher(id, person, department, isChief, wage) {
@@ -14,7 +14,7 @@
         this.person = person;
         this.department = department;
         this.wage = wage;
-        this.isChief = isChief;
+        this.chief = isChief;
     }
 
     Teacher.fromDto = function (dto) {
@@ -23,7 +23,7 @@
         teacher.person= dto.personVO;
         teacher.department= dto.departmentVO;
         teacher.wage= dto.wage;
-        teacher.isChief= dto.chief;
+        teacher.chief= dto.chief;
         return teacher;
     };
 
@@ -33,8 +33,7 @@
             "person": this.person,
             "department": this.department,
             "wage": this.wage,
-            "isChief": this.isChief
-
+            "chief": this.chief
         };
     };
 
