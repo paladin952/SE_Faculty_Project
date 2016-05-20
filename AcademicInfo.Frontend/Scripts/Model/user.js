@@ -2,6 +2,7 @@
     'use strict';
 
     function User() {
+        this.id = '';
         this.username = '';
         this.password = '';
     }
@@ -13,15 +14,19 @@
 
     User.fromDto = function (dto) {
         var user = new User();
+        user.id = dto.getId();
         user.username = dto.getUsername();
         user.password = dto.getPassword();
         return user;
     };
-    //User.prototype.toDto = function () {
-    //    return {
 
-    //    };
-    //};
+    User.prototype.toDto = function () {
+        return {
+            "id": this.id,
+            "username": this.username,
+            "password": this.password
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.User = User;
