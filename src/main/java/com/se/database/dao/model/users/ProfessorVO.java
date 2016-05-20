@@ -93,7 +93,7 @@ public class ProfessorVO implements Serializable {
     public String toString() {
         return "ProfessorVO{" +
                 "departmentVO=" + departmentVO +
-                ", isChief=" + isChief +
+                ", chief=" + isChief +
                 ", wage=" + wage +
                 ", personVO=" + personVO +
                 '}';
