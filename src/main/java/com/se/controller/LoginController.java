@@ -3,9 +3,11 @@ package com.se.controller;
 
 import com.se.database.dao.interfaces.IAdminDAO;
 import com.se.database.dao.interfaces.IPersonDAO;
+import com.se.database.dao.interfaces.IProfessorDAO;
 import com.se.database.dao.interfaces.IUserDAO;
 import com.se.database.dao.model.users.AdminVO;
 import com.se.database.dao.model.users.LoginUserVo;
+import com.se.database.dao.model.users.ProfessorVO;
 import com.se.database.dao.model.users.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,7 +30,7 @@ public class LoginController {
     IAdminDAO iAdminDAO;
 
     @Autowired
-    IPersonDAO iPersonDAO;
+    IProfessorDAO iProfessorDAO;
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<LoginUserVo> login(@RequestBody UserVO user){
@@ -56,6 +58,17 @@ public class LoginController {
         if (adminVO != null){
             System.out.println("UserType=ADMIN");
             return LoginUserVo.UserType.ADMIN;
+        }
+
+        ProfessorVO professorVO = iProfessorDAO.getByUser(userVO);
+        if (professorVO != null){
+            if(professorVO.isChief()){
+                System.out.println("TEACHER_CHIEF");
+                return LoginUserVo.UserType.TEACHER_CHIEF;
+            }else{
+                System.out.println("TEACHER");
+                return LoginUserVo.UserType.TEACHER;
+            }
         }
 
         System.out.println("UserType=STUDENT");

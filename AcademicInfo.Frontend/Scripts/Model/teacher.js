@@ -19,21 +19,24 @@
 
     Teacher.fromDto = function (dto) {
         var teacher = new Teacher();
-        teacher.id= dto.getId();
-        teacher.person= dto.getPerson();
-        teacher.department= dto.getDepartment();
-        teacher.wage= dto.getWage();
-        teacher.isChief= dto.getIsChief();
+        teacher.id= dto.id;
+        teacher.person= dto.personVO;
+        teacher.department= dto.departmentVO;
+        teacher.wage= dto.wage;
+        teacher.isChief= dto.chief;
         return teacher;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    Teacher.prototype.toDto = function () {
+        return {
+            "id": this.id,
+            "person": this.person,
+            "department": this.department,
+            "wage": this.wage,
+            "isChief": this.isChief
+
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.Teacher = Teacher;
