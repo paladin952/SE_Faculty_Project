@@ -2,7 +2,9 @@ package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IAdminDAO;
 import com.se.database.dao.model.users.AdminVO;
+import com.se.database.dao.model.users.UserVO;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -65,5 +67,20 @@ public class AdminDAOImpl implements IAdminDAO {
 
         session.delete(admin);
         return true;
+    }
+
+    @Override
+    @Transactional
+    public AdminVO getByUser(UserVO userVO) {
+        Query query = sessionFactory.getCurrentSession().createSQLQuery(
+                "select * from admin u where u.UserID = :UserID")
+                .addEntity(AdminVO.class)
+                .setString("UserID", String.valueOf(userVO.getId()));
+        List<AdminVO> result = (List<AdminVO>) query.list();
+
+        if (result.size() == 1) {
+            return result.get(0);
+        }
+        return null;
     }
 }

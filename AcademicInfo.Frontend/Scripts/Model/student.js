@@ -19,11 +19,11 @@
 
     Student.fromDto = function (dto) {
         var student = new Student();
-        student.id = dto.getId();
-        student.person = dto.getPerson();
-        student.group = dto.getGroup();
-        student.isExtended = dto.getIsExtended();
-        student.status = dto.getStatus();
+        student.id = dto.id;
+        student.person = dto.personVO;
+        student.group = dto.group;
+        student.isExtended = dto.isExtended;
+        student.status = dto.status;
         return student;
     };
 

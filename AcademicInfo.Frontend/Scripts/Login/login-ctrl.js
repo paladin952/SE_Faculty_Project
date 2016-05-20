@@ -28,9 +28,12 @@
             $s.validateLogin = function () {
                 $http.post('http://localhost:9001/login/', $root.userToLogin.toDto())
                     .success(function (user) {
+                        console.log(user);
                         if (user) {
-                            console.log("logged in as " + user);
-                            $s.redirectLogin(user);
+                            console.log("logged in as: ");
+                            console.log($root.userToLogin);
+                            $root.userToLogin= user;
+                            $s.redirectLogin();
                         }
                         else {
                             $s.showLoginFailedModal();
@@ -43,18 +46,19 @@
                     });
             };
 
-            $s.redirectLogin = function(user) {
+            $s.redirectLogin = function() {
+                console.log("Redirect to: ");
                 console.log($root.userToLogin);
-                if (user === 'student'){
+                if ($root.userToLogin.userType === 'STUDENT'){
                     $location.path('/studentHome');
                 }
-                else if(user === 'teacher'){
+                else if($root.userToLogin.userType === 'TEACHER'){
                     $location.path('/teacherHome');
                 }
-                else if(user === 'chief'){
+                else if($root.userToLogin.userType === 'TEACHER_CHIEF'){
                     $location.path('/departmentChiefHome');
                 }
-                else if(user === 'admin') {
+                else if($root.userToLogin.userType === 'ADMIN') {
                     $location.path('/adminHome');
                 }
             };
