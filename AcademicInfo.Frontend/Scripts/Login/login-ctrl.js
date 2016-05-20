@@ -26,7 +26,7 @@
             $root.userToLogin = new User();
 
             $s.validateLogin = function () {
-                $http.post('/api/Login/', $root.userToLogin.toDto())
+                $http.post('http://localhost:9001/login/', $root.userToLogin.toDto())
                     .success(function (user) {
                         if (user) {
                             console.log("logged in as " + user);
@@ -37,8 +37,9 @@
                         }
                     })
                     .error(function () {
+                        console.log("Error on login");
                         $s.showLoginFailedModal();
-                        console.error(err);
+
                     });
             };
 
