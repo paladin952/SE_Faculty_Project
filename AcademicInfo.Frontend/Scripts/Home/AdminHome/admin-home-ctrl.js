@@ -48,6 +48,7 @@
                     });
 
             $scope.addChief = function () {
+                console.log("add chief");
                 $http.post('http://localhost:9001/professor/add', $scope.chiefToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingDepartmentChiefs.push(Teacher.fromDto(chief));
@@ -61,6 +62,8 @@
             };
 
             $scope.addTeacher = function () {
+                console.log("add teacher");
+                console.log($scope.teacherToAdd);
                 $http.post('/api/Teachers/', $scope.teacherToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingTeachers.push(Teacher.fromDto(chief));
