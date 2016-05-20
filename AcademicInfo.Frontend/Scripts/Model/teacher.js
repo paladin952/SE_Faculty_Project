@@ -30,8 +30,8 @@
     Teacher.prototype.toDto = function () {
         return {
             "id": this.id,
-            "person": this.person,
-            "department": this.department,
+            "personVO": this.person,
+            "departmentVO": this.department,
             "wage": this.wage,
             "chief": this.chief
         };
