@@ -43,8 +43,6 @@ public class OptionalCourseVO {
         this.course = course;
     }
 
-
-
     public int getId() {
         return id;
     }

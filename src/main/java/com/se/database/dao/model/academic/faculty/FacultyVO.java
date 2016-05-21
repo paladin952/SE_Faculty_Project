@@ -16,6 +16,9 @@ public class FacultyVO implements Serializable {
     @Column(name = "Name")
     private String name;
 
+    public FacultyVO() {
+    }
+
     public FacultyVO(String name) {
         this.name = name;
     }
