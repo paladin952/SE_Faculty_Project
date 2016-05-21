@@ -112,5 +112,10 @@
             <ref bean="sessionFactory"/>
         </constructor-arg>
     </bean>
+    <bean id="courseDao" class="com.se.database.dao.daoImplementation.CourseDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
 
 </beans>
