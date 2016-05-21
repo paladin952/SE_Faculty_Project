@@ -149,9 +149,9 @@
 
             $scope.deleteStudent = function(student)
             {
-                $http.delete('/api/Students/' + student.id)
+                $http.delete('http://localhost:9001/student/' + student.id)
                     .success(function () {
-                        _.remove($s.exis, { id: student.id });
+                        _.remove($scope.existingStudents, { id: student.id });
                     })
                     .error(function (err) {
                         alert(err);
