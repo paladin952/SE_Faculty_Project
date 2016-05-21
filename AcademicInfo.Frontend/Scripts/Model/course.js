@@ -2,41 +2,39 @@
     'use strict';
 
     function Course() {
-        this.abstractName = '';
+        this.id = '';
+        this.degreeVO =null;
         this.name = '';
         this.credits = '';
-        this.evaluationType = '';
-        this.activities = '';
         this.assignedSemester = '';
     }
 
-    function Course(abstractName, name, credits, evaluationType, activities, assignedSemester) {
-        this.abstractName = abstractName;
+    function Course(abstractName, name, credits, assignedSemester) {
+        this.id = abstractName;
         this.name = name;
         this.credits = credits;
-        this.evaluationType = evaluationType;
-        this.activities = activities;
         this.assignedSemester = assignedSemester;
     }
 
     Course.fromDto = function (dto) {
-        var course = new AccessRule();
-        course.abstractName = dto.getAbstractName();
-        course.name = dto.getName();
-        course.credits = dto.getCredits();
-        course.evaluationType = dto.getEvaluationType();
-        course.activities = dto.getActivies();
-        course.assignedSemester = dto.getAssignedSemester();
+        var course = new Course();
+        course.id = dto.id;
+        course.degreeVO = dto.degreeVO;
+        course.name = dto.name;
+        course.credits = dto.credits;
+        course.assignedSemester = dto.assignedSemester;
         return course;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    Course.prototype.toDto = function () {
+        return {
+            "id": this.id,
+            "degreeVO": this.degreeVO,
+            "name": this.name,
+            "credits": this.dateAdded,
+            "assignedSemester": this.assignedSemester
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.Course = Course;

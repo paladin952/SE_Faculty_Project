@@ -1,21 +1,22 @@
-(function (ng, console, _,  Course, OptionalCourse) {
+(function (ng, console, _,  Course, OptionalCourse, StudentEvaluation) {
     'use strict';
 
     ng.module('studentHome')
-        .controller('studentHome', ['$rootScope','$scope', '$location', function ($root, $s, $location) {
+        .controller('studentHome', ['$rootScope','$scope','$http', '$location', function ($root, $s, $http, $location) {
 
-            $root.studentGrades = [];
-
+            $s.studentGrades = [];
             $s.goToLogin = function(){
                 $location.path('/login');
                 $root.userToLogin = null;
             };
 
-            $http.get('http://localhost:9001/student/all')
+            $http.get('http://localhost:9001/studentevaluation/all')
                 .then(
                     function(response) {
-                        $root.studentGrades= _.map(response.data, Student.fromDto);
-                        console.log($scope.existingStudents);
+                        console.log("StudentEvaluation");
+                        console.log(response.data);
+                        $s.studentGrades= _.map(response.data, StudentEvaluation.fromDto);
+                        console.log($s.studentGrades);
                     },
                     function errorCallback(response) {
                         console.error(response);
@@ -40,6 +41,9 @@
                 $s.mandatoryCourses.push(course.course);
                 $s.optionalCourses.splice(idx, 1);
             };
+
+            $s.init = function() {
+            }
         }]);
 
-})(this.angular,  this.console, this._, this.Model.Course, this.Model.OptionalCourse);
+})(this.angular, this.console, this._, this.Model.Course, this.Model.OptionalCourse, this.Model.StudentEvaluation);

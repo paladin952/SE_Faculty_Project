@@ -18,7 +18,7 @@
         this.dob = dob;
         this.ssn = ssn;
         this.address = address;
-        this.phoneNo = phone;
+        this.phone = phone;
     }
 
     Person.fromDto = function (dto) {

@@ -9,6 +9,7 @@
         this.status = '';
     }
 
+
     function Student(id, person, group, extended, status) {
         this.id = id;
         this.personVO = person;
