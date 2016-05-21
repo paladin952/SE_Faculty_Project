@@ -35,6 +35,7 @@ public class ProfessorController {
     @RequestMapping(value = "/add", method = RequestMethod.PUT)
     public ResponseEntity<ProfessorVO> updateProfessor(
             @RequestBody ProfessorVO professorVO) {
+        System.out.println("Add professor: " + professorVO.toString());
         ProfessorVO res = iProfessorDAO.updateOrSave(professorVO);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
@@ -44,7 +45,11 @@ public class ProfessorController {
             @PathVariable("id") int id)
     {
         Boolean res = iProfessorDAO.deleteByID(id);
-
+        if(res){
+            System.out.println("Delete success");
+        }else{
+            System.out.println("Delete failure");
+        }
         return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
     }
 }

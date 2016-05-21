@@ -64,6 +64,7 @@ public class DepartmentVO implements Serializable {
     @Override
     public String toString() {
         return "DepartmentVO{" +
+                "id=" + String.valueOf(id) +
                 "name='" + name + '\'' +
                 ", professors=" + professors +
                 '}';

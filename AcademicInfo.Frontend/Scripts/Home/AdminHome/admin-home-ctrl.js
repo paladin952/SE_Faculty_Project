@@ -49,7 +49,8 @@
 
             $scope.addChief = function () {
                 console.log("add chief");
-                $http.post('http://localhost:9001/professor/add', $scope.chiefToAdd.toDto())
+                console.log($scope.chiefToAdd.toDto());
+                $http.put('http://localhost:9001/professor/add', $scope.chiefToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingDepartmentChiefs.push(Teacher.fromDto(chief));
                         $scope.existingTeachers.push(Teacher.fromDto(chief));
@@ -131,12 +132,12 @@
 
             $scope.deleteTeacher = function(teacher)
             {
-                $http.delete('/api/Teachers/' + teacher.id)
+                $http.delete('http://localhost:9001/professor/' + teacher.id)
                     .success(function () {
                         _.remove($s.exis, { id: teacher.id });
                     })
                     .error(function (err) {
-                        alert(err);
+                        //alert(err);
                         console.error(err);
                     });
             };

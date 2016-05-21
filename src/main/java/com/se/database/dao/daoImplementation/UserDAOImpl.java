@@ -1,6 +1,7 @@
 package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IUserDAO;
+import com.se.database.dao.model.users.AdminVO;
 import com.se.database.dao.model.users.PersonVO;
 import com.se.database.dao.model.users.UserVO;
 import org.hibernate.Criteria;
@@ -46,15 +47,22 @@ public class UserDAOImpl implements IUserDAO {
 
     public UserVO updateUser(UserVO newUser) {
         Session session = sessionFactory.getCurrentSession();
-        UserVO user = (UserVO) session.load(UserVO.class, newUser.getId());
-        if (user == null) {
-            UserVO tmp = new UserVO(newUser.getUsername(), newUser.getPassword());
-            session.save(tmp);
-            return tmp;
-        } else {
-            user.setPassword(newUser.getPassword());
-            user.setUsername(newUser.getUsername());
-            return user;
+        UserVO exists = (UserVO) session.get(UserVO.class, newUser.getId());
+        if (exists != null)
+        {
+            UserVO admin = (UserVO) session.load(UserVO.class, newUser.getId());
+            admin.setPassword(newUser.getPassword());
+            admin.setUsername(newUser.getUsername());
+            session.save(admin);
+
+            return admin;
+        }
+        else
+        {
+            UserVO new_admin = new UserVO(newUser.getUsername(), newUser.getPassword());
+            System.out.println("Add USER=" + newUser.toString());
+            session.save(new_admin);
+            return new_admin;
         }
     }
 
