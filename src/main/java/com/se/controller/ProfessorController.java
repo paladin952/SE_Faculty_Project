@@ -47,9 +47,10 @@ public class ProfessorController {
         Boolean res = iProfessorDAO.deleteByID(id);
         if(res){
             System.out.println("Delete success");
+            return new ResponseEntity<>(HttpStatus.OK);
         }else{
             System.out.println("Delete failure");
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
     }
 }

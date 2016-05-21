@@ -121,7 +121,7 @@
             $scope.deleteChief = function(chief)
             {
                 $http.delete('/api/Teachers/' + chief.id)
-                    .success(function () {
+                    .success(function (response) {
                         _.remove($s.exis, { id: chief.id });
                     })
                     .error(function (err) {
@@ -132,12 +132,17 @@
 
             $scope.deleteTeacher = function(teacher)
             {
+                console.log("id=");
+                console.log(teacher.id);
                 $http.delete('http://localhost:9001/professor/' + teacher.id)
                     .success(function () {
-                        _.remove($s.exis, { id: teacher.id });
+                        _.remove($scope.existingTeachers, { id: teacher.id });
+                        _.remove($scope.existingDepartmentChiefs, { id: teacher.id });
+                        console.log("Succesfuly deleted");
                     })
                     .error(function (err) {
                         //alert(err);
+                        console.log("Error deleted");
                         console.error(err);
                     });
             };
