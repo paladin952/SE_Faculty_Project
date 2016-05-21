@@ -102,5 +102,10 @@
             <ref bean="sessionFactory"/>
         </constructor-arg>
     </bean>
+    <bean id="studentEvaluationDao" class="com.se.database.dao.daoImplementation.StudentEvaluationDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
 
 </beans>

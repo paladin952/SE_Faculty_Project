@@ -24,7 +24,6 @@ public class StudentVO implements Serializable {
     @Column(name = "Status")
     private String status;
 
-    //// FIXME: 08.05.2016
     @Column(name = "IsExtended")
     private boolean isExtended;
 
@@ -32,8 +31,7 @@ public class StudentVO implements Serializable {
     @JoinColumn(name = "PersonID")
     private PersonVO personVO;
 
-    public StudentVO() {
-    }
+    public StudentVO() {}
 
     public StudentVO(String status, PersonVO personVO, boolean isExtended) {
         this.status = status;
@@ -52,24 +50,14 @@ public class StudentVO implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public boolean isExtended() {
-        return isExtended;
-    }
-
-    public void setExtended(boolean extended) {
-        isExtended = extended;
-    }
-
     public PersonVO getPersonVO() {
         return personVO;
     }
 
-    public void setPersonVO(PersonVO personVO) {
+    public StudentVO setPersonVO(PersonVO personVO) {
         this.personVO = personVO;
+
+        return this;
     }
 
     public StudentGroupVO getGroup() {

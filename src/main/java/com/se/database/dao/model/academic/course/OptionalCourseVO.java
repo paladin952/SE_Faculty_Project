@@ -10,17 +10,21 @@ import java.util.List;
 /**
  * Created by Catalin on 03-Apr-16.
  */
-//@Entity
-//@Table(name = "optionalcourse")
+@Entity
+@Table(name = "optionalcourse")
 public class OptionalCourseVO {
 
-//    @Column(name = "GroupNo")
+    @Id
+    @GeneratedValue
+    @Column(name = "OptionalCourseID")
+    private int id;
+
+    @Column(name = "GroupNo")
     private int groupNo;
 
-//    @Id
 //    @OneToOne
 //    @JoinColumn(name = "CourseID")
-    private CourseVO course;
+//    private CourseVO course;
 
     public OptionalCourseVO() {
     }
@@ -31,35 +35,44 @@ public class OptionalCourseVO {
 
     public OptionalCourseVO(int groupNo, CourseVO course) {
         this.groupNo = groupNo;
-        this.course = course;
+        //this.course = course;
     }
 
     public OptionalCourseVO(CourseVO course, int assignedSemester, int groupNo) {
         this.groupNo = groupNo;
-        this.course = course;
+        //this.course = course;
     }
 
-    public CourseVO getCourse() {
-        return course;
+
+
+    public int getId() {
+        return id;
     }
 
-    public void setCourse(CourseVO course) {
-        this.course = course;
-    }
+//    public CourseVO getCourse() {
+//        return course;
+//    }
+//
+//    public OptionalCourseVO setCourse(CourseVO course) {
+//        this.course = course;
+//        return this;
+//    }
 
     public int getGroupNo() {
         return groupNo;
     }
 
-    public void setGroupNo(int groupNo) {
+    public OptionalCourseVO setGroupNo(int groupNo) {
         this.groupNo = groupNo;
+
+        return this;
     }
 
     @Override
     public String toString() {
         return "OptionalCourseVO{" +
                 "groupNo=" + groupNo +
-                ", course=" + course +
+                //", course=" + course +
                 '}';
     }
 }

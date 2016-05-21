@@ -2,9 +2,7 @@ package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IEvaluationDAO;
 import com.se.database.dao.model.academic.course.EvaluationVO;
-import com.se.database.dao.model.users.AdminVO;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,12 +44,13 @@ public class EvaluationDAOImpl implements IEvaluationDAO {
         {
             EvaluationVO eval = (EvaluationVO) session.load(EvaluationVO.class, evaluation.getId());
             eval.setType(evaluation.getType());
+            //eval.setCourseVO(evaluation.getCourseVO());
 
             return eval;
         }
         else
         {
-            EvaluationVO new_eval = new EvaluationVO(evaluation.getType());
+            EvaluationVO new_eval = new EvaluationVO(evaluation.getType());//, evaluation.getCourseVO());
             session.save(new_eval);
             return new_eval;
         }

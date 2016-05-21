@@ -7,9 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,4 +28,30 @@ public class StudentController {
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<StudentVO> getStudent(@PathVariable("id") int id) {
+        StudentVO student = iStudentDAO.getByID(id);
+
+        return new ResponseEntity<>(student, student != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.PUT)
+    public ResponseEntity<StudentVO> updateStudent(
+            @RequestBody StudentVO student) {
+        StudentVO tmp = iStudentDAO.getByID(student.getId());
+        if (tmp != null)
+            student.setPersonVO(tmp.getPersonVO());
+        StudentVO res = iStudentDAO.updateOrSave(student);
+
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteStudent(
+            @PathVariable("id") int id)
+    {
+        Boolean res = iStudentDAO.deleteByID(id);
+
+        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", res ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
 }

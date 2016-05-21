@@ -1,10 +1,14 @@
 package com.se.database.dao.model.academic.grants;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.io.Serializable;
 
 public class StudentScholarshipVO implements Serializable {
+
+    @Id
+    @GeneratedValue
+    @Column(name = "StudentScholarshipID")
+    private int id;
 
     @OneToOne
     @JoinColumn(name = "ScholarshipID")
@@ -17,6 +21,10 @@ public class StudentScholarshipVO implements Serializable {
     public StudentScholarshipVO(int studentId, int scholarshipId) {
         this.studentId = studentId;
         this.scholarshipId = scholarshipId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getScholarshipId() {
