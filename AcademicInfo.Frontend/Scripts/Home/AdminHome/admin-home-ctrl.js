@@ -144,7 +144,7 @@
                         console.log("Successfuly deleted");
                     })
                     .error(function (err) {
-                        //alert(err);
+                        alert(err);
                         console.log("Error deleted");
                         console.error(err);
                     });

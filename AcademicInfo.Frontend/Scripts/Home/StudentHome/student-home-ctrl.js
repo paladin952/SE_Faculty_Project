@@ -3,10 +3,23 @@
 
     ng.module('studentHome')
         .controller('studentHome', ['$rootScope','$scope', '$location', function ($root, $s, $location) {
+
+            $root.studentGrades = [];
+
             $s.goToLogin = function(){
                 $location.path('/login');
                 $root.userToLogin = null;
             };
+
+            $http.get('http://localhost:9001/student/all')
+                .then(
+                    function(response) {
+                        $root.studentGrades= _.map(response.data, Student.fromDto);
+                        console.log($scope.existingStudents);
+                    },
+                    function errorCallback(response) {
+                        console.error(response);
+                    });
 
             $s.mandatoryCourses =[
                 new Course('sdi', 'SDI', 5, 'practical', 'activities', 4),
