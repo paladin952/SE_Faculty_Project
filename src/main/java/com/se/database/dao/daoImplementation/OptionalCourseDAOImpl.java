@@ -37,22 +37,23 @@ public class OptionalCourseDAOImpl implements IOptionalCourseDAO {
 
     @Override
     @Transactional
-    public OptionalCourseVO updateOrSave(OptionalCourseVO optionalCourseVO) {
+    public OptionalCourseVO updateOrSave(OptionalCourseVO optional_course_vo) {
         Session session = sessionFactory.getCurrentSession();
-        OptionalCourseVO exists = (OptionalCourseVO) session.get(OptionalCourseVO.class, optionalCourseVO.getId());
+        OptionalCourseVO exists = (OptionalCourseVO) session.get(OptionalCourseVO.class, optional_course_vo.getId());
         if (exists != null)
         {
-            OptionalCourseVO optionalCourse = (OptionalCourseVO) session.load(OptionalCourseVO.class, optionalCourseVO.getId());
-            optionalCourse.setGroupNo(optionalCourseVO.getGroupNo());
-                    //.setCourse(optionalCourseVO.getCourse());
+            OptionalCourseVO optional_course = (OptionalCourseVO) session.load(OptionalCourseVO.class, optional_course_vo.getId());
+            optional_course.setGroupNo(optional_course_vo.getGroupNo())
+                    .setCourse(optional_course_vo.getCourse());
 
-            return optionalCourse;
+            return optional_course;
         }
         else
         {
-            OptionalCourseVO new_admin = new OptionalCourseVO(optionalCourseVO.getGroupNo());
-            session.save(new_admin);
-            return new_admin;
+            OptionalCourseVO new_optional_course = new OptionalCourseVO(optional_course_vo.getGroupNo(), optional_course_vo.getCourse());
+
+            session.save(new_optional_course);
+            return new_optional_course;
         }
     }
 
