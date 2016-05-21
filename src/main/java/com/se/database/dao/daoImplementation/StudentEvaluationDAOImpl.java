@@ -48,7 +48,7 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
         }
         else
         {
-            hql = "UPDATE StudentEvaluationVO SE SET SE.grade = :grade, SE.isAbsent = :is_absent WHERE StudentEvaluationVO.studentVO.id= :student_id AND StudentEvaluationVO.evaluationVO.id = :evaluation_id";
+            hql = "UPDATE StudentEvaluationVO SE SET SE.grade = :grade, SE.isAbsent = :is_absent WHERE SE.studentVO.id= :student_id AND SE.evaluationVO.id = :evaluation_id";
             Query update = session.createQuery(hql);
             update.setParameter("grade", student_evaluation.getGrade())
                     .setParameter("is_absent", student_evaluation.isAbsent())
@@ -74,10 +74,9 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
     public List<StudentEvaluationVO> getStudentEvaluationsFor(int student_id) {
 
         Query query = sessionFactory.getCurrentSession().createSQLQuery(
-                "select * FROM studentevaluation e WHERE e.StudentID = :student_id")
+                "select * FROM ubbdb.studentevaluation e WHERE e.StudentID = :student_id")
                 .addEntity(StudentEvaluationVO.class)
-                .setString("student_id", String.valueOf(student_id));
-        List<StudentEvaluationVO> result = (List<StudentEvaluationVO>) query.list();
-        return result;
+                .setInteger("student_id", student_id);
+        return (List<StudentEvaluationVO>) query.list();
     }
 }
