@@ -24,7 +24,8 @@ public class EvaluationDAOImpl implements IEvaluationDAO {
         @SuppressWarnings("unchecked")
         List<EvaluationVO> evaluationVOList = (List<EvaluationVO>) sessionFactory.getCurrentSession()
                 .createCriteria(EvaluationVO.class)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .list();
 
         return evaluationVOList;
     }

@@ -21,7 +21,7 @@ public class DegreeVO implements Serializable {
     private String field;
 
     @Column(name = "Type")
-    private DegreeTypesEnum type;
+    private int type;
 
     @Column(name = "Duration")
     private int duration;
@@ -30,13 +30,16 @@ public class DegreeVO implements Serializable {
     @JoinColumn(name = "FacultyID")
     private FacultyVO faculty;
 
-    public DegreeVO(String field, DegreeTypesEnum type, int duration) {
+    public DegreeVO() {
+    }
+
+    public DegreeVO(String field, int type, int duration) {
         this.field = field;
         this.type = type;
         this.duration = duration;
     }
 
-    public DegreeVO(String field, DegreeTypesEnum type, int duration, FacultyVO faculty) {
+    public DegreeVO(String field, int type, int duration, FacultyVO faculty) {
         this.field = field;
         this.type = type;
         this.duration = duration;
@@ -57,11 +60,11 @@ public class DegreeVO implements Serializable {
         return this;
     }
 
-    public DegreeTypesEnum getType() {
+    public int getType() {
         return type;
     }
 
-    public DegreeVO setType(DegreeTypesEnum type) {
+    public DegreeVO setType(int type) {
         this.type = type;
 
         return this;

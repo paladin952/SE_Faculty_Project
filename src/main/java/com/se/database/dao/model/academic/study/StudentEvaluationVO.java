@@ -29,6 +29,9 @@ public class StudentEvaluationVO implements Serializable {
     @Column(name = "IsAbsent")
     private boolean isAbsent;
 
+    public StudentEvaluationVO() {
+    }
+
     public StudentEvaluationVO(EvaluationVO evaluationVO, StudentVO studentVO, float grade, boolean isAbsent) {
         this.evaluationVO = evaluationVO;
         this.studentVO = studentVO;

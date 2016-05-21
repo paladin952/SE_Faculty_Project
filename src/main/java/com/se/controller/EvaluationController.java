@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("evaluation")
+@RequestMapping("/evaluation")
 @CrossOrigin
 public class EvaluationController {
 
