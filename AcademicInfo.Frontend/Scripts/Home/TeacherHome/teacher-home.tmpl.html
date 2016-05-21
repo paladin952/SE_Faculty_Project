@@ -88,10 +88,10 @@
                                 </div>
                                 <div class="modal-body">
                                     <label for="selectStudent">Select student:</label>
-                                    <select class="form-control" id="selectStudent" ng-options="student.person for students in availableStudents" ng-model="selectedStudent">
+                                    <select class="form-control" id="selectStudent" ng-options="students.personVO.userVO.username for students in availableStudents" ng-model="selectedStudent">
                                         <option></option>
                                     </select>
-                                    {{selectedStudent}}
+                                    {{selectedStudent.personVO.firstName}} {{selectedStudent.personVO.lastName}}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="goNext()">Next</button>
