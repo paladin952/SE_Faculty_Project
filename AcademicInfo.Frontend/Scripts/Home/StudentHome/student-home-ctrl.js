@@ -10,6 +10,7 @@
                 $root.userToLogin = null;
             };
 
+            //TODO show only for logged in user
             $http.get('http://localhost:9001/studentevaluation/all')
                 .then(
                     function(response) {
