@@ -74,7 +74,13 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
     public List<StudentEvaluationVO> getStudentEvaluationsFor(int student_id) {
 
         Query query = sessionFactory.getCurrentSession().createSQLQuery(
-                "select * FROM ubbdb.studentevaluation e WHERE e.StudentID = :student_id")
+                "SELECT SE.* FROM ubbdb.studentevaluation SE\n" +
+                    "INNER JOIN ubbdb.evaluation E\n" +
+                    "ON E.EvaluationID = SE.EvaluationID\n" +
+                    "INNER JOIN ubbdb.course C\n" +
+                    "ON C.CourseID = E.CourseID\n" +
+                    "WHERE SE.StudentID = :student_id\n" +
+                    "GROUP BY C.AssignedSemester")
                 .addEntity(StudentEvaluationVO.class)
                 .setInteger("student_id", student_id);
         return (List<StudentEvaluationVO>) query.list();

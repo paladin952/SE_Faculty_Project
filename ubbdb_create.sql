@@ -50,7 +50,7 @@ INSERT INTO `admin` (`AdminID`, `UserID`) VALUES
 CREATE TABLE IF NOT EXISTS `course` (
   `CourseID` varchar(10) NOT NULL,
   `DegreeID` int(10) unsigned DEFAULT '0',
-  `Name` varchar(30) NOT NULL,
+  `Name` varchar(50) NOT NULL,
   `Credits` int(10) unsigned NOT NULL DEFAULT '0',
   `AssignedSemester` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`CourseID`),
@@ -61,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `course` (
 -- Dumping data for table ubbdb.course: ~2 rows (approximately)
 /*!40000 ALTER TABLE `course` DISABLE KEYS */;
 INSERT INTO `course` (`CourseID`, `DegreeID`, `Name`, `Credits`, `AssignedSemester`) VALUES
+	('SDI016', 1, 'Systems for design and implementation', 6, 4),
 	('SE016', 1, 'Software Engineering', 6, 4),
 	('VR101', 1, 'Virtual Reality', 4, 5);
 /*!40000 ALTER TABLE `course` ENABLE KEYS */;
@@ -137,12 +138,13 @@ CREATE TABLE IF NOT EXISTS `evaluation` (
   PRIMARY KEY (`EvaluationID`),
   KEY `FK_EvaluationCourseID` (`CourseID`),
   CONSTRAINT `FK_EvaluationCourseID` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.evaluation: ~1 rows (approximately)
+-- Dumping data for table ubbdb.evaluation: ~2 rows (approximately)
 /*!40000 ALTER TABLE `evaluation` DISABLE KEYS */;
 INSERT INTO `evaluation` (`EvaluationID`, `EvaluationType`, `CourseID`) VALUES
-	(1, 1, 'SE016');
+	(1, 1, 'SE016'),
+	(2, 2, 'VR101');
 /*!40000 ALTER TABLE `evaluation` ENABLE KEYS */;
 
 
@@ -168,12 +170,13 @@ CREATE TABLE IF NOT EXISTS `optionalcourse` (
   PRIMARY KEY (`OptionalCourseID`),
   KEY `FK_OptionalCourseCourseID` (`CourseID`),
   CONSTRAINT `FK_OptionalCourseCourseID` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table ubbdb.optionalcourse: ~1 rows (approximately)
 /*!40000 ALTER TABLE `optionalcourse` DISABLE KEYS */;
 INSERT INTO `optionalcourse` (`OptionalCourseID`, `CourseID`, `GroupNo`) VALUES
-	(1, 'VR101', 1);
+	(1, 'VR101', 2),
+	(2, 'SE016', 7);
 /*!40000 ALTER TABLE `optionalcourse` ENABLE KEYS */;
 
 
@@ -255,12 +258,13 @@ CREATE TABLE IF NOT EXISTS `student` (
   KEY `FK_StudentPersonID` (`PersonID`),
   CONSTRAINT `FK_StudentGroupID` FOREIGN KEY (`GroupID`) REFERENCES `studentgroup` (`StudentGroupID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_StudentPersonID` FOREIGN KEY (`PersonID`) REFERENCES `person` (`PersonID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.student: ~1 rows (approximately)
+-- Dumping data for table ubbdb.student: ~2 rows (approximately)
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
 INSERT INTO `student` (`StudentID`, `GroupID`, `Status`, `IsExtended`, `PersonID`) VALUES
-	(1, 923, 'gucci', 0, 5);
+	(1, 923, 'gucci', 0, 5),
+	(2, 923, 'gucci', 1, 2);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 
 
@@ -276,12 +280,14 @@ CREATE TABLE IF NOT EXISTS `studentevaluation` (
   KEY `FK_StudentEvaluationEvaluationID` (`EvaluationID`),
   CONSTRAINT `FK_StudentEvaluationEvaluationID` FOREIGN KEY (`EvaluationID`) REFERENCES `evaluation` (`EvaluationID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_StudentEvaluationStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.studentevaluation: ~1 rows (approximately)
+-- Dumping data for table ubbdb.studentevaluation: ~2 rows (approximately)
 /*!40000 ALTER TABLE `studentevaluation` DISABLE KEYS */;
 INSERT INTO `studentevaluation` (`StudentEvaluationID`, `EvaluationID`, `StudentID`, `Grade`, `IsAbsent`) VALUES
-	(1, 1, 1, 10, 0);
+	(1, 1, 1, 10, 0),
+	(2, 1, 2, 0, 0),
+	(4, 2, 1, 1, 1);
 /*!40000 ALTER TABLE `studentevaluation` ENABLE KEYS */;
 
 

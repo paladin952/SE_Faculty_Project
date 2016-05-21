@@ -38,11 +38,6 @@ public class OptionalCourseVO {
         this.course = course;
     }
 
-    public OptionalCourseVO(CourseVO course, int assignedSemester, int groupNo) {
-        this.groupNo = groupNo;
-        this.course = course;
-    }
-
     public int getId() {
         return id;
     }
