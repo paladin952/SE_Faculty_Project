@@ -39,6 +39,14 @@ public class CourseVO implements Serializable {
         this.assignedSemester = assignedSemester;
     }
 
+    public CourseVO(String id, DegreeVO degreeVO, String name, int credits, int assignedSemester) {
+        this.id = id;
+        this.degreeVO = degreeVO;
+        this.name = name;
+        this.credits = credits;
+        this.assignedSemester = assignedSemester;
+    }
+
     public String getId() {
         return id;
     }
@@ -47,32 +55,40 @@ public class CourseVO implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public CourseVO setName(String name) {
         this.name = name;
+
+        return this;
     }
 
     public int getCredits() {
         return credits;
     }
 
-    public void setCredits(int credits) {
+    public CourseVO setCredits(int credits) {
         this.credits = credits;
+
+        return this;
     }
 
     public int getAssignedSemester() {
         return assignedSemester;
     }
 
-    public void setAssignedSemester(int assignedSemester) {
+    public CourseVO setAssignedSemester(int assignedSemester) {
         this.assignedSemester = assignedSemester;
+
+        return this;
     }
 
     public DegreeVO getDegreeVO() {
         return degreeVO;
     }
 
-    public void setDegreeVO(DegreeVO degreeVO) {
+    public CourseVO setDegreeVO(DegreeVO degreeVO) {
         this.degreeVO = degreeVO;
+
+        return this;
     }
 
     @Override

@@ -13,6 +13,7 @@
         <mapping class="com.se.database.dao.model.users.ProfessorVO"/>
         <mapping class="com.se.database.dao.model.academic.groups.DepartmentVO"/>
         <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
+        <mapping class="com.se.database.dao.model.academic.course.CourseVO"/>
         <mapping class="com.se.database.dao.model.academic.course.EvaluationVO"/>
         <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
         <mapping class="com.se.database.dao.model.academic.course.CourseVO"/>
