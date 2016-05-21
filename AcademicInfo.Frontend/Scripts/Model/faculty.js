@@ -2,29 +2,28 @@
     'use strict';
 
     function Faculty() {
+        this.id = -1;
         this.name = null;
-        this.degrees = [];
     }
 
-    function Faculty(name, degrees) {
+    function Faculty(id, name) {
         this.name = name;
-        this.degrees = degrees;
+        this.id = id;
     }
 
     Faculty.fromDto = function (dto) {
         var faculty = new Faculty();
-        faculty.name = dto.getName();
-        faculty.dateAdded = dto.getDegrees();
+        faculty.name = dto.name;
+        faculty.id = dto.id;
         return faculty;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    Faculty.prototype.toDto = function () {
+        return {
+            "id": this.id,
+            "name": this.name,
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.Faculty = Faculty;

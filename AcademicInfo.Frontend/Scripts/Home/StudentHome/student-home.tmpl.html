@@ -32,8 +32,8 @@
 
                                 <table class="table-hover">
                                     <tr ng-repeat="grade in studentGrades">
-                                        <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{evaluationVO.courseVO.name}}">
-                                            <span>{{grades.grade}} </span>
+                                        <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{grade.evaluationVO.courseVO.name}}">
+                                            <span>{{grade.grade}}   {{grade.evaluationVO.courseVO.name}} </span>
                                         </td>
                                         <td class="col-md-2 pull-right">
                                             <button class="btn btn-success disabled">
