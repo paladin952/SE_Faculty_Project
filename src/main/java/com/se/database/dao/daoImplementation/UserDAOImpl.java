@@ -60,6 +60,7 @@ public class UserDAOImpl implements IUserDAO {
         else
         {
             UserVO new_admin = new UserVO(newUser.getUsername(), newUser.getPassword());
+            System.out.println("Add USER=" + newUser.toString());
             session.save(new_admin);
             return new_admin;
         }

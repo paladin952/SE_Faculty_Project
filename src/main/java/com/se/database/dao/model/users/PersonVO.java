@@ -131,6 +131,8 @@ public class PersonVO implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(super.toString());
+        sb.append("Id=");
+        sb.append(id);
         sb.append("First name=");
         sb.append(firstName);
         sb.append(", Last name=");
@@ -141,7 +143,7 @@ public class PersonVO implements Serializable {
         sb.append(ssn);
         sb.append(", Address=");
         sb.append(address);
-        sb.append(", Phone no=");
+        sb.append(", PhoneNo=");
         sb.append(phoneNo);
         sb.append(", UserVO=");
         sb.append((userVO != null)?userVO.toString(): "null");

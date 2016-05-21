@@ -17,7 +17,7 @@ public class ProfessorVO implements Serializable {
     @Column(name = "ProfessorID")
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "DepartmentID")
     private DepartmentVO departmentVO;
 
@@ -27,7 +27,7 @@ public class ProfessorVO implements Serializable {
     @Column(name = "Wage")
     private float wage;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PersonID")
     private PersonVO personVO;
 
