@@ -35,7 +35,9 @@ public class ProfessorController {
     @RequestMapping(value = "/add", method = RequestMethod.PUT)
     public ResponseEntity<ProfessorVO> updateProfessor(
             @RequestBody ProfessorVO professorVO) {
-        ProfessorVO res = iProfessorDAO.updateOrSave(professorVO);
+        System.out.println("Add professor: " + professorVO.toString());
+//        ProfessorVO res = iProfessorDAO.updateOrSave(professorVO);
+        ProfessorVO res = null;
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
