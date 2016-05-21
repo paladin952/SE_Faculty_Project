@@ -8,9 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
 @Entity
 @Table(name = "course")
 public class CourseVO implements Serializable {
@@ -20,7 +17,7 @@ public class CourseVO implements Serializable {
     private String id;
 
     @ManyToOne
-    @Column(name = "DegreeID")
+    @JoinColumn(name = "DegreeID")
     private DegreeVO degreeVO;
 
     @Column(name = "Name")
@@ -29,19 +26,16 @@ public class CourseVO implements Serializable {
     @Column(name = "Credits")
     private int credits;
 
-    private List<ActivityVO> activities;
-
     @Column(name = "AssignedSemester")
     private int assignedSemester;
 
     public CourseVO() {
     }
 
-    public CourseVO(String id, String name, int credits, List<ActivityVO> activities, int assignedSemester) {
+    public CourseVO(String id, String name, int credits, int assignedSemester) {
         this.id = id;
         this.name = name;
         this.credits = credits;
-        this.activities = activities;
         this.assignedSemester = assignedSemester;
     }
 
@@ -65,14 +59,6 @@ public class CourseVO implements Serializable {
         this.credits = credits;
     }
 
-    public List<ActivityVO> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<ActivityVO> activities) {
-        this.activities = activities;
-    }
-
     public int getAssignedSemester() {
         return assignedSemester;
     }
@@ -81,13 +67,20 @@ public class CourseVO implements Serializable {
         this.assignedSemester = assignedSemester;
     }
 
+    public DegreeVO getDegreeVO() {
+        return degreeVO;
+    }
+
+    public void setDegreeVO(DegreeVO degreeVO) {
+        this.degreeVO = degreeVO;
+    }
+
     @Override
     public String toString() {
         return "CourseVO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", credits=" + credits +
-                ", activities=" + activities +
                 ", assignedSemester=" + assignedSemester +
                 '}';
     }

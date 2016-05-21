@@ -44,13 +44,13 @@ public class EvaluationDAOImpl implements IEvaluationDAO {
         {
             EvaluationVO eval = (EvaluationVO) session.load(EvaluationVO.class, evaluation.getId());
             eval.setType(evaluation.getType());
-            //eval.setCourseVO(evaluation.getCourseVO());
+            eval.setCourseVO(evaluation.getCourseVO());
 
             return eval;
         }
         else
         {
-            EvaluationVO new_eval = new EvaluationVO(evaluation.getType());//, evaluation.getCourseVO());
+            EvaluationVO new_eval = new EvaluationVO(evaluation.getType(), evaluation.getCourseVO());
             session.save(new_eval);
             return new_eval;
         }

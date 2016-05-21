@@ -18,16 +18,16 @@ public class EvaluationVO implements Serializable {
     @Column(name = "EvaluationType")
     private int type;
 
-//    @ManyToOne
-//    @JoinColumn(name = "CourseID")
-//    private CourseVO courseVO;
+    @ManyToOne
+    @JoinColumn(name = "CourseID")
+    private CourseVO courseVO;
 
     public EvaluationVO() {
     }
 
-    public EvaluationVO(int type) {
+    public EvaluationVO(int type, CourseVO courseVO) {
         this.type = type;
-        //this.courseVO = courseVO;
+        this.courseVO = courseVO;
     }
 
     public int getId() {
@@ -44,20 +44,20 @@ public class EvaluationVO implements Serializable {
         return this;
     }
 
-//    public CourseVO getCourseVO() {
-//        return courseVO;
-//    }
-//
-//    public void setCourseVO(CourseVO courseVO) {
-//        this.courseVO = courseVO;
-//    }
+    public CourseVO getCourseVO() {
+        return courseVO;
+    }
+
+    public void setCourseVO(CourseVO courseVO) {
+        this.courseVO = courseVO;
+    }
 
     @Override
     public String toString() {
         return "EvaluationVO { " +
                 "id = " + id +
                 ", type = " + type +
-                //", course = " + courseVO +
+                ", course = " + courseVO +
                 " }";
     }
 }

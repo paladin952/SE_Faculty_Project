@@ -1,43 +1,43 @@
 package com.se.database.dao.model.academic.faculty;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
+@Entity
+@Table(name = "faculty")
 public class FacultyVO implements Serializable {
 
-    private final String name;
+    @Id
+    @GeneratedValue
+    @Column(name = "FacultyID")
+    private int id;
 
-    private List<DegreeVO> degrees;
+    @Column(name = "Name")
+    private String name;
 
     public FacultyVO(String name) {
         this.name = name;
     }
 
-    public FacultyVO(String name, List<DegreeVO> degrees) {
+    public int getId() {
+        return id;
+    }
+
+    public FacultyVO setName(String name) {
         this.name = name;
-        this.degrees = degrees;
+
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public List<DegreeVO> getDegrees() {
-        return degrees;
-    }
-
-    public void setDegrees(List<DegreeVO> degrees) {
-        this.degrees = degrees;
-    }
-
     @Override
     public String toString() {
         return "Faculty{" +
                 "name='" + name + '\'' +
-                ", degrees=" + degrees +
                 '}';
     }
 }
