@@ -27,7 +27,7 @@ public class StudentVO implements Serializable {
     @Column(name = "IsExtended")
     private boolean isExtended;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PersonID")
     private PersonVO personVO;
 
