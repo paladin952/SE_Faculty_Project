@@ -2,6 +2,7 @@
     'use strict';
 
     function Department() {
+        this.id = -1;
         this.name = '';
         this.teachers = [];
     }
@@ -13,18 +14,18 @@
 
     Department.fromDto = function (dto) {
         var department = new Department();
-        department.name = dto.getName();
-        department.teachers = dto.getTeachers();
+        department.id = dto.id;
+        department.name = dto.name;
+        //department.teachers = dto.getTeachers();
         return department;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    Department.prototype.toDto = function () {
+        return {
+            "id": this.id,
+            "name": this.name
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.Department = Department;

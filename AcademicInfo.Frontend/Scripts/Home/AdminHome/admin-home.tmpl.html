@@ -54,14 +54,14 @@
                     <table class="table-hover">
                     <tr ng-repeat="c in existingDepartmentChiefs">
                         <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{c.id}}">
-                            <span>{{c.person.firstName}} </span>
-                            <span>{{c.person.lastName}}</span>
+                            <span>{{c.personVO.firstName}} </span>
+                            <span>{{c.personVO.lastName}}</span>
                             <div id="#editChiefModal{{c.id}}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Edit {{c.person.firstName}}</h4>
+                                            <h4 class="modal-title">Edit {{c.personVO.firstName}}</h4>
                                         </div>
                                         <div class="modal-body">
                                             <table>
@@ -113,7 +113,7 @@
                                                 <tr>
                                                     <td class="col-md-2">Phone</td>
                                                     <td class="col-md-2">
-                                                        <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.phone">
+                                                        <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.phoneNo">
                                                     </td>
                                                 </tr>
                                             </table>
@@ -154,8 +154,8 @@
                     <table class="table-hover">
                         <tr ng-repeat="t in existingTeachers">
                             <td class="col-sm-1">
-                                <span>{{t.person.firstName}} </span>
-                                <span>{{t.person.lastName}} </span>
+                                <span>{{t.personVO.firstName}} </span>
+                                <span>{{t.personVO.lastName}} </span>
                             </td>
                             <td class="col-sm-1">
 
@@ -185,7 +185,7 @@
                     <table class="table-hover">
                         <tr ng-repeat="s in existingStudents">
                             <td class="col-sm-1">
-                                <span>{{s.person.firstName}} {{s.person.lastName}} </span>
+                                <span>{{s.personVO.firstName}} {{s.personVO.lastName}} </span>
                             </td>
                             <td class="col-sm-1">
                                 <button class="btn btn-info" data-toggle="modal" data-target="#deleteStudentConfirmModal{{s.ssn}}"><span class="glyphicon glyphicon-trash"></span></button>
@@ -223,26 +223,26 @@
                         <tr>
                             <td class="col-md-2">Username</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Username" title="Username" ng-model="chiefToAdd.username">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="chiefToAdd.personVO.userVO.username">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Password</td>
                             <td class="col-md-2">
-                                <input type="password" class="form-control" name="Password" title="Password" ng-model="chiefToAdd.password">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="chiefToAdd.personVO.userVO.password">
                             </td>
                         </tr>
                         <tr></tr>
                         <tr>
                             <td class="col-md-2">First Name</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="chiefToAdd.firstName">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="chiefToAdd.personVO.firstName">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Last Name</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="chiefToAdd.lastName">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="chiefToAdd.personVO.lastName">
                             </td>
                         </tr>
                         <tr>
@@ -256,25 +256,25 @@
                         <tr>
                             <td class="col-md-2">SSN</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="chiefToAdd.ssn">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="chiefToAdd.personVO.ssn">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Address</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Address" title="Address" ng-model="chiefToAdd.address">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="chiefToAdd.personVO.address">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Phone</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.phone">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.personVO.phoneNo">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Department</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Department" title="Department" ng-model="chiefToAdd.department">
+                                <input type="text" class="form-control" name="Department" title="Department" ng-model="chiefToAdd.departmentVO.name">
                             </td>
                         </tr>
                         <tr>
@@ -286,7 +286,7 @@
                         <tr>
                             <td class="col-md-2">Is Chief:</td>
                             <td class="col-md-2">
-                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="chiefToAdd.isChief" checked>
+                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="chiefToAdd.chief" checked>
                             </td>
                         </tr>
                     </table>
@@ -312,26 +312,26 @@
                         <tr>
                             <td class="col-md-2">Username</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Username" title="Username" ng-model="teacherToAdd.person.user.username">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="teacherToAdd.personVO.userVO.username">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Password</td>
                             <td class="col-md-2">
-                                <input type="password" class="form-control" name="Password" title="Password" ng-model="teacherToAdd.person.user.password">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="teacherToAdd.personVO.userVO.password">
                             </td>
                         </tr>
                         <tr></tr>
                         <tr>
                             <td class="col-md-2">First Name</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="teacherToAdd.person.firstName">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="teacherToAdd.personVO.firstName">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Last Name</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="teacherToAdd.person.lastName">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="teacherToAdd.personVO.lastName">
                             </td>
                         </tr>
                         <tr>
@@ -345,25 +345,25 @@
                         <tr>
                             <td class="col-md-2">SSN</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="teacherToAdd.person.ssn">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="teacherToAdd.personVO.ssn">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Address</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Address" title="Address" ng-model="teacherToAdd.person.address">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="teacherToAdd.personVO.address">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Phone</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="teacherToAdd.person.phone">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="teacherToAdd.personVO.phoneNo">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Department</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Department" title="Department" ng-model="teacherToAdd.department">
+                                <input type="text" class="form-control" name="Department" title="Department" ng-model="teacherToAdd.departmentVO">
                             </td>
                         </tr>
                         <tr>
@@ -403,26 +403,26 @@
                         <tr>
                             <td class="col-md-2">Username</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Username" title="Username" ng-model="studentToAdd.person.user.username">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="studentToAdd.personVO.userVO.username">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Password</td>
                             <td class="col-md-2">
-                                <input type="password" class="form-control" name="Password" title="Password" ng-model="studentToAdd.person.user.password">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="studentToAdd.personVO.userVO.password">
                             </td>
                         </tr>
                         <tr></tr>
                         <tr>
                             <td class="col-md-2">First Name</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="studentToAdd.person.firstName">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="studentToAdd.personVO.firstName">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Last Name</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="studentToAdd.person.lastName">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="studentToAdd.personVO.lastName">
                             </td>
                         </tr>
                         <tr>
@@ -436,19 +436,19 @@
                         <tr>
                             <td class="col-md-2">SSN</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="studentToAdd.person.ssn">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="studentToAdd.personVO.ssn">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Address</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Address" title="Address" ng-model="studentToAdd.person.address">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="studentToAdd.personVO.address">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Phone</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="studentToAdd.person.phone">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="studentToAdd.personVO.phoneNo">
                             </td>
                         </tr>
                         <tr>
