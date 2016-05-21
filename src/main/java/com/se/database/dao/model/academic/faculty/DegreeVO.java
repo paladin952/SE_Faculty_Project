@@ -4,70 +4,87 @@ import com.se.database.dao.model.academic.course.CourseVO;
 import com.se.util.enums.DegreeTypesEnum;
 import com.se.util.enums.LanguageTypesEnum;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
+@Entity
+@Table(name = "degree")
 public class DegreeVO implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "DegreeID")
+    private int id;
+
+    @Column(name = "Field")
     private String field;
 
+    @Column(name = "Type")
     private DegreeTypesEnum type;
 
-    private List<LanguageTypesEnum> languages;
-
+    @Column(name = "Duration")
     private int duration;
 
-    private List<CourseVO> courses;
+    @ManyToOne
+    @JoinColumn(name = "FacultyID")
+    private FacultyVO faculty;
 
-    public DegreeVO(String field, DegreeTypesEnum type, List<LanguageTypesEnum> languages, int duration, List<CourseVO> courses) {
+    public DegreeVO(String field, DegreeTypesEnum type, int duration) {
         this.field = field;
         this.type = type;
-        this.languages = languages;
         this.duration = duration;
-        this.courses = courses;
+    }
+
+    public DegreeVO(String field, DegreeTypesEnum type, int duration, FacultyVO faculty) {
+        this.field = field;
+        this.type = type;
+        this.duration = duration;
+        this.faculty = faculty;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getField() {
         return field;
     }
 
-    public void setField(String field) {
+    public DegreeVO setField(String field) {
         this.field = field;
+
+        return this;
     }
 
     public DegreeTypesEnum getType() {
         return type;
     }
 
-    public void setType(DegreeTypesEnum type) {
+    public DegreeVO setType(DegreeTypesEnum type) {
         this.type = type;
-    }
 
-    public List<LanguageTypesEnum> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(List<LanguageTypesEnum> languages) {
-        this.languages = languages;
+        return this;
     }
 
     public int getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public DegreeVO setDuration(int duration) {
         this.duration = duration;
+
+        return this;
     }
 
-    public List<CourseVO> getCourses() {
-        return courses;
+    public FacultyVO getFaculty() {
+        return faculty;
     }
 
-    public void setCourses(List<CourseVO> courses) {
-        this.courses = courses;
+    public DegreeVO setFaculty(FacultyVO faculty) {
+        this.faculty = faculty;
+
+        return this;
     }
 
     @Override
@@ -75,9 +92,8 @@ public class DegreeVO implements Serializable {
         return "Degree{" +
                 "field='" + field + '\'' +
                 ", type=" + type +
-                ", languages=" + languages +
+                ", faculty=" + faculty +
                 ", duration=" + duration +
-                ", courses=" + courses +
                 '}';
     }
 }

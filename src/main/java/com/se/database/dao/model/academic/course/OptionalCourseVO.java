@@ -22,9 +22,9 @@ public class OptionalCourseVO {
     @Column(name = "GroupNo")
     private int groupNo;
 
-//    @OneToOne
-//    @JoinColumn(name = "CourseID")
-//    private CourseVO course;
+    @OneToOne
+    @JoinColumn(name = "CourseID")
+    private CourseVO course;
 
     public OptionalCourseVO() {
     }
@@ -35,12 +35,12 @@ public class OptionalCourseVO {
 
     public OptionalCourseVO(int groupNo, CourseVO course) {
         this.groupNo = groupNo;
-        //this.course = course;
+        this.course = course;
     }
 
     public OptionalCourseVO(CourseVO course, int assignedSemester, int groupNo) {
         this.groupNo = groupNo;
-        //this.course = course;
+        this.course = course;
     }
 
 
@@ -49,14 +49,14 @@ public class OptionalCourseVO {
         return id;
     }
 
-//    public CourseVO getCourse() {
-//        return course;
-//    }
-//
-//    public OptionalCourseVO setCourse(CourseVO course) {
-//        this.course = course;
-//        return this;
-//    }
+    public CourseVO getCourse() {
+        return course;
+    }
+
+    public OptionalCourseVO setCourse(CourseVO course) {
+        this.course = course;
+        return this;
+    }
 
     public int getGroupNo() {
         return groupNo;
@@ -72,7 +72,7 @@ public class OptionalCourseVO {
     public String toString() {
         return "OptionalCourseVO{" +
                 "groupNo=" + groupNo +
-                //", course=" + course +
+                ", course=" + course +
                 '}';
     }
 }

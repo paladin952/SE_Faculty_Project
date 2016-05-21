@@ -35,7 +35,7 @@ public class PersonVO implements Serializable {
     @Column(name = "PhoneNo")
     private int phoneNo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="UserId")
     private UserVO userVO;
 
