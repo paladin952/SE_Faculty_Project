@@ -132,12 +132,12 @@
 
             $scope.deleteTeacher = function(teacher)
             {
-                $http.delete('/api/Teachers/' + teacher.id)
+                $http.delete('http://localhost:9001/professor/' + teacher.id)
                     .success(function () {
                         _.remove($s.exis, { id: teacher.id });
                     })
                     .error(function (err) {
-                        alert(err);
+                        //alert(err);
                         console.error(err);
                     });
             };

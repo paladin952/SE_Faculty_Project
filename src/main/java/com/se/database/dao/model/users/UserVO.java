@@ -81,6 +81,6 @@ public class UserVO implements Serializable {
 
     @Override
     public String toString() {
-        return "Id=" + id + ", Username=" + username + ", Password=" + password;
+        return "Id=->" + id + "<-, Username=" + username + ", Password=" + password;
     }
 }
