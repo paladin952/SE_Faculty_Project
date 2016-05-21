@@ -2,6 +2,7 @@ package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IStudentEvaluationDAO;
 import com.se.database.dao.model.academic.study.StudentEvaluationVO;
+import com.se.database.dao.model.users.AdminVO;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -69,13 +70,14 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<StudentEvaluationVO> getStudentEvaluationsFor(int student_id) {
-        Session session = sessionFactory.getCurrentSession();
-        String hql = "FROM studentevaluation WHERE StudentID = :student_id";
-        Query select = session.createQuery(hql);
-        select.setParameter("student_id", student_id);
-        @SuppressWarnings("unchecked")
-        List<StudentEvaluationVO> student_evaluations = (List<StudentEvaluationVO>) select.list();
-        return student_evaluations;
+
+        Query query = sessionFactory.getCurrentSession().createSQLQuery(
+                "select * FROM studentevaluation e WHERE e.StudentID = :student_id")
+                .addEntity(StudentEvaluationVO.class)
+                .setString("student_id", String.valueOf(student_id));
+        List<StudentEvaluationVO> result = (List<StudentEvaluationVO>) query.list();
+        return result;
     }
 }
