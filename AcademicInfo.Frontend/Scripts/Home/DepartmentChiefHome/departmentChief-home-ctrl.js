@@ -20,7 +20,7 @@
 
             $s.acceptedCourses = [];
 
-            $http.get('/api/Courses')
+            $http.get('http://localhost:9001/course/all')
                 .success(function (coursesFromServer) {
                     $s.existingCourses = _.map(coursesFromServer, Course.fromDto);
                     $s.isLoadingData = false;

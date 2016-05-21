@@ -185,7 +185,7 @@
                 <table class="table-hover">
                     <tr ng-repeat="s in existingStudents">
                         <td class="col-sm-1">
-                            <span>{{s.username}} </span>
+                            <span>{{s.personVO.userVO.username}} </span>
                         </td>
                         <td class="col-sm-1">
                             <button class="btn btn-info" data-toggle="modal" data-target="#deleteStudentConfirmModal{{s.ssn}}"><span class="glyphicon glyphicon-trash"></span></button>
