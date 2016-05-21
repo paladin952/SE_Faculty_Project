@@ -1,40 +1,45 @@
 package com.se.database.dao.model.academic.study;
 
+import com.se.database.dao.model.academic.course.CourseVO;
+import com.se.database.dao.model.users.StudentVO;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
+@Entity
+@Table(name = "studentoptionalcourse")
 public class StudentOptionalCourseVO implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "StudentOptionalCourseID")
     private int id;
 
-    private String courseId;
+    @ManyToOne
+    @JoinColumn(name = "CourseID")
+    private CourseVO courseVO;
 
-    private int studentId;
+    @ManyToOne
+    @JoinColumn(name = "StudentID")
+    private StudentVO studentVO;
 
-    public StudentOptionalCourseVO(String courseId, int studentId) {
-        this.courseId = courseId;
-        this.studentId = studentId;
+    public StudentOptionalCourseVO() {
+    }
+
+    public StudentOptionalCourseVO(CourseVO courseVO, StudentVO studentVO) {
+        this.courseVO = courseVO;
+        this.studentVO = studentVO;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getCourseId() {
-        return courseId;
+    public CourseVO getCourseVO() {
+        return courseVO;
     }
 
-    public int getStudentId() {
-        return studentId;
-    }
-
-    @Override
-    public String toString() {
-        return "StudentOptionalCourseVO{" +
-                "courseId='" + courseId + '\'' +
-                ", studentId=" + studentId +
-                '}';
+    public StudentVO getStudentVO() {
+        return studentVO;
     }
 }
