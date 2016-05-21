@@ -17,5 +17,6 @@
         <mapping class="com.se.database.dao.model.academic.course.OptionalCourseVO"/>
         <mapping class="com.se.database.dao.model.academic.grants.ScholarshipVO"/>
         <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
+        <mapping class="com.se.database.dao.model.academic.study.StudentEvaluationVO"/>
     </session-factory>
 </hibernate-configuration>

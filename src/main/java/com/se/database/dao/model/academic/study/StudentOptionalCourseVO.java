@@ -7,6 +7,8 @@ import java.io.Serializable;
  */
 public class StudentOptionalCourseVO implements Serializable {
 
+    private int id;
+
     private String courseId;
 
     private int studentId;
@@ -14,6 +16,10 @@ public class StudentOptionalCourseVO implements Serializable {
     public StudentOptionalCourseVO(String courseId, int studentId) {
         this.courseId = courseId;
         this.studentId = studentId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getCourseId() {

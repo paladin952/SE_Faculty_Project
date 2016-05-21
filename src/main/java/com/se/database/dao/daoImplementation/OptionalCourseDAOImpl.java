@@ -3,7 +3,6 @@ package com.se.database.dao.daoImplementation;
 import com.se.database.dao.interfaces.IOptionalCourseDAO;
 import com.se.database.dao.model.academic.course.OptionalCourseVO;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +21,7 @@ public class OptionalCourseDAOImpl implements IOptionalCourseDAO {
 
     @Transactional
     public List<OptionalCourseVO> list() {
+        @SuppressWarnings("unchecked")
         List<OptionalCourseVO> optionalCourses = (List<OptionalCourseVO>) sessionFactory.getCurrentSession()
                 .createCriteria(OptionalCourseVO.class)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
@@ -37,22 +37,22 @@ public class OptionalCourseDAOImpl implements IOptionalCourseDAO {
 
     @Override
     @Transactional
-    public OptionalCourseVO updateOrSave(OptionalCourseVO optionalCourse) {
+    public OptionalCourseVO updateOrSave(OptionalCourseVO optionalCourseVO) {
         Session session = sessionFactory.getCurrentSession();
+        OptionalCourseVO exists = (OptionalCourseVO) session.get(OptionalCourseVO.class, optionalCourseVO.getId());
+        if (exists != null)
+        {
+            OptionalCourseVO optionalCourse = (OptionalCourseVO) session.load(OptionalCourseVO.class, optionalCourseVO.getId());
+            optionalCourse.setGroupNo(optionalCourseVO.getGroupNo());
+                    //.setCourse(optionalCourseVO.getCourse());
 
-        try {
-            OptionalCourseVO tmp = (OptionalCourseVO) session.load(OptionalCourseVO.class, optionalCourse.getCourse());
-
-            tmp.setCourse(optionalCourse.getCourse());
-            tmp.setGroupNo(optionalCourse.getGroupNo());
-
-            //tmp
             return optionalCourse;
-        } catch (HibernateException e){
-            OptionalCourseVO new_optionalCourse = new OptionalCourseVO(optionalCourse.getGroupNo(), optionalCourse.getCourse());
-            session.save(new_optionalCourse);
-
-            return new_optionalCourse;
+        }
+        else
+        {
+            OptionalCourseVO new_admin = new OptionalCourseVO(optionalCourseVO.getGroupNo());
+            session.save(new_admin);
+            return new_admin;
         }
     }
 

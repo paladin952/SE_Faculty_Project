@@ -1,10 +1,12 @@
 package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IProfessorDAO;
-import com.se.database.dao.model.users.AdminVO;
 import com.se.database.dao.model.users.ProfessorVO;
 import com.se.database.dao.model.users.UserVO;
-import org.hibernate.*;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -32,28 +34,26 @@ public class ProfessorDAOImpl implements IProfessorDAO {
     @Override
     @Transactional
     public ProfessorVO getByID(int id) {
-        return (ProfessorVO)sessionFactory.getCurrentSession().get(ProfessorVO.class, id) ;
+        return (ProfessorVO) sessionFactory.getCurrentSession().get(ProfessorVO.class, id);
     }
 
     @Override
     @Transactional
     public ProfessorVO updateOrSave(ProfessorVO professorVO) {
         Session session = sessionFactory.getCurrentSession();
-        try {
-            ProfessorVO tmp = (ProfessorVO) session.load(ProfessorVO.class, professorVO.getId());
+        ProfessorVO exists = (ProfessorVO) session.get(ProfessorVO.class, professorVO.getId());
+        if (exists != null) {
+            ProfessorVO professor = (ProfessorVO) session.load(ProfessorVO.class, professorVO.getId());
+            professor.setPersonVO(professorVO.getPersonVO());
+            professor.setDepartmentVO(professorVO.getDepartmentVO());
+            professor.setChief(professorVO.isChief());
+            professor.setWage(professorVO.getWage());
+            professor.setPersonVO(professorVO.getPersonVO());
 
-            tmp.setPersonVO(professorVO.getPersonVO());
-            tmp.setDepartmentVO(professorVO.getDepartmentVO());
-            tmp.setChief(professorVO.isChief());
-            tmp.setWage(professorVO.getWage());
-
-
-            //tmp?
-            return professorVO;
-        } catch (HibernateException e){
-            ProfessorVO new_professor = new ProfessorVO(professorVO.getPersonVO(), professorVO.getDepartmentVO(),professorVO.isChief(),professorVO.getWage());
+            return professor;
+        } else {
+            ProfessorVO new_professor = new ProfessorVO(professorVO.getPersonVO(), professorVO.getDepartmentVO(), professorVO.isChief(), professorVO.getWage());
             session.save(new_professor);
-
             return new_professor;
         }
     }

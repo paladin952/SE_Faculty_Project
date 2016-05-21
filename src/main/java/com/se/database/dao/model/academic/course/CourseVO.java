@@ -1,41 +1,52 @@
 package com.se.database.dao.model.academic.course;
 
 import com.se.database.dao.model.academic.course.activities.ActivityVO;
+import com.se.database.dao.model.academic.faculty.DegreeVO;
 import com.se.util.enums.EvaluationTypeEnum;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Catalin on 03-Apr-16.
  */
+@Entity
+@Table(name = "course")
 public class CourseVO implements Serializable {
 
-    private String abstractName;
+    @Id
+    @Column(name = "CourseID")
+    private String id;
 
+    @ManyToOne
+    @Column(name = "DegreeID")
+    private DegreeVO degreeVO;
+
+    @Column(name = "Name")
     private String name;
 
+    @Column(name = "Credits")
     private int credits;
-
-    private EvaluationTypeEnum evaluationType;
 
     private List<ActivityVO> activities;
 
+    @Column(name = "AssignedSemester")
     private int assignedSemester;
 
     public CourseVO() {
     }
 
-    public CourseVO(String abstractName, String name, int credits, EvaluationTypeEnum evaluationType, List<ActivityVO> activities, int assignedSemester) {
-        this.abstractName = abstractName;
+    public CourseVO(String id, String name, int credits, List<ActivityVO> activities, int assignedSemester) {
+        this.id = id;
         this.name = name;
         this.credits = credits;
-        this.evaluationType = evaluationType;
         this.activities = activities;
         this.assignedSemester = assignedSemester;
     }
 
-    public String getAbstractName() {
-        return abstractName;
+    public String getId() {
+        return id;
     }
 
     public String getName() {
@@ -52,14 +63,6 @@ public class CourseVO implements Serializable {
 
     public void setCredits(int credits) {
         this.credits = credits;
-    }
-
-    public EvaluationTypeEnum getEvaluationType() {
-        return evaluationType;
-    }
-
-    public void setEvaluationType(EvaluationTypeEnum evaluationType) {
-        this.evaluationType = evaluationType;
     }
 
     public List<ActivityVO> getActivities() {
@@ -81,10 +84,9 @@ public class CourseVO implements Serializable {
     @Override
     public String toString() {
         return "CourseVO{" +
-                "abstractName='" + abstractName + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", credits=" + credits +
-                ", evaluationType=" + evaluationType +
                 ", activities=" + activities +
                 ", assignedSemester=" + assignedSemester +
                 '}';
