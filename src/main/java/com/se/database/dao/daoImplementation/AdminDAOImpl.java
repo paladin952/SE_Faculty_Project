@@ -71,9 +71,10 @@ public class AdminDAOImpl implements IAdminDAO {
 
     @Override
     @Transactional
+    @SuppressWarnings("unchecked")
     public AdminVO getByUser(UserVO userVO) {
         Query query = sessionFactory.getCurrentSession().createSQLQuery(
-                "select * from admin u where u.UserID = :UserID")
+                "select * from ubbdb.admin u where u.UserID = :UserID")
                 .addEntity(AdminVO.class)
                 .setString("UserID", String.valueOf(userVO.getId()));
         List<AdminVO> result = (List<AdminVO>) query.list();

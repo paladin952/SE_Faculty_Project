@@ -14,11 +14,13 @@
         <mapping class="com.se.database.dao.model.academic.groups.DepartmentVO"/>
         <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
         <mapping class="com.se.database.dao.model.academic.course.EvaluationVO"/>
+        <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
+        <mapping class="com.se.database.dao.model.academic.course.CourseVO"/>
         <mapping class="com.se.database.dao.model.academic.course.OptionalCourseVO"/>
         <mapping class="com.se.database.dao.model.academic.grants.ScholarshipVO"/>
-        <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
+        <mapping class="com.se.database.dao.model.academic.grants.StudentScholarshipVO"/>
         <mapping class="com.se.database.dao.model.academic.study.StudentEvaluationVO"/>
-        <mapping class="com.se.database.dao.model.academic.course.CourseVO"/>
+        <mapping class="com.se.database.dao.model.academic.study.StudentOptionalCourseVO"/>
         <mapping class="com.se.database.dao.model.academic.faculty.DegreeVO"/>
         <mapping class="com.se.database.dao.model.academic.faculty.FacultyVO"/>
     </session-factory>

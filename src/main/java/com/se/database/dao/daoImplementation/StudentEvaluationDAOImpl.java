@@ -7,16 +7,17 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
+    @Autowired
     private SessionFactory sessionFactory;
 
     public StudentEvaluationDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
-
 
     @Override
     public List<StudentEvaluationVO> list() {
@@ -32,7 +33,7 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
     @Override
     public StudentEvaluationVO updateOrSave(StudentEvaluationVO student_evaluation) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "FROM studentevaluation SE WHERE SE.StudentID = :student_id AND SE.EvaluationID = :evaluation_id";
+        String hql = "FROM StudentEvaluationVO SE WHERE SE.studentVO.id = :student_id AND SE.evaluationVO.id = :evaluation_id";
         Query select = session.createQuery(hql);
         select.setParameter("student_id", student_evaluation.getStudentVO().getId())
                 .setParameter("evaluation_id", student_evaluation.getEvaluationVO().getId());
@@ -47,8 +48,7 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
         }
         else
         {
-            StudentEvaluationVO tmp = student_evaluations.get(0);
-            hql = "UPDATE studentevaluation SET Grade = :grade, IsAbsent = :is_absent WHERE StudentID = :student_id AND EvaluationID = :evaluation_id";
+            hql = "UPDATE StudentEvaluationVO SE SET SE.grade = :grade, SE.isAbsent = :is_absent WHERE StudentEvaluationVO.studentVO.id= :student_id AND StudentEvaluationVO.evaluationVO.id = :evaluation_id";
             Query update = session.createQuery(hql);
             update.setParameter("grade", student_evaluation.getGrade())
                     .setParameter("is_absent", student_evaluation.isAbsent())
@@ -62,7 +62,7 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
     @Override
     public Boolean deleteByIDs(int student_id, int evaluation_id) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "DELETE FROM studentevaluation WHERE StudentID = :student_id AND EvaluationID = :evaluation_id";
+        String hql = "DELETE FROM StudentEvaluationVO SE WHERE SE.studentVO.id = :student_id AND SE.evaluationVO.id = :evaluation_id";
         Query delete = session.createQuery(hql);
         delete.setParameter("student_id", student_id)
                 .setParameter("evaluation_id", evaluation_id);

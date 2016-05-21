@@ -40,5 +40,4 @@ public class StudentEvaluationController {
         List<StudentEvaluationVO> studentEvaluationVOs = iStudentEvaluationDAO.getStudentEvaluationsFor(student_id);
         return new ResponseEntity<>(studentEvaluationVOs, HttpStatus.OK);
     }
-
 }
