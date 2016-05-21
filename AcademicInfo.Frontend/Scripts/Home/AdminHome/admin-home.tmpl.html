@@ -154,12 +154,12 @@
                     <table class="table-hover">
                         <tr ng-repeat="t in existingTeachers">
                             <td class="col-sm-1">
-                                <span>{{t.personVO.firstName}} </span>
+                                <span>{{t}} ---- {{t.personVO.firstName}} </span>
                                 <span>{{t.personVO.lastName}} </span>
                             </td>
                             <td class="col-sm-1">
 
-                                <div id="deleteTeacherConfirmModal{{t.ssn}}" class="modal" role="dialog">
+                                <div id="deleteTeacherConfirmModal{{t.personVO.ssn}}" class="modal" role="dialog">
                                     <div class="modal-dialog modal-sm">
                                         <div class="modal-content">
                                             <div class="modal-body">
@@ -173,7 +173,7 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-info" data-toggle="modal" data-target="#deleteTeacherConfirmModal{{t.ssn}}">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#deleteTeacherConfirmModal{{t.personVO.ssn}}">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </button>
 
