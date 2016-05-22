@@ -34,6 +34,10 @@ public class EvaluationVO implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getType() {
         return type;
     }

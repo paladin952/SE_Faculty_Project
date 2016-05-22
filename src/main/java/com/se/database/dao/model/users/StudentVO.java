@@ -25,7 +25,7 @@ public class StudentVO implements Serializable {
     private String status;
 
     @Column(name = "IsExtended")
-    private boolean isExtended;
+    private Boolean isExtended;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PersonID")
@@ -48,6 +48,10 @@ public class StudentVO implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public PersonVO getPersonVO() {

@@ -36,6 +36,21 @@ public class CourseVO implements Serializable {
     public CourseVO() {
     }
 
+    public CourseVO(DegreeVO degree, String name, int credits, int assignedSemester, List<ActivityVO> activities) {
+        this.degree = degree;
+        this.name = name;
+        this.credits = credits;
+        this.assignedSemester = assignedSemester;
+        this.activities = activities;
+    }
+
+    public CourseVO(DegreeVO degree, String name, int credits, int assignedSemester) {
+        this.degree = degree;
+        this.name = name;
+        this.credits = credits;
+        this.assignedSemester = assignedSemester;
+    }
+
     public CourseVO(String id, String name, int credits, int assignedSemester) {
         this.id = id;
         this.name = name;
@@ -53,6 +68,10 @@ public class CourseVO implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
