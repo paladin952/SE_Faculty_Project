@@ -116,6 +116,28 @@
                                                         <input type="text" class="form-control" name="Phone" title="Phone" ng-model="c.person.phoneNo">
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Department</td>
+                                                    <td class="col-md-2">
+                                                        <select class="form-control" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="c.department">
+                                                            <option></option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Wage</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="Wage" title="Wage" ng-model="c.wage">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Is Chief</td>
+                                                    <td class="col-md-2">
+                                                        <div class="btn btn-info disabled">
+                                                            <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="c.chief">
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </div>
                                         <div class="modal-footer">
@@ -213,6 +235,28 @@
                                                         <td class="col-md-2">Phone</td>
                                                         <td class="col-md-2">
                                                             <input type="text" class="form-control" name="Phone" title="Phone" ng-model="t.person.phoneNo">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Department</td>
+                                                        <td class="col-md-2">
+                                                            <select class="form-control" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="t.department">
+                                                                <option></option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Wage</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Wage" title="Wage" ng-model="teacherToAdd.wage">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Is Chief</td>
+                                                        <td class="col-md-2">
+                                                            <div class="btn btn-info disabled">
+                                                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="teacherToAdd.chief">
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -403,21 +447,23 @@
                         <tr>
                             <td class="col-md-2">Address</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Address" title="Address" ng-model="chiefToAdd.personVO.address">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="chiefToAdd.person.address">
                             </td>
                         </tr>
                         <tr>
                             <td class="col-md-2">Phone</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.personVO.phoneNo">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.person.phoneNo">
                             </td>
                         </tr>
                         <tr>
-                            <td class="col-md-2">Department</td>
-                            <td class="col-md-2">
-                                <input type="text" class="form-control" name="Department" title="Department" ng-model="chiefToAdd.departmentVO.name">
-                            </td>
-                        </tr>
+                        <td class="col-md-2">Department</td>
+                        <td class="col-md-2">
+                            <select class="form-control" id="selectDepartment" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="chiefToAdd.department">
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>
                         <tr>
                             <td class="col-md-2">Wage</td>
                             <td class="col-md-2">
@@ -425,9 +471,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="col-md-2">Is Chief:</td>
+                            <td class="col-md-2">Is Chief</td>
                             <td class="col-md-2">
-                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="chiefToAdd.chief" checked>
+                                <div class="btn btn-info disabled">
+                                    <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="chiefToAdd.chief">
+                                </div>
                             </td>
                         </tr>
                     </table>
@@ -504,7 +552,9 @@
                         <tr>
                             <td class="col-md-2">Department</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Department" title="Department" ng-model="teacherToAdd.departmentVO">
+                                <select class="form-control" id="selectDepartment" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="teacherToAdd.department">
+                                    <option></option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -514,7 +564,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="col-md-2">Is Chief:</td>
+                            <td class="col-md-2">Is Chief</td>
                             <td class="col-md-2">
                                 <div class="btn btn-info disabled">
                                 <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="teacherToAdd.chief">

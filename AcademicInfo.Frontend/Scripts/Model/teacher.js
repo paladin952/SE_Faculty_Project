@@ -19,11 +19,11 @@
 
     Teacher.fromDto = function (dto) {
         var teacher = new Teacher();
-        teacher.id= dto.id;
+        teacher.id = dto.id;
         teacher.person = dto.personVO;
         teacher.department = dto.departmentVO;
-        teacher.wage= dto.wage;
-        teacher.chief= dto.chief;
+        teacher.wage = dto.wage;
+        teacher.chief = dto.chief;
         return teacher;
     };
 
