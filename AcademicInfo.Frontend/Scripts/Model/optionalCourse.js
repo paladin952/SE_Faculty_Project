@@ -13,18 +13,18 @@
 
     OptionalCourse.fromDto = function (dto) {
         var oc = new OptionalCourse();
-        oc.groupNumber = dto.getGroupNumber();
-        oc.course = dto.getCourse();
+        oc.groupNumber = dto.groupNumber;
+        oc.course = dto.course;
         return oc;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    OptionalCourse.prototype.toDto = function () {
+        return {
+            "id": this.id,
+            "groupNumber": this.groupNumber,
+            "course": this.this.course
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.OptionalCourse = OptionalCourse;

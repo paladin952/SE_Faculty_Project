@@ -1,4 +1,4 @@
-(function () {
+(function (_, Teacher) {
     'use strict';
 
     function Department() {
@@ -16,7 +16,9 @@
         var department = new Department();
         department.id = dto.id;
         department.name = dto.name;
-        //department.teachers = dto.getTeachers();
+        department.teachers = dto._.map(dto.professors, function (dto) {
+            return Model.Teacher.fromDto(dto);
+        });
         return department;
     };
 
@@ -24,10 +26,11 @@
         return {
             "id": this.id,
             "name": this.name,
+            "professors": _.map(this.teachers, function (teach) { return teach.toDto(); })
         };
     };
 
     this.Model = this.Model || {};
     this.Model.Department = Department;
 
-}).call(this, this.Model.Teacher);
+}).call(this,this._, this.Model.Teacher);
