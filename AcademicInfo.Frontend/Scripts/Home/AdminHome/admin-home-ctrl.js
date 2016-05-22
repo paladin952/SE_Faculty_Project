@@ -56,7 +56,7 @@
                         $scope.existingTeachers.push(Teacher.fromDto(chief));
                         $scope.chiefToAdd = new Teacher();
                     })
-                    .error(function () {
+                    .error(function (err) {
                         alert(err);
                         console.error(err);
                     });
@@ -70,7 +70,7 @@
                         $scope.existingTeachers.push(Teacher.fromDto(chief));
                         $scope.teacherToAdd = new Teacher();
                     })
-                    .error(function () {
+                    .error(function (err) {
                         alert(err);
                         console.error(err);
                     });
@@ -82,7 +82,7 @@
                         $scope.existingStudents.push(Student.fromDto(chief));
                         $scope.studentToAdd = new Teacher();
                     })
-                    .error(function () {
+                    .error(function (err) {
                         alert(err);
                         console.error(err);
                     });
@@ -92,7 +92,7 @@
                 $http.put('http://localhost:9001/professor/update', chief.toDto())
                     .success(function () {
                     })
-                    .error(function () {
+                    .error(function (err) {
                         alert(err);
                         console.error(err);
                     });
@@ -102,7 +102,7 @@
                 $http.put('http://localhost:9001/professor/update', teacher.toDto())
                     .success(function () {
                     })
-                    .error(function () {
+                    .error(function (err) {
                         alert(err);
                         console.error(err);
                     });
@@ -112,7 +112,7 @@
                 $http.put('http://localhost:9001/student/update', student.toDto())
                     .success(function () {
                     })
-                    .error(function () {
+                    .error(function (err) {
                         alert(err);
                         console.error(err);
                     });
