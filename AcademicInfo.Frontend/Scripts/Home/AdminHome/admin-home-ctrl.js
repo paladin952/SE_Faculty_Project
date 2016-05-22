@@ -50,7 +50,7 @@
             $scope.addChief = function () {
                 console.log("add chief");
                 console.log($scope.chiefToAdd.toDto());
-                $http.put('http://localhost:9001/professor/add', $scope.chiefToAdd.toDto())
+                $http.post('http://localhost:9001/professor/add', $scope.chiefToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingDepartmentChiefs.push(Teacher.fromDto(chief));
                         $scope.existingTeachers.push(Teacher.fromDto(chief));
@@ -65,7 +65,7 @@
             $scope.addTeacher = function () {
                 console.log("add teacher");
                 console.log($scope.teacherToAdd);
-                $http.post('/api/Teachers/', $scope.teacherToAdd.toDto())
+                $http.post('http://localhost:9001/professor/add', $scope.teacherToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingTeachers.push(Teacher.fromDto(chief));
                         $scope.teacherToAdd = new Teacher();
@@ -89,7 +89,7 @@
             };
 
             $scope.updateChief = function (chief) {
-                $http.put('/api/Teachers/', chief.toDto())
+                $http.put('http://localhost:9001/professor/update', chief.toDto())
                     .success(function () {
                     })
                     .error(function () {
@@ -99,7 +99,7 @@
             };
 
             $scope.updateTeacher = function (teacher) {
-                $http.put('/api/Teachers/', teacher.toDto())
+                $http.put('http://localhost:9001/professor/update', teacher.toDto())
                     .success(function () {
                     })
                     .error(function () {
@@ -109,7 +109,7 @@
             };
 
             $scope.updateStudent = function (student) {
-                $http.put('/api/Students/', student.toDto())
+                $http.put('http://localhost:9001/student/update', student.toDto())
                     .success(function () {
                     })
                     .error(function () {
@@ -122,7 +122,6 @@
             {
                 $http.delete('http://localhost:9001/professor/' + chief.id)
                     .success(function () {
-                        _.remove($scope.existingTeachers, { id: chief.id });
                         _.remove($scope.existingDepartmentChiefs, { id: chief.id });
                         console.log("Successfuly deleted");
                     })

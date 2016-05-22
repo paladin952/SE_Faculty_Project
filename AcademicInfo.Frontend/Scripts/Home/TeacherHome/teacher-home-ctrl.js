@@ -13,9 +13,9 @@
             };
 
             $s.existingCourses = [
-                new Course('sdi', 'SDI', 5, 'practical', 'activities', 4),
-                new Course('se', 'SE', 5, 'written', 'activities', 4),
-                new Course('ai', 'AI', 5, 'written', 'activities', 4)
+                //new Course('sdi', 'SDI', 5, 'practical', 'activities', 4),
+                //new Course('se', 'SE', 5, 'written', 'activities', 4),
+                //new Course('ai', 'AI', 5, 'written', 'activities', 4)
             ];
 
             $s.acceptedCourses = [];
@@ -24,6 +24,18 @@
                 .then(
                     function(response) {
                         console.log("Students");
+                        console.log(response.data);
+                        $s.existingStudents= _.map(response.data, Student.fromDto);
+                        $s.selectedStdent = $s.existingStudents[0];
+                    },
+                    function errorCallback(response) {
+                        console.error(response);
+                    });
+
+            $http.get('http://localhost:9001/courses/all')
+                .then(
+                    function(response) {
+                        console.log("courses");
                         console.log(response.data);
                         $s.availableStudents= _.map(response.data, Student.fromDto);
                         $s.selectedStdent = $s.availableStudents[0];
