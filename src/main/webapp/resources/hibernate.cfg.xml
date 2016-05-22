@@ -23,6 +23,7 @@
         <mapping class="com.se.database.dao.model.academic.grants.StudentScholarshipVO"/>
         <mapping class="com.se.database.dao.model.academic.study.StudentEvaluationVO"/>
         <mapping class="com.se.database.dao.model.academic.study.StudentOptionalCourseVO"/>
+        <mapping class="com.se.database.dao.model.academic.study.EnrolledVO"/>
         <mapping class="com.se.database.dao.model.academic.faculty.DegreeVO"/>
         <mapping class="com.se.database.dao.model.academic.faculty.FacultyVO"/>
     </session-factory>

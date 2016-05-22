@@ -130,5 +130,8 @@
             <ref bean="sessionFactory"/>
         </constructor-arg>
     </bean>
+    <bean id="enrolledDao" class="com.se.database.dao.daoImplementation.EnrolledDAOImpl">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
 
 </beans>
