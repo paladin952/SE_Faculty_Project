@@ -45,7 +45,7 @@ public class StudentDAOImpl implements IStudentDAO {
             StudentVO student = (StudentVO) session.load(StudentVO.class, studentVO.getId());
             student.setExtended(studentVO.getExtended())
                 .setGroup(studentVO.getGroup())
-                .setPersonVO(studentVO.getPersonVO())
+//                .setPersonVO(studentVO.getPersonVO())
                 .setStatus(studentVO.getStatus());
 
             return student;

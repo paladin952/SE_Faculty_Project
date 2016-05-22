@@ -36,8 +36,8 @@ public class ScholarshipController {
     @RequestMapping(value = "/add", method = RequestMethod.PUT)
     public ResponseEntity<ScholarshipVO> updateUser(@RequestBody ScholarshipVO scholarshipVO) {
         System.out.println("Updating User " + scholarshipVO.getId());
-        iScholarshipDAO.updateScholarship(scholarshipVO);
-        return new ResponseEntity<>(scholarshipVO, HttpStatus.OK);
+        ScholarshipVO tmp = iScholarshipDAO.updateScholarship(scholarshipVO);
+        return new ResponseEntity<>(tmp, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
