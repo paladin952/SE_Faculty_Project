@@ -2,6 +2,7 @@ package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IStudentGroupDAO;
 import com.se.database.dao.model.academic.groups.StudentGroupVO;
+import com.se.database.dao.model.users.StudentVO;
 import com.se.database.dao.model.users.UserVO;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -66,5 +67,11 @@ public class StudentGroupDAOImpl implements IStudentGroupDAO {
 
         session.delete(student_group);
         return true;
+    }
+
+    @Override
+    public List<StudentVO> getStudentsFor(int id) {
+        StudentGroupVO student_group = getByID(id);
+        return student_group != null ? student_group.getStudents() : null;
     }
 }

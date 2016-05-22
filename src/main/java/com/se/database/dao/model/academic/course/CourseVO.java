@@ -1,8 +1,8 @@
 package com.se.database.dao.model.academic.course;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.database.dao.model.academic.course.activities.ActivityVO;
 import com.se.database.dao.model.academic.faculty.DegreeVO;
-import com.se.util.enums.EvaluationTypeEnum;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,7 +18,7 @@ public class CourseVO implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "DegreeID")
-    private DegreeVO degreeVO;
+    private DegreeVO degree;
 
     @Column(name = "Name")
     private String name;
@@ -28,6 +28,10 @@ public class CourseVO implements Serializable {
 
     @Column(name = "AssignedSemester")
     private int assignedSemester;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "course")
+    private List<ActivityVO> activities;
 
     public CourseVO() {
     }
@@ -39,9 +43,9 @@ public class CourseVO implements Serializable {
         this.assignedSemester = assignedSemester;
     }
 
-    public CourseVO(String id, DegreeVO degreeVO, String name, int credits, int assignedSemester) {
+    public CourseVO(String id, DegreeVO degree, String name, int credits, int assignedSemester) {
         this.id = id;
-        this.degreeVO = degreeVO;
+        this.degree = degree;
         this.name = name;
         this.credits = credits;
         this.assignedSemester = assignedSemester;
@@ -81,12 +85,22 @@ public class CourseVO implements Serializable {
         return this;
     }
 
-    public DegreeVO getDegreeVO() {
-        return degreeVO;
+    public DegreeVO getDegree() {
+        return degree;
     }
 
-    public CourseVO setDegreeVO(DegreeVO degreeVO) {
-        this.degreeVO = degreeVO;
+    public CourseVO setDegree(DegreeVO degreeVO) {
+        this.degree = degreeVO;
+
+        return this;
+    }
+
+    public List<ActivityVO> getActivities() {
+        return activities;
+    }
+
+    public CourseVO setActivities(List<ActivityVO> activities) {
+        this.activities = activities;
 
         return this;
     }

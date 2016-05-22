@@ -2,6 +2,7 @@ package com.se.controller;
 
 import com.se.database.dao.interfaces.IStudentGroupDAO;
 import com.se.database.dao.model.academic.groups.StudentGroupVO;
+import com.se.database.dao.model.users.StudentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,11 @@ public class StudentGroupController {
     public ResponseEntity<List<StudentGroupVO>> getStudentGroups() {
         List<StudentGroupVO> studentGroupVOs = iStudentGroupDAO.list();
         return new ResponseEntity<>(studentGroupVOs, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get/{id}/students", method = RequestMethod.GET)
+    public ResponseEntity<List<StudentVO>> getStudentGroups(@PathVariable(value = "id") int id) {
+        List<StudentVO> students = iStudentGroupDAO.getStudentsFor(id);
+        return new ResponseEntity<>(students, students != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }

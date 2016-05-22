@@ -2,6 +2,7 @@ package com.se.controller;
 
 import com.se.database.dao.interfaces.ICourseDAO;
 import com.se.database.dao.model.academic.course.CourseVO;
+import com.se.database.dao.model.academic.course.activities.ActivityVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,5 +40,12 @@ public class CourseController {
     public ResponseEntity<List<CourseVO>> getCourses() {
         List<CourseVO> courses = iCourseDAO.list();
         return new ResponseEntity<>(courses, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get/{id}/activities", method = RequestMethod.GET)
+    public ResponseEntity<List<ActivityVO>> getActivities(@PathVariable(value = "id") String id) {
+        List<ActivityVO> activities = iCourseDAO.getActivitiesFor(id);
+
+        return new ResponseEntity<>(activities, activities != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
     }
 }

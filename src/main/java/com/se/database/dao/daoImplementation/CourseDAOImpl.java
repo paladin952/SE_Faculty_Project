@@ -2,6 +2,7 @@ package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.ICourseDAO;
 import com.se.database.dao.model.academic.course.CourseVO;
+import com.se.database.dao.model.academic.course.activities.ActivityVO;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -40,14 +41,14 @@ public class CourseDAOImpl implements ICourseDAO {
             CourseVO tmp = (CourseVO) session.load(CourseVO.class, course.getId());
             tmp.setAssignedSemester(course.getAssignedSemester())
                 .setCredits(course.getCredits())
-                .setDegreeVO(course.getDegreeVO())
+                .setDegree(course.getDegree())
                 .setName(course.getName());
 
             return tmp;
         }
         else
         {
-            CourseVO new_admin = new CourseVO(course.getId(), course.getDegreeVO(), course.getName(), course.getCredits(), course.getAssignedSemester());
+            CourseVO new_admin = new CourseVO(course.getId(), course.getDegree(), course.getName(), course.getCredits(), course.getAssignedSemester());
             session.save(new_admin);
             return new_admin;
         }
@@ -62,5 +63,11 @@ public class CourseDAOImpl implements ICourseDAO {
 
         session.delete(course);
         return true;
+    }
+
+    @Override
+    public List<ActivityVO> getActivitiesFor(String id) {
+        CourseVO course = getByID(id);
+        return course != null ? course.getActivities() : null;
     }
 }

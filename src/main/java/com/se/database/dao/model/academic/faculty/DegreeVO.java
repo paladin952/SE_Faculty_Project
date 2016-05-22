@@ -1,5 +1,6 @@
 package com.se.database.dao.model.academic.faculty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.database.dao.model.academic.course.CourseVO;
 import com.se.util.enums.DegreeTypesEnum;
 import com.se.util.enums.LanguageTypesEnum;
@@ -30,6 +31,11 @@ public class DegreeVO implements Serializable {
     @JoinColumn(name = "FacultyID")
     private FacultyVO faculty;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "degree")
+    private List<CourseVO> courses;
+
+
     public DegreeVO() {
     }
 
@@ -44,6 +50,14 @@ public class DegreeVO implements Serializable {
         this.type = type;
         this.duration = duration;
         this.faculty = faculty;
+    }
+
+    public DegreeVO(String field, int type, int duration, FacultyVO faculty, List<CourseVO> courses) {
+        this.field = field;
+        this.type = type;
+        this.duration = duration;
+        this.faculty = faculty;
+        this.courses = courses;
     }
 
     public int getId() {
@@ -66,6 +80,16 @@ public class DegreeVO implements Serializable {
 
     public DegreeVO setType(int type) {
         this.type = type;
+
+        return this;
+    }
+
+    public List<CourseVO> getCourses() {
+        return courses;
+    }
+
+    public DegreeVO setCourses(List<CourseVO> courses) {
+        this.courses = courses;
 
         return this;
     }

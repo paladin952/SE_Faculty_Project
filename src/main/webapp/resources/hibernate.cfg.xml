@@ -17,6 +17,7 @@
         <mapping class="com.se.database.dao.model.academic.course.EvaluationVO"/>
         <mapping class="com.se.database.dao.model.academic.groups.StudentGroupVO"/>
         <mapping class="com.se.database.dao.model.academic.course.CourseVO"/>
+        <mapping class="com.se.database.dao.model.academic.course.activities.ActivityVO"/>
         <mapping class="com.se.database.dao.model.academic.course.OptionalCourseVO"/>
         <mapping class="com.se.database.dao.model.academic.grants.ScholarshipVO"/>
         <mapping class="com.se.database.dao.model.academic.grants.StudentScholarshipVO"/>
