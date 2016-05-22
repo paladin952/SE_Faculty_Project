@@ -27,8 +27,8 @@ public class UserController {
     @RequestMapping(value = "/add", method = RequestMethod.PUT)
     public ResponseEntity<UserVO> updateUser(@RequestBody UserVO user) {
         System.out.println("Add/update User " + user.toString());
-        iUserDAO.updateUser(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        UserVO tmp = iUserDAO.updateUser(user);
+        return new ResponseEntity<>(tmp, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

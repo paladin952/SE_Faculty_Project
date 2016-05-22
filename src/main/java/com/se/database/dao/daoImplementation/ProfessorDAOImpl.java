@@ -44,11 +44,11 @@ public class ProfessorDAOImpl implements IProfessorDAO {
         ProfessorVO exists = (ProfessorVO) session.get(ProfessorVO.class, professorVO.getId());
         if (exists != null) {
             ProfessorVO professor = (ProfessorVO) session.load(ProfessorVO.class, professorVO.getId());
-            professor.setPersonVO(professorVO.getPersonVO());
+//            professor.setPersonVO(professorVO.getPersonVO());
             professor.setDepartmentVO(professorVO.getDepartmentVO());
             professor.setChief(professorVO.isChief());
             professor.setWage(professorVO.getWage());
-            professor.setPersonVO(professorVO.getPersonVO());
+//            professor.setPersonVO(professorVO.getPersonVO());
 
             return professor;
         } else {
