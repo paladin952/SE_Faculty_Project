@@ -21,7 +21,7 @@
     Faculty.prototype.toDto = function () {
         return {
             "id": this.id,
-            "name": this.name,
+            "name": this.name
         };
     };
 

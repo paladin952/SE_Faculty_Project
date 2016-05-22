@@ -3,37 +3,37 @@
 
     function StudentEvaluation() {
         this.id = -1;
-        this.evaluationVO = null;
+        this.evaluation = null;
         this.grade = 1;
         this.absent = false;
-        this.studentVO = null;
+        this.student = null;
     }
 
     function StudentEvaluation(id) {
         this.id = id;
-        this.evaluationVO = null;
+        this.evaluation = null;
         this.grade = 1;
         this.absent = false;
-        this.studentVO = null;
+        this.student = null;
     }
 
     StudentEvaluation.fromDto = function (dto) {
         var ev = new StudentEvaluation();
         ev.id = dto.id;
-        ev.evaluationVO = dto.evaluationVO;
+        ev.evaluation = dto.evaluationVO;
         ev.grade = dto.grade;
         ev.absent = dto.absent;
-        ev.studentVO = dto.studentVO;
+        ev.student = dto.studentVO;
         return ev;
     };
 
     StudentEvaluation.prototype.toDto = function () {
         return {
             "id": this.id,
-            "evaluationVO": this.evaluationVO,
+            "evaluationVO": this.evaluation,
             "grade": this.grade,
             "absent": this.absent,
-            "studentVO": this.studentVO,
+            "studentVO": this.student
         };
     };
 

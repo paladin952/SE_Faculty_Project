@@ -4,19 +4,20 @@
     function Evaluation() {
         this.id = -1;
         this.type = '';
-        this.courseVO = null;
+        this.course = null;
     }
 
-    function Evaluation(id, type) {
+    function Evaluation(id, type, course) {
         this.id = id;
         this.type = type;
+        this.course = course;
     }
 
     Evaluation.fromDto = function (dto) {
         var ev = new Evaluation();
         ev.id = dto.id;
         ev.type = dto.type;
-        ev.courseVO = dto.courseVO;
+        ev.course = dto.courseVO;
         return ev;
     };
 
@@ -24,11 +25,11 @@
         return {
             "id": this.id,
             "type": this.type,
-            "courseVO": this.courseVO
+            "courseVO": this.course
         };
     };
 
     this.Model = this.Model || {};
     this.Model.Evaluation = Evaluation;
 
-}).call(this);
+}).call(thi, this.Model.Course);

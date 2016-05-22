@@ -1,4 +1,4 @@
-(function () {
+(function (_, Student) {
     'use strict';
 
     function Group() {
@@ -15,21 +15,23 @@
 
     Group.fromDto = function (dto) {
         var group = new Group();
-        group.id = dto.getId();
-        group.name = dto.getStudents();
-        group.dateAdded = dto.getCurrentSemester();
+        group.id = dto.id;
+        group.students = _.map(dto.students, function (dto) {
+            return Model.Student.fromDto(dto);
+        });
+        group.currentSemester = dto.currentSemester;
         return group;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    Group.prototype.toDto = function () {
+        return {
+            "id": this.id,
+            "students": _.map(this.students, function (stud) { return stud.toDto(); }),
+            "currentSemester": this.currentSemester
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.Group = Group;
 
-}).call(this, this.Model.Student);
+}).call(this, this._, this.Model.Student);

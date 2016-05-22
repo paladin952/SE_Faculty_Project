@@ -11,17 +11,15 @@
 
     Admin.fromDto = function (dto) {
         var admin = new Admin();
-        admin.person = dto.getPerson();
+        admin.person = dto.personVO;
         return admin;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    Admin.prototype.toDto = function () {
+        return {
+            "personVO": this.person
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.Admin = Admin;

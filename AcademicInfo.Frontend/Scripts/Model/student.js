@@ -3,7 +3,7 @@
 
     function Student() {
         this.id = -1;
-        this.personVO = null;
+        this.person = null;
         this.group = null;
         this.isExtended = false;
         this.status = '';
@@ -12,7 +12,7 @@
 
     function Student(id, person, group, extended, status) {
         this.id = id;
-        this.personVO = person;
+        this.person = person;
         this.group = group;
         this.isExtended = extended;
         this.status = status;
@@ -21,7 +21,7 @@
     Student.fromDto = function (dto) {
         var student = new Student();
         student.id = dto.id;
-        student.personVO = dto.personVO;
+        student.person = dto.personVO;
         student.group = dto.group;
         student.isExtended = dto.isExtended;
         student.status = dto.status;
@@ -31,7 +31,7 @@
     Student.prototype.toDto = function () {
         return {
             "id": this.id,
-            "personVO": this.personVO,
+            "personVO": this.person,
             "group": this.group,
             "isExtended": this.isExtended,
             "status": this.status

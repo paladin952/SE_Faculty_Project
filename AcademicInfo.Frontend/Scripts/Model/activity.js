@@ -11,17 +11,15 @@
 
     Activity.fromDto = function (dto) {
         var activity = new Activity();
-        activity.hoursPerWeek = dto.getHoursPerWeek();
+        activity.hoursPerWeek = dto.hoursPereek;
         return activity;
     };
 
-    //AccessRule.prototype.toDto = function () {
-    //    return {
-    //        Id: this.id,
-    //        Name: this.name,
-    //        DateAdded: this.dateAdded
-    //    };
-    //};
+    Activity.prototype.toDto = function () {
+        return {
+            "hoursPerWeek": this.hoursPerWeek
+        };
+    };
 
     this.Model = this.Model || {};
     this.Model.Activity = Activity;
