@@ -36,7 +36,6 @@
             $s.existingStudents=[
                     //new Student(1, new Person(new User ('user1', 'pass1'), 'fname1', 'lanme1', '15/02/2000', '2951203245030','addr1', '0740000000' )),
                     //new Student(2, new Person(new User ('user2', 'pass2'), 'fname2', 'lanme2', '15/02/2000', '2951203245030','addr2', '0740000000' )),
-
             ];
 
             $http.get('http://localhost:9001/courses/all')
