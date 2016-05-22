@@ -2,7 +2,6 @@ package com.se.database.dao.daoImplementation;
 
 import com.se.database.dao.interfaces.IStudentEvaluationDAO;
 import com.se.database.dao.model.academic.study.StudentEvaluationVO;
-import com.se.database.dao.model.users.AdminVO;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
