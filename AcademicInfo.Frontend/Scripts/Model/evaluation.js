@@ -32,4 +32,4 @@
     this.Model = this.Model || {};
     this.Model.Evaluation = Evaluation;
 
-}).call(thi, this.Model.Course);
+}).call(this, this.Model.Course);
