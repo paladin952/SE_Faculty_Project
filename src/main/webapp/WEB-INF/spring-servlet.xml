@@ -117,5 +117,8 @@
             <ref bean="sessionFactory"/>
         </constructor-arg>
     </bean>
+    <bean id="facultyDao" class="com.se.database.dao.daoImplementation.FacultyDAOImpl">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
 
 </beans>

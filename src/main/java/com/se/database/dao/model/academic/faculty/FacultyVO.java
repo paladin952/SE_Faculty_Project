@@ -1,5 +1,7 @@
 package com.se.database.dao.model.academic.faculty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -15,6 +17,10 @@ public class FacultyVO implements Serializable {
 
     @Column(name = "Name")
     private String name;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "faculty")
+    private List<DegreeVO> degrees;
 
     public FacultyVO() {
     }
@@ -35,6 +41,16 @@ public class FacultyVO implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public List<DegreeVO> getDegrees() {
+        return degrees;
+    }
+
+    public FacultyVO setDegrees(List<DegreeVO> degrees) {
+        this.degrees = degrees;
+
+        return this;
     }
 
     @Override
