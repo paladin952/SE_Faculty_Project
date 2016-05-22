@@ -24,6 +24,9 @@ public class ActivityVO implements Serializable{
     @JoinColumn(name = "CourseID")
     private CourseVO course;
 
+    public ActivityVO() {
+    }
+
     public ActivityVO(int hours_per_week, int activity_type, CourseVO course) {
         this.hours_per_week = hours_per_week;
         this.activity_type = activity_type;

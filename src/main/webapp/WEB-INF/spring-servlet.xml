@@ -120,5 +120,10 @@
     <bean id="facultyDao" class="com.se.database.dao.daoImplementation.FacultyDAOImpl">
         <constructor-arg ref="sessionFactory"/>
     </bean>
+    <bean id="activityDao" class="com.se.database.dao.daoImplementation.ActivityDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
 
 </beans>
