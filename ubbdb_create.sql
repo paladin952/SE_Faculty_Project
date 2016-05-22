@@ -123,6 +123,8 @@ INSERT INTO `department` (`DepartmentID`, `Name`) VALUES
 CREATE TABLE IF NOT EXISTS `enrolled` (
   `StudentID` int(10) unsigned NOT NULL,
   `CourseID` varchar(30) NOT NULL,
+  `EnrolledID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`EnrolledID`),
   KEY `FK_EnrolledCourseID` (`CourseID`),
   KEY `FK_EnrolledStudentID` (`StudentID`),
   CONSTRAINT `FK_EnrolledCourseID` FOREIGN KEY (`CourseID`) REFERENCES `course` (`CourseID`) ON DELETE CASCADE ON UPDATE CASCADE,
