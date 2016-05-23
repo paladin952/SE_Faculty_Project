@@ -145,6 +145,7 @@
                 $http.delete('http://localhost:9001/professor/' + chief.id)
                     .success(function () {
                         _.remove($scope.existingDepartmentChiefs, { id: chief.id });
+                        _.remove($scope.existingTeachers, { id: chief.id });
                         console.log("Successfuly deleted");
                     })
                     .error(function (err) {
