@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   CONSTRAINT `FK_AdminUserID` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.admin: ~9 rows (approximately)
+-- Dumping data for table ubbdb.admin: ~1 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` (`AdminID`, `UserID`) VALUES
 	(1, 1);
@@ -182,7 +182,7 @@ CREATE TABLE IF NOT EXISTS `enrolled` (
   CONSTRAINT `FK_EnrolledStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=153 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.enrolled: ~125 rows (approximately)
+-- Dumping data for table ubbdb.enrolled: ~120 rows (approximately)
 /*!40000 ALTER TABLE `enrolled` DISABLE KEYS */;
 INSERT INTO `enrolled` (`EnrolledID`, `StudentID`, `CourseID`) VALUES
 	(3, 4, 'AI101'),
@@ -499,9 +499,9 @@ CREATE TABLE IF NOT EXISTS `student` (
   KEY `FK_StudentPersonID` (`PersonID`),
   CONSTRAINT `FK_StudentGroupID` FOREIGN KEY (`GroupID`) REFERENCES `studentgroup` (`StudentGroupID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_StudentPersonID` FOREIGN KEY (`PersonID`) REFERENCES `person` (`PersonID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.student: ~24 rows (approximately)
+-- Dumping data for table ubbdb.student: ~25 rows (approximately)
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
 INSERT INTO `student` (`StudentID`, `GroupID`, `Status`, `IsExtended`, `PersonID`) VALUES
 	(4, 923, 'Enrolled', 0, 16),
@@ -527,7 +527,8 @@ INSERT INTO `student` (`StudentID`, `GroupID`, `Status`, `IsExtended`, `PersonID
 	(25, 923, 'Enrolled', 0, 19),
 	(26, 923, 'Enrolled', 0, 22),
 	(27, 923, 'Enrolled', 0, 7),
-	(28, 923, 'Enrolled', 0, 20);
+	(28, 923, 'Enrolled', 0, 20),
+	(30, 923, 'Enrolled', 0, 31);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 
 
@@ -612,7 +613,7 @@ CREATE TABLE IF NOT EXISTS `studentscholarship` (
   CONSTRAINT `FK_StudentScholarshipStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.studentscholarship: ~2 rows (approximately)
+-- Dumping data for table ubbdb.studentscholarship: ~1 rows (approximately)
 /*!40000 ALTER TABLE `studentscholarship` DISABLE KEYS */;
 INSERT INTO `studentscholarship` (`StudentScholarshipID`, `ScholarshipID`, `StudentID`) VALUES
 	(2, 1, 11);
