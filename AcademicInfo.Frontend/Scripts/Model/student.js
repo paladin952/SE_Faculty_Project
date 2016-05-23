@@ -5,7 +5,7 @@
         this.id = -1;
         this.personVO = null;
         this.group = null;
-        this.isExtended = false;
+        this.extended = false;
         this.status = '';
     }
 
@@ -14,7 +14,7 @@
         this.id = id;
         this.personVO = personVO;
         this.group = group;
-        this.isExtended = extended;
+        this.extended = extended;
         this.status = status;
     }
 
@@ -23,7 +23,7 @@
         student.id = dto.id;
         student.personVO = dto.personVO;
         student.group = dto.group;
-        student.isExtended = dto.isExtended;
+        student.extended = dto.extended;
         student.status = dto.status;
         return student;
     };
@@ -32,7 +32,7 @@
         return {
             "personVO": this.personVO,
             "group": this.group,
-            "isExtended": this.isExtended,
+            "extended": this.extended,
             "status": this.status
         };
     };

@@ -14,22 +14,35 @@
                 $root.userToLogin = null;
             };
 
-            $http.get('http://localhost:9001/studentevaluation/all')
-                .then(
-                    function(response) {
-                        $s.studentEvaluations= _.map(response.data, StudentEvaluation.fromDto);
-                        for (var ev in $s.studentEvaluations)
-                        {
-                            var user = $s.studentEvaluations[ev].student.personVO.userVO;
-                            if(user.username === $root.userToLogin.username && user.password === $root.userToLogin.password){
-                                $s.evalForLoggedUser.push($s.studentEvaluations[ev]);
 
-                            }
-                        }
+            $http.get('http://localhost:9001/student/get/' + $root.userToLogin.username)
+                .then(
+                    function(res2) {
+
+                        $http.get('http://localhost:9001/studentevaluation/get/' + res2.data.id)
+                            .then(
+                                function(response) {
+                                    console.log("response");
+                                    console.log(response);
+                                    $s.evalForLoggedUser= _.map(response.data, StudentEvaluation.fromDto);
+                                    //$s.evalForLoggedUser = $s.studentEvaluations;
+                                    //for (var ev in $s.studentEvaluations)
+                                    //{
+                                    //    var user = $s.studentEvaluations[ev].student.personVO.userVO;
+                                    //    if(user.username === $root.userToLogin.username && user.password === $root.userToLogin.password){
+                                    //        $s.evalForLoggedUser.push($s.studentEvaluations[ev]);
+                                    //
+                                    //    }
+                                    //}
+                                },
+                                function errorCallback(response) {
+                                    console.error(response);
+                                });
                     },
                     function errorCallback(response) {
                         console.error(response);
                     });
+
 
             $http.get('http://localhost:9001/optionalcourse/all')
                 .then(

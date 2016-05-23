@@ -46,13 +46,17 @@ public class StudentDAOImpl implements IStudentDAO {
             StudentVO student = (StudentVO) session.load(StudentVO.class, studentVO.getId());
             student.setExtended(studentVO.getExtended())
                 .setGroup(studentVO.getGroup())
-//                .setPersonVO(studentVO.getPersonVO())
+                .setPersonVO(studentVO.getPersonVO())
                 .setStatus(studentVO.getStatus());
 
             return student;
         }
         else
         {
+            System.out.println((studentVO != null)?studentVO.toString():"null");
+            if(studentVO.getExtended() == null){
+                studentVO.setExtended(false);
+            }
             StudentVO new_person = new StudentVO(studentVO.getPersonVO(), studentVO.getGroup(), studentVO.getStatus(), studentVO.getExtended());
             session.save(new_person);
             return new_person;

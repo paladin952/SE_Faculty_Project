@@ -627,7 +627,7 @@
                         <tr>
                             <td class="col-md-2">Group</td>
                             <td class="col-md-2">
-                                <select class="form-control" ng-options="groups.name for groups in existingGroups" ng-model="studentToAdd.group">
+                                <select class="form-control" ng-options="groups.id for groups in existingGroups" ng-model="studentToAdd.group">
                                     <option></option>
                                 </select>
                             </td>
@@ -635,7 +635,7 @@
                         <tr>
                             <td class="col-md-2">Is extended</td>
                             <td class="col-md-2">
-                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" ng-model="studentToAdd.isExtended" checked>
+                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" ng-model="studentToAdd.extended" checked>
                             </td>
                         </tr>
                         <tr>

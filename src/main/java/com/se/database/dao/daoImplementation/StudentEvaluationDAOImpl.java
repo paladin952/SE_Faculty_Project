@@ -79,7 +79,7 @@ public class StudentEvaluationDAOImpl implements IStudentEvaluationDAO {
                     "INNER JOIN ubbdb.course C\n" +
                     "ON C.CourseID = E.CourseID\n" +
                     "WHERE SE.StudentID = :student_id\n" +
-                    "GROUP BY C.AssignedSemester")
+                    "ORDER BY C.AssignedSemester")
                 .addEntity(StudentEvaluationVO.class)
                 .setInteger("student_id", student_id);
         return (List<StudentEvaluationVO>) query.list();

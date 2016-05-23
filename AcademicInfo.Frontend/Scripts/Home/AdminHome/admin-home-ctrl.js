@@ -31,7 +31,7 @@
                     $scope.isLoadingData = false;
                 });
 
-            $http.get('http://localhost:9001/group/all')
+            $http.get('http://localhost:9001/studentgroup/all')
                 .then(
                     function(response) {
                         $scope.existingGroups= _.map(response.data, Group.fromDto);
