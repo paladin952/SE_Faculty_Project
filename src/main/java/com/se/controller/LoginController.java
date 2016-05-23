@@ -49,8 +49,8 @@ public class LoginController {
     }
 
     /**
-     * Returns the usertype of the user
-     * @param userVO The user to be checked
+     * Returns the usertype of the userVO
+     * @param userVO The userVO to be checked
      * @return {@link LoginUserVo.UserType}
      */
     private LoginUserVo.UserType getUserType(UserVO userVO){

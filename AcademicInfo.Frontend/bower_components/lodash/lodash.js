@@ -5743,16 +5743,16 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': true },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': false }
+     *   { 'userVO': 'barney',  'active': true },
+     *   { 'userVO': 'fred',    'active': false },
+     *   { 'userVO': 'pebbles', 'active': false }
      * ];
      *
      * _.dropRightWhile(users, function(o) { return !o.active; });
      * // => objects for ['barney']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.dropRightWhile(users, { 'user': 'pebbles', 'active': false });
+     * _.dropRightWhile(users, { 'userVO': 'pebbles', 'active': false });
      * // => objects for ['barney', 'fred']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -5783,16 +5783,16 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': false },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': true }
+     *   { 'userVO': 'barney',  'active': false },
+     *   { 'userVO': 'fred',    'active': false },
+     *   { 'userVO': 'pebbles', 'active': true }
      * ];
      *
      * _.dropWhile(users, function(o) { return !o.active; });
      * // => objects for ['pebbles']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.dropWhile(users, { 'user': 'barney', 'active': false });
+     * _.dropWhile(users, { 'userVO': 'barney', 'active': false });
      * // => objects for ['fred', 'pebbles']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -5862,16 +5862,16 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': false },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': true }
+     *   { 'userVO': 'barney',  'active': false },
+     *   { 'userVO': 'fred',    'active': false },
+     *   { 'userVO': 'pebbles', 'active': true }
      * ];
      *
-     * _.findIndex(users, function(o) { return o.user == 'barney'; });
+     * _.findIndex(users, function(o) { return o.userVO == 'barney'; });
      * // => 0
      *
      * // The `_.matches` iteratee shorthand.
-     * _.findIndex(users, { 'user': 'fred', 'active': false });
+     * _.findIndex(users, { 'userVO': 'fred', 'active': false });
      * // => 1
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -5901,16 +5901,16 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': true },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': false }
+     *   { 'userVO': 'barney',  'active': true },
+     *   { 'userVO': 'fred',    'active': false },
+     *   { 'userVO': 'pebbles', 'active': false }
      * ];
      *
-     * _.findLastIndex(users, function(o) { return o.user == 'pebbles'; });
+     * _.findLastIndex(users, function(o) { return o.userVO == 'pebbles'; });
      * // => 2
      *
      * // The `_.matches` iteratee shorthand.
-     * _.findLastIndex(users, { 'user': 'barney', 'active': true });
+     * _.findLastIndex(users, { 'userVO': 'barney', 'active': true });
      * // => 0
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -6779,16 +6779,16 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': true },
-     *   { 'user': 'fred',    'active': false },
-     *   { 'user': 'pebbles', 'active': false }
+     *   { 'userVO': 'barney',  'active': true },
+     *   { 'userVO': 'fred',    'active': false },
+     *   { 'userVO': 'pebbles', 'active': false }
      * ];
      *
      * _.takeRightWhile(users, function(o) { return !o.active; });
      * // => objects for ['fred', 'pebbles']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.takeRightWhile(users, { 'user': 'pebbles', 'active': false });
+     * _.takeRightWhile(users, { 'userVO': 'pebbles', 'active': false });
      * // => objects for ['pebbles']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -6819,16 +6819,16 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'active': false },
-     *   { 'user': 'fred',    'active': false},
-     *   { 'user': 'pebbles', 'active': true }
+     *   { 'userVO': 'barney',  'active': false },
+     *   { 'userVO': 'fred',    'active': false},
+     *   { 'userVO': 'pebbles', 'active': true }
      * ];
      *
      * _.takeWhile(users, function(o) { return !o.active; });
      * // => objects for ['barney', 'fred']
      *
      * // The `_.matches` iteratee shorthand.
-     * _.takeWhile(users, { 'user': 'barney', 'active': false });
+     * _.takeWhile(users, { 'userVO': 'barney', 'active': false });
      * // => objects for ['barney']
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -7247,16 +7247,16 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'age': 36 },
-     *   { 'user': 'fred',    'age': 40 },
-     *   { 'user': 'pebbles', 'age': 1 }
+     *   { 'userVO': 'barney',  'age': 36 },
+     *   { 'userVO': 'fred',    'age': 40 },
+     *   { 'userVO': 'pebbles', 'age': 1 }
      * ];
      *
      * var youngest = _
      *   .chain(users)
      *   .sortBy('age')
      *   .map(function(o) {
-     *     return o.user + ' is ' + o.age;
+     *     return o.userVO + ' is ' + o.age;
      *   })
      *   .head()
      *   .value();
@@ -7638,12 +7638,12 @@
      * // => false
      *
      * var users = [
-     *   { 'user': 'barney', 'active': false },
-     *   { 'user': 'fred',   'active': false }
+     *   { 'userVO': 'barney', 'active': false },
+     *   { 'userVO': 'fred',   'active': false }
      * ];
      *
      * // The `_.matches` iteratee shorthand.
-     * _.every(users, { 'user': 'barney', 'active': false });
+     * _.every(users, { 'userVO': 'barney', 'active': false });
      * // => false
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -7676,8 +7676,8 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36, 'active': true },
-     *   { 'user': 'fred',   'age': 40, 'active': false }
+     *   { 'userVO': 'barney', 'age': 36, 'active': true },
+     *   { 'userVO': 'fred',   'age': 40, 'active': false }
      * ];
      *
      * _.filter(users, function(o) { return !o.active; });
@@ -7714,9 +7714,9 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'age': 36, 'active': true },
-     *   { 'user': 'fred',    'age': 40, 'active': false },
-     *   { 'user': 'pebbles', 'age': 1,  'active': true }
+     *   { 'userVO': 'barney',  'age': 36, 'active': true },
+     *   { 'userVO': 'fred',    'age': 40, 'active': false },
+     *   { 'userVO': 'pebbles', 'age': 1,  'active': true }
      * ];
      *
      * _.find(users, function(o) { return o.age < 40; });
@@ -7902,7 +7902,7 @@
      * _.includes([1, 2, 3], 1, 2);
      * // => false
      *
-     * _.includes({ 'user': 'fred', 'age': 40 }, 'fred');
+     * _.includes({ 'userVO': 'fred', 'age': 40 }, 'fred');
      * // => true
      *
      * _.includes('pebbles', 'eb');
@@ -8020,12 +8020,12 @@
      * // => [16, 64] (iteration order is not guaranteed)
      *
      * var users = [
-     *   { 'user': 'barney' },
-     *   { 'user': 'fred' }
+     *   { 'userVO': 'barney' },
+     *   { 'userVO': 'fred' }
      * ];
      *
      * // The `_.property` iteratee shorthand.
-     * _.map(users, 'user');
+     * _.map(users, 'userVO');
      * // => ['barney', 'fred']
      */
     function map(collection, iteratee) {
@@ -8050,14 +8050,14 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'fred',   'age': 48 },
-     *   { 'user': 'barney', 'age': 34 },
-     *   { 'user': 'fred',   'age': 42 },
-     *   { 'user': 'barney', 'age': 36 }
+     *   { 'userVO': 'fred',   'age': 48 },
+     *   { 'userVO': 'barney', 'age': 34 },
+     *   { 'userVO': 'fred',   'age': 42 },
+     *   { 'userVO': 'barney', 'age': 36 }
      * ];
      *
-     * // Sort by `user` in ascending order and by `age` in descending order.
-     * _.orderBy(users, ['user', 'age'], ['asc', 'desc']);
+     * // Sort by `userVO` in ascending order and by `age` in descending order.
+     * _.orderBy(users, ['userVO', 'age'], ['asc', 'desc']);
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
      */
     function orderBy(collection, iteratees, orders, guard) {
@@ -8089,9 +8089,9 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney',  'age': 36, 'active': false },
-     *   { 'user': 'fred',    'age': 40, 'active': true },
-     *   { 'user': 'pebbles', 'age': 1,  'active': false }
+     *   { 'userVO': 'barney',  'age': 36, 'active': false },
+     *   { 'userVO': 'fred',    'age': 40, 'active': true },
+     *   { 'userVO': 'pebbles', 'age': 1,  'active': false }
      * ];
      *
      * _.partition(users, function(o) { return o.active; });
@@ -8195,8 +8195,8 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36, 'active': false },
-     *   { 'user': 'fred',   'age': 40, 'active': true }
+     *   { 'userVO': 'barney', 'age': 36, 'active': false },
+     *   { 'userVO': 'fred',   'age': 40, 'active': true }
      * ];
      *
      * _.reject(users, function(o) { return !o.active; });
@@ -8345,12 +8345,12 @@
      * // => true
      *
      * var users = [
-     *   { 'user': 'barney', 'active': true },
-     *   { 'user': 'fred',   'active': false }
+     *   { 'userVO': 'barney', 'active': true },
+     *   { 'userVO': 'fred',   'active': false }
      * ];
      *
      * // The `_.matches` iteratee shorthand.
-     * _.some(users, { 'user': 'barney', 'active': false });
+     * _.some(users, { 'userVO': 'barney', 'active': false });
      * // => false
      *
      * // The `_.matchesProperty` iteratee shorthand.
@@ -8385,19 +8385,19 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'fred',   'age': 48 },
-     *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 42 },
-     *   { 'user': 'barney', 'age': 34 }
+     *   { 'userVO': 'fred',   'age': 48 },
+     *   { 'userVO': 'barney', 'age': 36 },
+     *   { 'userVO': 'fred',   'age': 42 },
+     *   { 'userVO': 'barney', 'age': 34 }
      * ];
      *
-     * _.sortBy(users, function(o) { return o.user; });
+     * _.sortBy(users, function(o) { return o.userVO; });
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
      *
-     * _.sortBy(users, ['user', 'age']);
+     * _.sortBy(users, ['userVO', 'age']);
      * // => objects for [['barney', 34], ['barney', 36], ['fred', 42], ['fred', 48]]
      *
-     * _.sortBy(users, 'user', function(o) {
+     * _.sortBy(users, 'userVO', function(o) {
      *   return Math.floor(o.age / 10);
      * });
      * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 42]]
@@ -8548,10 +8548,10 @@
      * @example
      *
      * var greet = function(greeting, punctuation) {
-     *   return greeting + ' ' + this.user + punctuation;
+     *   return greeting + ' ' + this.userVO + punctuation;
      * };
      *
-     * var object = { 'user': 'fred' };
+     * var object = { 'userVO': 'fred' };
      *
      * var bound = _.bind(greet, object, 'hi');
      * bound('!');
@@ -8593,9 +8593,9 @@
      * @example
      *
      * var object = {
-     *   'user': 'fred',
+     *   'userVO': 'fred',
      *   'greet': function(greeting, punctuation) {
-     *     return greeting + ' ' + this.user + punctuation;
+     *     return greeting + ' ' + this.userVO + punctuation;
      *   }
      * };
      *
@@ -8604,7 +8604,7 @@
      * // => 'hi fred!'
      *
      * object.greet = function(greeting, punctuation) {
-     *   return greeting + 'ya ' + this.user + punctuation;
+     *   return greeting + 'ya ' + this.userVO + punctuation;
      * };
      *
      * bound('!');
@@ -9566,8 +9566,8 @@
      * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
      * @example
      *
-     * var object = { 'user': 'fred' };
-     * var other = { 'user': 'fred' };
+     * var object = { 'userVO': 'fred' };
+     * var other = { 'userVO': 'fred' };
      *
      * _.eq(object, object);
      * // => true
@@ -9898,8 +9898,8 @@
      * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
      * @example
      *
-     * var object = { 'user': 'fred' };
-     * var other = { 'user': 'fred' };
+     * var object = { 'userVO': 'fred' };
+     * var other = { 'userVO': 'fred' };
      *
      * _.isEqual(object, other);
      * // => true
@@ -10172,7 +10172,7 @@
      * @returns {boolean} Returns `true` if `object` is a match, else `false`.
      * @example
      *
-     * var object = { 'user': 'fred', 'age': 40 };
+     * var object = { 'userVO': 'fred', 'age': 40 };
      *
      * _.isMatch(object, { 'age': 40 });
      * // => true
@@ -11083,8 +11083,8 @@
      * @returns {Object} Returns `object`.
      * @example
      *
-     * _.defaults({ 'user': 'barney' }, { 'age': 36 }, { 'user': 'fred' });
-     * // => { 'user': 'barney', 'age': 36 }
+     * _.defaults({ 'userVO': 'barney' }, { 'age': 36 }, { 'userVO': 'fred' });
+     * // => { 'userVO': 'barney', 'age': 36 }
      */
     var defaults = rest(function(args) {
       args.push(undefined, assignInDefaults);
@@ -11105,8 +11105,8 @@
      * @returns {Object} Returns `object`.
      * @example
      *
-     * _.defaultsDeep({ 'user': { 'name': 'barney' } }, { 'user': { 'name': 'fred', 'age': 36 } });
-     * // => { 'user': { 'name': 'barney', 'age': 36 } }
+     * _.defaultsDeep({ 'userVO': { 'name': 'barney' } }, { 'userVO': { 'name': 'fred', 'age': 36 } });
+     * // => { 'userVO': { 'name': 'barney', 'age': 36 } }
      *
      */
     var defaultsDeep = rest(function(args) {
@@ -11651,8 +11651,8 @@
      * @example
      *
      * var users = {
-     *   'fred':    { 'user': 'fred',    'age': 40 },
-     *   'pebbles': { 'user': 'pebbles', 'age': 1 }
+     *   'fred':    { 'userVO': 'fred',    'age': 40 },
+     *   'pebbles': { 'userVO': 'pebbles', 'age': 1 }
      * };
      *
      * _.mapValues(users, function(o) { return o.age; });
@@ -11692,7 +11692,7 @@
      * @example
      *
      * var users = {
-     *   'data': [{ 'user': 'barney' }, { 'user': 'fred' }]
+     *   'data': [{ 'userVO': 'barney' }, { 'userVO': 'fred' }]
      * };
      *
      * var ages = {
@@ -11700,7 +11700,7 @@
      * };
      *
      * _.merge(users, ages);
-     * // => { 'data': [{ 'user': 'barney', 'age': 36 }, { 'user': 'fred', 'age': 40 }] }
+     * // => { 'data': [{ 'userVO': 'barney', 'age': 36 }, { 'userVO': 'fred', 'age': 40 }] }
      */
     var merge = createAssigner(function(object, source, srcIndex) {
       baseMerge(object, source, srcIndex);
@@ -13520,12 +13520,12 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 40 }
+     *   { 'userVO': 'barney', 'age': 36 },
+     *   { 'userVO': 'fred',   'age': 40 }
      * ];
      *
      * _.filter(users, _.conforms({ 'age': _.partial(_.gt, _, 38) }));
-     * // => [{ 'user': 'fred', 'age': 40 }]
+     * // => [{ 'userVO': 'fred', 'age': 40 }]
      */
     function conforms(source) {
       return baseConforms(baseClone(source, true));
@@ -13541,7 +13541,7 @@
      * @returns {Function} Returns the new function.
      * @example
      *
-     * var object = { 'user': 'fred' };
+     * var object = { 'userVO': 'fred' };
      * var getter = _.constant(object);
      *
      * getter() === object;
@@ -13606,7 +13606,7 @@
      * @returns {*} Returns `value`.
      * @example
      *
-     * var object = { 'user': 'fred' };
+     * var object = { 'userVO': 'fred' };
      *
      * _.identity(object) === object;
      * // => true
@@ -13630,8 +13630,8 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36 },
-     *   { 'user': 'fred',   'age': 40 }
+     *   { 'userVO': 'barney', 'age': 36 },
+     *   { 'userVO': 'fred',   'age': 40 }
      * ];
      *
      * // Create custom iteratee shorthands.
@@ -13643,7 +13643,7 @@
      * });
      *
      * _.filter(users, 'age > 36');
-     * // => [{ 'user': 'fred', 'age': 40 }]
+     * // => [{ 'userVO': 'fred', 'age': 40 }]
      */
     function iteratee(func) {
       return baseIteratee(typeof func == 'function' ? func : baseClone(func, true));
@@ -13665,12 +13665,12 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney', 'age': 36, 'active': true },
-     *   { 'user': 'fred',   'age': 40, 'active': false }
+     *   { 'userVO': 'barney', 'age': 36, 'active': true },
+     *   { 'userVO': 'fred',   'age': 40, 'active': false }
      * ];
      *
      * _.filter(users, _.matches({ 'age': 40, 'active': false }));
-     * // => [{ 'user': 'fred', 'age': 40, 'active': false }]
+     * // => [{ 'userVO': 'fred', 'age': 40, 'active': false }]
      */
     function matches(source) {
       return baseMatches(baseClone(source, true));
@@ -13692,12 +13692,12 @@
      * @example
      *
      * var users = [
-     *   { 'user': 'barney' },
-     *   { 'user': 'fred' }
+     *   { 'userVO': 'barney' },
+     *   { 'userVO': 'fred' }
      * ];
      *
-     * _.find(users, _.matchesProperty('user', 'fred'));
-     * // => { 'user': 'fred' }
+     * _.find(users, _.matchesProperty('userVO', 'fred'));
+     * // => { 'userVO': 'fred' }
      */
     function matchesProperty(path, srcValue) {
       return baseMatchesProperty(path, baseClone(srcValue, true));
@@ -13860,7 +13860,7 @@
      * @category Util
      * @example
      *
-     * var object = { 'user': 'fred' };
+     * var object = { 'userVO': 'fred' };
      *
      * _.noop(object) === undefined;
      * // => true
