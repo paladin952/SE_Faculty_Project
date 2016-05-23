@@ -204,7 +204,7 @@
     assert.strictEqual(this.ajaxSettings.emulateJSON, false);
   });
 
-  QUnit.test('#1756 - Call userVO provided beforeSend function.', function(assert) {
+  QUnit.test('#1756 - Call user provided beforeSend function.', function(assert) {
     assert.expect(4);
     Backbone.emulateHTTP = true;
     var model = new Backbone.Model;

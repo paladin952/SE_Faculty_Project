@@ -4,7 +4,7 @@ package com.se.database.dao.model.users;
 public class LoginUserVo extends UserVO {
 
     /**
-     * Enum for setting the userVO's type
+     * Enum for setting the user's type
      */
     public enum UserType {
 
@@ -33,7 +33,7 @@ public class LoginUserVo extends UserVO {
 
 
     /**
-     * The type of the userVO
+     * The type of the user
      */
     private UserType userType = UserType.TEACHER;
 

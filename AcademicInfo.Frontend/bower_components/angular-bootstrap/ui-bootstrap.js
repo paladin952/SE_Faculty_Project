@@ -475,7 +475,7 @@ angular.module('ui.bootstrap.carousel', [])
     if (direction === undefined) {
       direction = nextIndex > self.getCurrentIndex() ? 'next' : 'prev';
     }
-    //Prevent this userVO-triggered transition from occurring if there is already one in progress
+    //Prevent this user-triggered transition from occurring if there is already one in progress
     if (nextSlide.slide.index !== currentIndex &&
       !$scope.$currentTransition) {
       goNext(nextSlide.slide, nextIndex, direction);
@@ -6509,7 +6509,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
       isLoadingSetter(originalScope, true);
       isNoResultsSetter(originalScope, false);
       $q.when(parserResult.source(originalScope, locals)).then(function(matches) {
-        //it might happen that several async queries were in progress if a userVO were typing fast
+        //it might happen that several async queries were in progress if a user were typing fast
         //but we are interested only in responses that correspond to the current view value
         var onCurrentRequest = inputValue === modelCtrl.$viewValue;
         if (onCurrentRequest && hasFocus) {
@@ -6536,7 +6536,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
 
             element.attr('aria-expanded', true);
 
-            //Select the single remaining option if userVO input matches
+            //Select the single remaining option if user input matches
             if (selectOnExact && scope.matches.length === 1 && inputIsExactMatch(inputValue, 0)) {
               if (angular.isNumber(scope.debounceUpdate) || angular.isObject(scope.debounceUpdate)) {
                 $$debounce(function() {
@@ -6608,7 +6608,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
       scope.position.top += element.prop('offsetHeight');
     }
 
-    //we need to propagate userVO's query so we can higlight matches
+    //we need to propagate user's query so we can higlight matches
     scope.query = undefined;
 
     //Declare the timeout promise var outside the function scope so that stacked calls can be cancelled later
@@ -6819,7 +6819,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
         }
 
         if (!inputValue) {
-          // Reset in case userVO had typed something previously.
+          // Reset in case user had typed something previously.
           modelCtrl.$setValidity('editable', true);
           return null;
         }
@@ -6947,7 +6947,7 @@ angular.module('ui.bootstrap.typeahead', ['ui.bootstrap.debounce', 'ui.bootstrap
 
     return function(matchItem, query) {
       if (!isSanitizePresent && containsHtml(matchItem)) {
-        $log.warn('Unsafe use of typeahead please use ngSanitize'); // Warn the userVO about the danger
+        $log.warn('Unsafe use of typeahead please use ngSanitize'); // Warn the user about the danger
       }
       matchItem = query ? ('' + matchItem).replace(new RegExp(escapeRegexp(query), 'gi'), '<strong>$&</strong>') : matchItem; // Replaces the capture string with a the same string inside of a "strong" tag
       if (!isSanitizePresent) {

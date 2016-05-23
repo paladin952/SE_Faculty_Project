@@ -15,23 +15,23 @@ public interface IPersonDAO {
     List<PersonVO> list();
 
     /**
-     * Returns a personVO having a given id
+     * Returns a person having a given id
      * @param id the id to look up
-     * @return a personVO (or null if the id doesn't exist)
+     * @return a person (or null if the id doesn't exist)
      */
     PersonVO getByID(int id);
 
     /**
-     * Updates a personVO, using the id passed as argument to identify it
-     * @param person the updated personVO
-     * @return true if a personVO having the id was updated, false otherwise (false means a new personVO is added)
+     * Updates a person, using the id passed as argument to identify it
+     * @param person the updated person
+     * @return true if a person having the id was updated, false otherwise (false means a new person is added)
      */
     PersonVO updateOrSave(PersonVO person);
 
     /**
-     * Deletes a personVO, using the id passed as argument to identify it
-     * @param id the personVO's id
-     * @return true if a personVO having the id was deleted, false otherwise
+     * Deletes a person, using the id passed as argument to identify it
+     * @param id the person's id
+     * @return true if a person having the id was deleted, false otherwise
      */
     Boolean deleteByID(int id);
 }

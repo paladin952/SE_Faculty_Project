@@ -2,22 +2,22 @@
     'use strict';
 
     function Admin() {
-        this.personVO = null;
+        this.person = null;
     }
 
     function Admin(person) {
-        this.personVO = person;
+        this.person = person;
     }
 
     Admin.fromDto = function (dto) {
         var admin = new Admin();
-        admin.personVO = dto.personVO;
+        admin.person = dto.personVO;
         return admin;
     };
 
     Admin.prototype.toDto = function () {
         return {
-            "personVO": this.personVO
+            "personVO": this.person
         };
     };
 

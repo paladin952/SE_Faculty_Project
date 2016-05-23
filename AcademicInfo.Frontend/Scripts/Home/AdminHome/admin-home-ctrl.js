@@ -77,8 +77,6 @@
                 console.log("add teacher");
                 console.log($scope.teacherToAdd);
                 $scope.teacherToAdd.chief = false;
-                var tmp = $scope.teacherToAdd.toDto();
-                console.log(tmp);
                 $http.put('http://localhost:9001/professor/add', $scope.teacherToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingTeachers.push(Teacher.fromDto(chief));

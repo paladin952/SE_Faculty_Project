@@ -16,21 +16,21 @@ public interface IUserDAO {
     List<UserVO> list();
 
     /**
-     * Get a userVO by id
-     * @return The userVO
+     * Get a user by id
+     * @return The user
      */
     UserVO getById(int id);
 
     /**
-     * Delete a userVO by id
+     * Delete a user by id
      * @param id The id
      * @return "Success" or "Failure"
      */
     void deleteById(int id);
 
     /**
-     * Update the userVO with a new one
-     * @param newUser The userVO to be updated
+     * Update the user with a new one
+     * @param newUser The user to be updated
      */
     UserVO updateUser(UserVO newUser);
 
@@ -39,7 +39,7 @@ public interface IUserDAO {
      * USED FOR LOGIN
      * @param name The name to be checked
      * @param password The password
-     * @return an existing userVO or null
+     * @return an existing user or null
      */
     UserVO getByNameAndPass(String name, String password);
 

@@ -44,7 +44,7 @@ public class PersonDAOImpl implements IPersonDAO {
         if (exists != null)
         {
             PersonVO pers = (PersonVO) session.load(PersonVO.class, person.getId());
-//            pers.setUserVO(personVO.getUserVO());
+//            pers.setUserVO(person.getUserVO());
             pers.setFirstName(person.getFirstName());
             pers.setLastName(person.getLastName());
             pers.setAddress(person.getAddress());

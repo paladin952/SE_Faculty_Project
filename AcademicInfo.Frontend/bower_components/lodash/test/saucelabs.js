@@ -563,8 +563,8 @@ Job.prototype.remove = function(callback) {
       _.defer(onRemove);
       return;
     }
-    request.del(_.template('https://saucelabs.com/rest/v1/${userVO}/jobs/${id}')(this), {
-      'auth': { 'user': this.userVO, 'pass': this.pass }
+    request.del(_.template('https://saucelabs.com/rest/v1/${user}/jobs/${id}')(this), {
+      'auth': { 'user': this.user, 'pass': this.pass }
     }, onRemove);
   });
 };
@@ -623,8 +623,8 @@ Job.prototype.start = function(callback) {
     return this;
   }
   this.starting = true;
-  request.post(_.template('https://saucelabs.com/rest/v1/${userVO}/js-tests')(this), {
-    'auth': { 'user': this.userVO, 'pass': this.pass },
+  request.post(_.template('https://saucelabs.com/rest/v1/${user}/js-tests')(this), {
+    'auth': { 'user': this.user, 'pass': this.pass },
     'json': this.options
   }, _.bind(onJobStart, this));
 
@@ -645,8 +645,8 @@ Job.prototype.status = function(callback) {
   }
   this._pollerId = null;
   this.checking = true;
-  request.post(_.template('https://saucelabs.com/rest/v1/${userVO}/js-tests/status')(this), {
-    'auth': { 'user': this.userVO, 'pass': this.pass },
+  request.post(_.template('https://saucelabs.com/rest/v1/${user}/js-tests/status')(this), {
+    'auth': { 'user': this.user, 'pass': this.pass },
     'json': { 'js tests': [this.taskId] }
   }, _.bind(onJobStatus, this));
 
@@ -676,8 +676,8 @@ Job.prototype.stop = function(callback) {
     _.defer(onStop);
     return this;
   }
-  request.put(_.template('https://saucelabs.com/rest/v1/${userVO}/jobs/${id}/stop')(this), {
-    'auth': { 'user': this.userVO, 'pass': this.pass }
+  request.put(_.template('https://saucelabs.com/rest/v1/${user}/jobs/${id}/stop')(this), {
+    'auth': { 'user': this.user, 'pass': this.pass }
   }, onStop);
 
   return this;
@@ -701,7 +701,7 @@ function Tunnel(properties) {
 
   var all = _.map(this.platforms, _.bind(function(platform) {
     return new Job(_.merge({
-      "userVO": this.userVO,
+      'user': this.user,
       'pass': this.pass,
       'tunnel': this,
       'options': { 'platforms': [platform] }
@@ -748,7 +748,7 @@ function Tunnel(properties) {
   this.attempts = 0;
   this.restarting = this.running = this.starting = this.stopping = false;
   this.jobs = { 'active': active, 'all': all, 'queue': queue };
-  this.connection = new SauceTunnel(this.userVO, this.pass, this.id, this.tunneled, ['-P', '0']);
+  this.connection = new SauceTunnel(this.user, this.pass, this.id, this.tunneled, ['-P', '0']);
 }
 
 util.inherits(Tunnel, EventEmitter);
