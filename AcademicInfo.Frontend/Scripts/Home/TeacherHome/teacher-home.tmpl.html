@@ -85,9 +85,15 @@
                                 <div class="modal-body">
                                     <table>
                                         <tr>
+                                            <td class="col-md-2">ID</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Id" title="Id" ng-model="studEval.id">
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td class="col-md-2">Select student</td>
                                             <td class="col-md-2">
-                                                <select class="form-control" ng-options="students.person.firstName + students.person.lastName for students in existingStudents" ng-model="selectedStudent">
+                                                <select class="form-control" ng-options="students.person.firstName + students.person.lastName for students in existingStudents" ng-model="studEval.student">
                                                     <option></option>
                                                 </select>
                                             </td>
@@ -95,7 +101,7 @@
                                         <tr>
                                             <td class="col-md-2">Select course</td>
                                             <td class="col-md-2">
-                                                <select class="form-control" ng-options="course.name for courses in existingCourses" ng-model="">
+                                                <select class="form-control" ng-options="course.name for courses in existingCourses" ng-model="studEval.course">
                                                     <option></option>
                                                 </select>
                                             </td>
@@ -103,7 +109,13 @@
                                         <tr>
                                             <td class="col-md-2">Grade</td>
                                             <td class="col-md-2">
-                                                <input type="text" class="form-control" name="Grade" title="Grade" ng-model="courseToAdd.evaluationType">
+                                                <input type="text" class="form-control" name="Grade" title="Grade" ng-model="studEval.grade">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Absent</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Absent" title="Absent" ng-model="studEval.absent">
                                             </td>
                                         </tr>
                                     </table>
@@ -116,7 +128,7 @@
                         </div>
                     </div>
 
-                    
+
                     <button class="btn btn-info" data-toggle="modal" data-target="#assignGradesModal">Assign Grades</button>
                 </td>
 

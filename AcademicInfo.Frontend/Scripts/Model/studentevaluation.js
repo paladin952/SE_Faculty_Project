@@ -9,12 +9,12 @@
         this.student = null;
     }
 
-    function StudentEvaluation(id) {
+    function StudentEvaluation(id, evaluation, grade, absent, student) {
         this.id = id;
-        this.evaluation = null;
-        this.grade = 1;
-        this.absent = false;
-        this.student = null;
+        this.evaluation = evaluation;
+        this.grade = grade;
+        this.absent = absent;
+        this.student = student;
     }
 
     StudentEvaluation.fromDto = function (dto) {

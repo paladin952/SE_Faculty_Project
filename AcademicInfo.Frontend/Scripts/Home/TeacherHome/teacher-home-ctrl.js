@@ -11,12 +11,13 @@
             $s.acceptedCourses = [];
             $s.existingEvaluation = [];
             $s.courseToAdd = new Course();
+            $s.studEval = new StudentEvaluation();
+
 
             $s.goToLogin = function(){
                 $location.path('/login');
                 $root.userToLogin = null;
             };
-
 
             $http.get('http://localhost:9001/student/all')
                 .then(
@@ -27,19 +28,10 @@
                         console.error(response);
                     });
 
-            $http.get('http://localhost:9001/existingevaluation/all')
-                .then(
-                    function(response) {
-                        $s.existingEvaluation= _.map(response.data, StudentEvaluation.fromDto);
-                    },
-                    function errorCallback(response) {
-                        console.error(response);
-                    });
-
             $http.get('http://localhost:9001/course/all')
                 .then(
                     function(response) {
-                        $s.acceptedCourses= _.map(response.data, Course.fromDto);
+                        $s.existingCourses= _.map(response.data, Course.fromDto);
                     },
                     function errorCallback(response) {
                         console.error(response);
@@ -64,7 +56,14 @@
             };
 
             $s.assign = function(){
-
+                $http.put('http://localhost:9001/studentevaluation/add', $s.studEval.toDto())
+                    .success(function (chief) {
+                        alert("Successfully added!");
+                    })
+                    .error(function (err) {
+                        alert(err);
+                        console.error(err);
+                    });
             };
 
         }]);
