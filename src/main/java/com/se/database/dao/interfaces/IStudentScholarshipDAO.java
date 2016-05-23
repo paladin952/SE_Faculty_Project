@@ -18,11 +18,17 @@ public interface IStudentScholarshipDAO {
     List<StudentScholarshipVO> list();
 
     /**
-     * Get a user by id
+     * Get a ScholarshipVO by student id
      *
-     * @return The user
+     * @return The ScholarshipVO
      */
-    List<ScholarshipVO> getScholarshipsForStudent(StudentVO studentVO);
+    List<ScholarshipVO> getScholarshipsForStudent(int studentVOId);
 
-    void deleteScholarshipForStudent(int scholarshipId, int studentId);
+    List<StudentScholarshipVO> getStudentScholarshipsForStudent(int studentVOId);
+
+    StudentScholarshipVO updateOrSave(StudentScholarshipVO newStudentScholarshipVO);
+
+    Boolean deleteScholarshipForStudent(int scholarshipId, int studentId);
+
+    Boolean deleteById(int studentScholarshipId);
 }

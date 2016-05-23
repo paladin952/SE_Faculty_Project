@@ -98,7 +98,7 @@ public class StudentVO implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder(super.toString());
         sb.append("\n. Group ID: ");
-        sb.append(group);
+        sb.append(group.getId());
         sb.append(". Status: ");
         sb.append(status);
         sb.append(". Is extended: ");
