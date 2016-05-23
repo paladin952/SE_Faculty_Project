@@ -92,10 +92,10 @@ public class ProfessorVO implements Serializable {
     @Override
     public String toString() {
         return "ProfessorVO{" +
-                "departmentVO=" + departmentVO.toString() +
+                "departmentVO=" + ((departmentVO!=null)?departmentVO.toString():"null") +
                 ", chief=" + isChief +
                 ", wage=" + wage +
-                ", personVO=" + personVO.toString() +
+                ", personVO=" + ((personVO!=null)?personVO.toString():"null") +
                 '}';
     }
 }
