@@ -61,6 +61,7 @@
             $scope.addChief = function () {
                 console.log("add chief");
                 console.log($scope.chiefToAdd.toDto());
+                $scope.chiefToAdd.chief = true;
                 $http.put('http://localhost:9001/professor/add', $scope.chiefToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingDepartmentChiefs.push(Teacher.fromDto(chief));
@@ -76,6 +77,7 @@
             $scope.addTeacher = function () {
                 console.log("add teacher");
                 console.log($scope.teacherToAdd);
+                $scope.teacherToAdd.chief = false;
                 $http.put('http://localhost:9001/professor/add', $scope.teacherToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingTeachers.push(Teacher.fromDto(chief));
