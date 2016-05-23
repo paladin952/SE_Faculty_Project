@@ -1,4 +1,4 @@
-(function (ng, console, _,  Student, Teacher, User, Person, Department) {
+(function (ng, console, _,  Student, Teacher, User, Person, Department, Group) {
     'use strict';
 
     ng.module('adminHome')
@@ -15,6 +15,8 @@
             $scope.existingTeachers = [];
             $scope.existingDepartmentChiefs = [];
             $scope.existingDepartments = [];
+            $scope.existingGroups = [];
+
 
 
             $http.get('http://localhost:9001/student/all')
@@ -28,6 +30,18 @@
                     console.error(response);
                     $scope.isLoadingData = false;
                 });
+
+            $http.get('http://localhost:9001/group/all')
+                .then(
+                    function(response) {
+                        $scope.existingGroups= _.map(response.data, Group.fromDto);
+                        $scope.isLoadingData = false;
+                        console.log($scope.existingGroups);
+                    },
+                    function errorCallback(response) {
+                        console.error(response);
+                        $scope.isLoadingData = false;
+                    });
 
             $http.get('http://localhost:9001/department/all')
                 .then(
@@ -163,4 +177,4 @@
             };
 
         }]);
-})(this.angular, this.console, this._, this.Model.Student, this.Model.Teacher, this.Model.User, this.Model.Person, this.Model.Department);
+})(this.angular, this.console, this._, this.Model.Student, this.Model.Teacher, this.Model.User, this.Model.Person, this.Model.Department, this.Model.Group);

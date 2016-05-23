@@ -627,7 +627,9 @@
                         <tr>
                             <td class="col-md-2">Group</td>
                             <td class="col-md-2">
-                                <input type="text" class="form-control" name="Group" title="Group" ng-model="studentToAdd.group" checked>
+                                <select class="form-control" ng-options="groups.name for groups in existingGroups" ng-model="studentToAdd.group">
+                                    <option></option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
