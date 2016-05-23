@@ -1,4 +1,4 @@
-(function (ng, console, _,  Student, Teacher, User, Person) {
+(function (ng, console, _,  Student, Teacher, User, Person, Department) {
     'use strict';
 
     ng.module('adminHome')

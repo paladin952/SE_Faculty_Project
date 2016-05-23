@@ -4,29 +4,24 @@
     function Department() {
         this.id = -1;
         this.name = '';
-        this.teachers = [];
     }
 
-    function Department(name, teachers) {
+    function Department(id, name) {
+        this.id = id;
         this.name = name;
-        this.teachers = teachers;
     }
 
     Department.fromDto = function (dto) {
         var department = new Department();
         department.id = dto.id;
         department.name = dto.name;
-        department.teachers = dto._.map(dto.professors, function (dto) {
-            return Model.Teacher.fromDto(dto);
-        });
         return department;
     };
 
     Department.prototype.toDto = function () {
         return {
             "id": this.id,
-            "name": this.name,
-            "professors": _.map(this.teachers, function (teach) { return teach.toDto(); })
+            "name": this.name
         };
     };
 
