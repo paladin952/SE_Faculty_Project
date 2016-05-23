@@ -87,7 +87,7 @@
                                         <tr>
                                             <td class="col-md-2">Select student</td>
                                             <td class="col-md-2">
-                                                <select class="form-control" ng-options="students.person.firstName + students.person.lastName for students in existingStudents" ng-model="studEval.student">
+                                                <select class="form-control" ng-options="students.personVO.firstName + students.personVO.lastName for students in existingStudents" ng-model="studEval.student">
                                                     <option></option>
                                                 </select>
                                             </td>
@@ -95,7 +95,7 @@
                                         <tr>
                                             <td class="col-md-2">Select course</td>
                                             <td class="col-md-2">
-                                                <select class="form-control" ng-options="courses.name for courses in existingCourses" ng-model="studEval.course">
+                                                <select class="form-control" ng-options="courses.courseVO.name for courses in existingEvaluation" ng-model="studEval.evaluationVO">
                                                     <option></option>
                                                 </select>
                                             </td>

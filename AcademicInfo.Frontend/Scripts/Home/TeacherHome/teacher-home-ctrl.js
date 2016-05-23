@@ -1,4 +1,4 @@
-(function (ng, console, _,  Course, Student, User, Person, StudentEvaluation) {
+(function (ng, console, _,  Course, Student, User, Person, StudentEvaluation, Evaluation) {
     'use strict';
 
     ng.module('teacherHome')
@@ -23,6 +23,17 @@
                 .then(
                     function(response) {
                         $s.existingStudents= _.map(response.data, Student.fromDto);
+                    },
+                    function errorCallback(response) {
+                        console.error(response);
+                    });
+
+            $http.get('http://localhost:9001/evaluation/all')
+                .then(
+                    function(response) {
+                        console.log("Evaluation");
+                        $s.existingEvaluation= _.map(response.data, Evaluation.fromDto);
+                        console.log($s.existingEvaluation);
                     },
                     function errorCallback(response) {
                         console.error(response);
@@ -56,6 +67,8 @@
             };
 
             $s.assign = function(){
+                console.log("assign");
+                console.log($s.studEval.toDto());
                 $http.put('http://localhost:9001/studentevaluation/add', $s.studEval.toDto())
                     .success(function (chief) {
                         alert("Successfully added!");
@@ -68,4 +81,4 @@
 
         }]);
 
-})(this.angular,  this.console, this._, this.Model.Course, this.Model.Student, this.Model.User, this.Model.Person, this.Model.StudentEvaluation);
+})(this.angular,  this.console, this._, this.Model.Course, this.Model.Student, this.Model.User, this.Model.Person, this.Model.StudentEvaluation, this.Model.Evaluation);
