@@ -46,7 +46,6 @@ public class StudentGroupDAOImpl implements IStudentGroupDAO {
             sg.setId(student_group.getId());
             sg.setCurrentSemester(student_group.getCurrentSemester());
             sg.setStudents(student_group.getStudents());
-
             return sg;
         }
         else

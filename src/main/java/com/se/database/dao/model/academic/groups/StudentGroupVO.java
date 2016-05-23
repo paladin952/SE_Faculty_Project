@@ -25,6 +25,12 @@ public class StudentGroupVO implements Serializable {
     public StudentGroupVO() {
     }
 
+    public StudentGroupVO(int groupId, int currentSemester, List<StudentVO> students){
+        this.id = id;
+        this.currentSemester = currentSemester;
+        this.students = students;
+    }
+
     public StudentGroupVO(int groupId, int currentSemester) {
 
         this.id = groupId;
