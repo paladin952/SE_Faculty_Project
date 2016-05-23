@@ -22,6 +22,7 @@
                         {
                             if(ev.student === $root.userToLogin){
                                 $s.evalForLoggedUser.push(ev);
+                                
                             }
                         }
                     },
