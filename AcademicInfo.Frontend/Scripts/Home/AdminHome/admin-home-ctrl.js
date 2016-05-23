@@ -88,7 +88,7 @@
             };
 
             $scope.addStudent = function () {
-                $http.put('/api/Students/', $scope.studentToAdd.toDto())
+                $http.put('http://localhost:9001/student/add', $scope.studentToAdd.toDto())
                     .success(function (chief) {
                         $scope.existingStudents.push(Student.fromDto(chief));
                         $scope.studentToAdd = new Teacher();
@@ -99,7 +99,7 @@
             };
 
             $scope.updateChief = function (chief) {
-                $http.put('http://localhost:9001/professor/update', chief.toDto())
+                $http.put('http://localhost:9001/professor/add', chief.toDto())
                     .success(function () {
                     })
                     .error(function (err) {
@@ -108,7 +108,7 @@
             };
 
             $scope.updateTeacher = function (teacher) {
-                $http.put('http://localhost:9001/professor/update', teacher.toDto())
+                $http.put('http://localhost:9001/professor/add', teacher.toDto())
                     .success(function () {
                     })
                     .error(function (err) {
@@ -117,7 +117,8 @@
             };
 
             $scope.updateStudent = function (student) {
-                $http.put('http://localhost:9001/student/update', student.toDto())
+                console.log(student);
+                $http.put('http://localhost:9001/student/add', student.toDto())
                     .success(function () {
                     })
                     .error(function (err) {

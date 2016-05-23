@@ -2,7 +2,7 @@
     'use strict';
 
     function Person() {
-        this.user = new User();
+        this.userVO = new User();
         this.firstName = '';
         this.lastName = '';
         this.dob = '';
@@ -12,7 +12,7 @@
     }
 
     function Person(user, first, last, dob, ssn, address, phone) {
-        this.user = user;
+        this.userVO = user;
         this.firstName = first;
         this.lastName = last;
         this.dob = dob;
@@ -23,7 +23,7 @@
 
     Person.fromDto = function (dto) {
         var person = new Person();
-        person.user = dto.userVO;
+        person.userVO = dto.userVO;
         person.firstName = dto.firstName;
         person.lastName = dto.lastName;
         person.dob = dto.dob;
@@ -42,7 +42,7 @@
             "ssn": this.ssn,
             "address": this.address,
             "phoneNo": this.phoneNo,
-            "userVO": this.user
+            "userVO": this.userVO
         };
     };
 
