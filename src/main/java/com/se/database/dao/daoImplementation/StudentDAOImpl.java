@@ -33,7 +33,7 @@ public class StudentDAOImpl implements IStudentDAO {
 
     @Override
     public StudentVO getByID(int id) {
-        return (StudentVO) sessionFactory.getCurrentSession().get(PersonVO.class, id);
+        return (StudentVO) sessionFactory.getCurrentSession().get(StudentVO.class, id);
     }
 
     @Override

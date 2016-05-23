@@ -73,15 +73,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table ubbdb.admin: ~9 rows (approximately)
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` (`AdminID`, `UserID`) VALUES
-	(1, 1),
-	(9, 8),
-	(2, 14),
-	(8, 19),
-	(7, 22),
-	(3, 24),
-	(4, 28),
-	(5, 29),
-	(6, 30);
+	(1, 1);
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 
 
@@ -216,7 +208,6 @@ INSERT INTO `enrolled` (`EnrolledID`, `StudentID`, `CourseID`) VALUES
 	(23, 26, 'AI101'),
 	(24, 27, 'AI101'),
 	(25, 28, 'AI101'),
-	(26, 29, 'AI101'),
 	(27, 4, 'DBMS101'),
 	(28, 5, 'DBMS101'),
 	(29, 6, 'DBMS101'),
@@ -240,7 +231,6 @@ INSERT INTO `enrolled` (`EnrolledID`, `StudentID`, `CourseID`) VALUES
 	(47, 26, 'DBMS101'),
 	(48, 27, 'DBMS101'),
 	(49, 28, 'DBMS101'),
-	(50, 29, 'DBMS101'),
 	(51, 24, 'AI101'),
 	(52, 24, 'DBMS101'),
 	(78, 4, 'SDI101'),
@@ -267,7 +257,6 @@ INSERT INTO `enrolled` (`EnrolledID`, `StudentID`, `CourseID`) VALUES
 	(99, 24, 'SDI101'),
 	(100, 27, 'SDI101'),
 	(101, 28, 'SDI101'),
-	(102, 29, 'SDI101'),
 	(103, 4, 'SE101'),
 	(104, 5, 'SE101'),
 	(105, 6, 'SE101'),
@@ -292,7 +281,6 @@ INSERT INTO `enrolled` (`EnrolledID`, `StudentID`, `CourseID`) VALUES
 	(124, 24, 'SE101'),
 	(125, 27, 'SE101'),
 	(126, 28, 'SE101'),
-	(127, 29, 'SE101'),
 	(128, 4, 'WP101'),
 	(129, 5, 'WP101'),
 	(130, 6, 'WP101'),
@@ -316,8 +304,7 @@ INSERT INTO `enrolled` (`EnrolledID`, `StudentID`, `CourseID`) VALUES
 	(148, 26, 'WP101'),
 	(149, 24, 'WP101'),
 	(150, 27, 'WP101'),
-	(151, 28, 'WP101'),
-	(152, 29, 'WP101');
+	(151, 28, 'WP101');
 /*!40000 ALTER TABLE `enrolled` ENABLE KEYS */;
 
 
@@ -403,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `person` (
   CONSTRAINT `FK_PersonUserID` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.person: ~40 rows (approximately)
+-- Dumping data for table ubbdb.person: ~39 rows (approximately)
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Address`, `PhoneNo`, `UserID`) VALUES
 	(7, 'Radu', 'Corbu', '1995-06-02', 1, 'Lothric', 743760319, 8),
@@ -433,7 +420,6 @@ INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Addres
 	(31, 'Dana Alexandra', 'Ciubăncan', '1995-01-01', 2, 'Cluj', 0, 30),
 	(32, 'Dan', 'Chiorean', '1970-01-01', 1, 'Cluj', 0, 32),
 	(33, 'Tudor', 'Mihoc', '1970-01-01', 1, 'Cluj', 0, 43),
-	(34, 'Dănuț', 'Pop', '1970-01-01', 1, 'Cluj', 0, 44),
 	(35, 'Dan Mircea', 'Suciu', '1970-01-01', 1, 'Cluj', 0, 42),
 	(36, 'Adrian', 'Stercă', '1970-01-01', 1, 'Cluj', 0, 41),
 	(37, 'Sabina', 'Surdu', '1970-01-01', 1, 'Cluj', 0, 45),
@@ -463,7 +449,7 @@ CREATE TABLE IF NOT EXISTS `professor` (
   CONSTRAINT `FK_ProfessorPersonID` FOREIGN KEY (`PersonID`) REFERENCES `person` (`PersonID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.professor: ~15 rows (approximately)
+-- Dumping data for table ubbdb.professor: ~14 rows (approximately)
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
 INSERT INTO `professor` (`ProfessorID`, `DepartmentID`, `IsChief`, `Wage`, `PersonID`) VALUES
 	(7, 1, 1, 13.37, 43),
@@ -472,7 +458,6 @@ INSERT INTO `professor` (`ProfessorID`, `DepartmentID`, `IsChief`, `Wage`, `Pers
 	(11, 2, 0, 13.37, 46),
 	(12, 1, 0, 13.37, 40),
 	(15, 1, 0, 13.37, 35),
-	(16, 1, 0, 13.37, 34),
 	(17, 1, 0, 13.37, 39),
 	(18, 1, 0, 13.37, 32),
 	(19, 1, 0, 13.37, 45),
@@ -542,8 +527,7 @@ INSERT INTO `student` (`StudentID`, `GroupID`, `Status`, `IsExtended`, `PersonID
 	(25, 923, 'Enrolled', 0, 19),
 	(26, 923, 'Enrolled', 0, 22),
 	(27, 923, 'Enrolled', 0, 7),
-	(28, 923, 'Enrolled', 0, 20),
-	(29, 923, 'Enrolled', 0, 31);
+	(28, 923, 'Enrolled', 0, 20);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 
 
@@ -561,7 +545,7 @@ CREATE TABLE IF NOT EXISTS `studentevaluation` (
   CONSTRAINT `FK_StudentEvaluationStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.studentevaluation: ~1 rows (approximately)
+-- Dumping data for table ubbdb.studentevaluation: ~11 rows (approximately)
 /*!40000 ALTER TABLE `studentevaluation` DISABLE KEYS */;
 INSERT INTO `studentevaluation` (`StudentEvaluationID`, `EvaluationID`, `StudentID`, `Grade`, `IsAbsent`) VALUES
 	(5, 6, 27, 10, 0),
@@ -606,7 +590,7 @@ CREATE TABLE IF NOT EXISTS `studentoptionalcourse` (
   CONSTRAINT `FK_StudentOptionalCourseStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.studentoptionalcourse: ~0 rows (approximately)
+-- Dumping data for table ubbdb.studentoptionalcourse: ~4 rows (approximately)
 /*!40000 ALTER TABLE `studentoptionalcourse` DISABLE KEYS */;
 INSERT INTO `studentoptionalcourse` (`StudentOptionalCourseID`, `OptionalCourseID`, `StudentID`) VALUES
 	(2, 1, 27),
@@ -628,11 +612,10 @@ CREATE TABLE IF NOT EXISTS `studentscholarship` (
   CONSTRAINT `FK_StudentScholarshipStudentID` FOREIGN KEY (`StudentID`) REFERENCES `student` (`StudentID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.studentscholarship: ~0 rows (approximately)
+-- Dumping data for table ubbdb.studentscholarship: ~2 rows (approximately)
 /*!40000 ALTER TABLE `studentscholarship` DISABLE KEYS */;
 INSERT INTO `studentscholarship` (`StudentScholarshipID`, `ScholarshipID`, `StudentID`) VALUES
-	(2, 1, 11),
-	(3, 1, 29);
+	(2, 1, 11);
 /*!40000 ALTER TABLE `studentscholarship` ENABLE KEYS */;
 
 
@@ -644,7 +627,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.user: ~43 rows (approximately)
+-- Dumping data for table ubbdb.user: ~42 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES
 	(1, 'admin', 'admin'),
@@ -686,7 +669,6 @@ INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES
 	(41, 'p_forest', 'p_forest'),
 	(42, 'p_tzutzu', 'p_tzutzu'),
 	(43, 'p_tudormi', 'p_tudormi'),
-	(44, 'p_danutpo', 'p_danutpo'),
 	(45, 'p_sabinasu', 'p_sabinasu'),
 	(46, 'p_cameliaan', 'p_cameliaan'),
 	(47, 'p_septimiucr', 'p_septimiucr');
