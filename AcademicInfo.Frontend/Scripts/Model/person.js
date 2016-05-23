@@ -2,7 +2,7 @@
     'use strict';
 
     function Person() {
-        this.user = null;
+        this.user = new User();
         this.firstName = '';
         this.lastName = '';
         this.dob = '';

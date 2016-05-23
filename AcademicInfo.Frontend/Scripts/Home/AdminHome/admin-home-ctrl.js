@@ -69,7 +69,6 @@
                         $scope.chiefToAdd = new Teacher();
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
@@ -84,7 +83,6 @@
                         $scope.teacherToAdd = new Teacher();
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
@@ -96,7 +94,6 @@
                         $scope.studentToAdd = new Teacher();
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
@@ -106,7 +103,6 @@
                     .success(function () {
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
@@ -116,7 +112,6 @@
                     .success(function () {
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
@@ -126,7 +121,6 @@
                     .success(function () {
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
@@ -139,7 +133,6 @@
                         console.log("Successfuly deleted");
                     })
                     .error(function (err) {
-                        //alert(err);
                         console.log("Error deleted");
                         console.error(err);
                     });
@@ -153,7 +146,6 @@
                         _.remove($scope.existingDepartmentChiefs, { id: teacher.id });
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
@@ -165,7 +157,6 @@
                         _.remove($scope.existingStudents, { id: student.id });
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
