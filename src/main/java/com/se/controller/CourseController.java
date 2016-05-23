@@ -26,6 +26,7 @@ public class CourseController {
 
     @RequestMapping(value = "/add", method = RequestMethod.PUT)
     public ResponseEntity<CourseVO> updateCourse(@RequestBody CourseVO course) {
+        System.out.println((course!= null)?course.toString():"null");
         CourseVO tmp = iCourseDAO.updateOrSave(course);
         return new ResponseEntity<>(tmp, HttpStatus.OK);
     }

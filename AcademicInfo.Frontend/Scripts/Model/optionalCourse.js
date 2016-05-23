@@ -2,18 +2,18 @@
     'use strict';
 
     function OptionalCourse() {
-        this.groupNumber = '';
+        this.groupNo = '';
         this.course = '';
     }
 
     function OptionalCourse(groupNumber, course) {
-        this.groupNumber = groupNumber;
+        this.groupNo = groupNumber;
         this.course = course;
     }
 
     OptionalCourse.fromDto = function (dto) {
         var oc = new OptionalCourse();
-        oc.groupNumber = dto.groupNumber;
+        oc.groupNo = dto.groupNumber;
         oc.course = dto.course;
         return oc;
     };
@@ -21,7 +21,7 @@
     OptionalCourse.prototype.toDto = function () {
         return {
             "id": this.id,
-            "groupNumber": this.groupNumber,
+            "groupNo": this.groupNo,
             "course": this.this.course
         };
     };

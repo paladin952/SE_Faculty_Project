@@ -20,8 +20,9 @@
                         $s.studentEvaluations= _.map(response.data, StudentEvaluation.fromDto);
                         for (var ev in $s.studentEvaluations)
                         {
-                            if(ev.student === $root.userToLogin){
-                                $s.evalForLoggedUser.push(ev);
+                            var user = $s.studentEvaluations[ev].student.personVO.userVO;
+                            if(user.username === $root.userToLogin.username && user.password === $root.userToLogin.password){
+                                $s.evalForLoggedUser.push($s.studentEvaluations[ev]);
 
                             }
                         }
@@ -54,15 +55,18 @@
                 var idx = $s.optionalCourses.indexOf(course);
                 $("#addOptionalCourse" + course.course.name + "Button").removeClass("btn-info").addClass("btn-success");
                 $("#addOptionalCourse" + course.course.name + "Span").removeClass("glyphicon-plus").addClass("glyphicon-alert");
-                $s.mandatoryCourses.push(course.course);
-                $s.optionalCourses.splice(idx, 1);
-                $http.put('http://localhost:9001/course/add', $s.course.toDto())
+
+                console.log("course=");
+                console.log(course);
+                $http.put('http://localhost:9001/course/add', course.course)
                     .success(function (course) {
                         $s.mandatoryCourses.push(course.course);
                     })
                     .error(function (err) {
                         console.error(err);
                     });
+                console.log("course=");
+                console.log(course);
                 $http.delete('http://localhost:9001/optionalcourse/' + course.id)
                     .success(function () {
                         $s.optionalCourses.splice(idx, 1);
