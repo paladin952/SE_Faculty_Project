@@ -16,6 +16,8 @@ function main(argv) {
     new HttpServer({
         'GET':createServlet(StaticServlet),
         'POST':createServlet(StaticServlet),
+		'PUT':createServlet(StaticServlet),
+		'DELETE':createServlet(StaticServlet)
         'HEAD':createServlet(StaticServlet)
     }).start(Number(argv[2]) || DEFAULT_PORT);
 }

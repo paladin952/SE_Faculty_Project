@@ -34,7 +34,6 @@
                 var idx = $s.existingCourses.indexOf(course);
                 $("#acceptButton" + course.name).removeClass("btn-info").addClass("btn-success");
                 $s.acceptedCourses.push(course);
-                //$('#deleteConfirmModal'+ user.username).modal('close');
             };
 
             $s.deleteAcceptedCourse = function(ac) {

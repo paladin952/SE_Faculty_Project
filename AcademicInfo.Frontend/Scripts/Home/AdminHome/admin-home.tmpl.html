@@ -119,7 +119,7 @@
                                                 <tr>
                                                     <td class="col-md-2">Department</td>
                                                     <td class="col-md-2">
-                                                        <select class="form-control" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="c.department">
+                                                        <select class="form-control" ng-options="depts.name for depts in existingDepartments" ng-model="c.department">
                                                             <option></option>
                                                         </select>
                                                     </td>
@@ -240,7 +240,7 @@
                                                     <tr>
                                                         <td class="col-md-2">Department</td>
                                                         <td class="col-md-2">
-                                                            <select class="form-control" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="t.department">
+                                                            <select class="form-control" ng-options="depts.name for depts in existingDepartments" ng-model="t.department">
                                                                 <option></option>
                                                             </select>
                                                         </td>
@@ -459,7 +459,7 @@
                         <tr>
                         <td class="col-md-2">Department</td>
                         <td class="col-md-2">
-                            <select class="form-control" id="selectDepartment" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="chiefToAdd.department">
+                            <select class="form-control" ng-options="depts.name for depts in existingDepartments" ng-model="chiefToAdd.department">
                                 <option></option>
                             </select>
                         </td>
@@ -552,7 +552,7 @@
                         <tr>
                             <td class="col-md-2">Department</td>
                             <td class="col-md-2">
-                                <select class="form-control" id="selectDepartment" ng-options="depts.name + depts.name for depts in existingDepartments" ng-model="teacherToAdd.department">
+                                <select class="form-control" id="selectDepartment" ng-options="depts.name for depts in existingDepartments" ng-model="teacherToAdd.department">
                                     <option></option>
                                 </select>
                             </td>
