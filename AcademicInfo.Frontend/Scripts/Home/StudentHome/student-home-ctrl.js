@@ -65,8 +65,7 @@
                     });
             };
 
-            $s.init = function() {
-            }
+
         }]);
 
 })(this.angular, this.console, this._, this.Model.Course, this.Model.OptionalCourse, this.Model.StudentEvaluation);
