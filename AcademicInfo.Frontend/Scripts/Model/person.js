@@ -35,7 +35,7 @@
 
     Person.prototype.toDto = function () {
         return {
-            "id": this.id,
+            "id": "-1",
             "firstName": this.firstName,
             "lastName": this.lastName,
             "dob": this.dob,

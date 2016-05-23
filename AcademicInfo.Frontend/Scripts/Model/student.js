@@ -30,7 +30,6 @@
 
     Student.prototype.toDto = function () {
         return {
-            "id": this.id,
             "personVO": this.person,
             "group": this.group,
             "isExtended": this.isExtended,

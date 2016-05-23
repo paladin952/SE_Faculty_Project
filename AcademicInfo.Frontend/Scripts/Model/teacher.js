@@ -29,7 +29,6 @@
 
     Teacher.prototype.toDto = function () {
         return {
-            "id": this.id,
             "departmentVO": this.department,
             "wage": this.wage,
             "personVO": this.person,

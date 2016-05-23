@@ -2,7 +2,6 @@
     'use strict';
 
     function User() {
-        this.id = '';
         this.username = '';
         this.password = '';
         this.userType = '';
@@ -14,8 +13,6 @@
     }
 
     User.fromDto = function (dto) {
-        var user = new User();
-        user.id = dto.id;
         user.username =  dto.username;
         user.password =  dto.password;
         user.userType =  dto.userType;
@@ -24,7 +21,6 @@
 
     User.prototype.toDto = function () {
         return {
-            "id": this.id,
             "username": this.username,
             "password": this.password,
             "userType": this.userType
