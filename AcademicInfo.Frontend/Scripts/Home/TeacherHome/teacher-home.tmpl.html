@@ -30,7 +30,7 @@
                                 <div class="modal-body">
                                     <table>
                                         <tr>
-                                            <td class="col-md-2">Abstract Name</td>
+                                            <td class="col-md-2">ID</td>
                                             <td class="col-md-2">
                                                 <input type="text" class="form-control" name="Abstract Name" title="Abstract Name" ng-model="courseToAdd.id">
                                             </td>
@@ -43,21 +43,17 @@
                                         </tr>
                                         <tr></tr>
                                         <tr>
+                                            <td class="col-md-2">Degree</td>
+                                            <td class="col-md-2">
+                                                <select class="form-control" id="selectDepartment" ng-options="depts.name for depts in existingDepartments" ng-model="teacherToAdd.department">
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                            </tr>
+                                        <tr>
                                             <td class="col-md-2">Credits</td>
                                             <td class="col-md-2">
-                                                <input type="text" class="form-control" name="Credits" title="Credits" ng-model="courseToAdd.credits">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-2">Evaluation Type</td>
-                                            <td class="col-md-2">
-                                                <input type="text" class="form-control" name="Evaluation Type" title="Evaluation Type" ng-model="courseToAdd.evaluationType">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-2">Activities</td>
-                                            <td class="col-md-2">
-                                                <input type="text" class="form-control" name="Activities" title="Activities" ng-model="courseToAdd.activities">
+                                                <input type="text" class="form-control" name="Credits" title="Credits" ng-model="courseToAdd.evaluationType">
                                             </td>
                                         </tr>
                                         <tr>
@@ -87,18 +83,40 @@
                                     Assign Grades
                                 </div>
                                 <div class="modal-body">
-                                    <label for="selectStudent">Select student:</label>
-                                    <select class="form-control" id="selectStudent" ng-options="students.person.firstName + students.person.lastName for students in existingStudents" ng-model="selectedStudent">
-                                        <option></option>
-                                    </select>
+                                    <table>
+                                        <tr>
+                                            <td class="col-md-2">Select student</td>
+                                            <td class="col-md-2">
+                                                <select class="form-control" ng-options="students.person.firstName + students.person.lastName for students in existingStudents" ng-model="selectedStudent">
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Select course</td>
+                                            <td class="col-md-2">
+                                                <select class="form-control" ng-options="course.name for courses in existingCourses" ng-model="">
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Grade</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Grade" title="Grade" ng-model="courseToAdd.evaluationType">
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="goNext()">Next</button>
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="assign()">Assign</button>
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
 
                     <button class="btn btn-info" data-toggle="modal" data-target="#assignGradesModal">Assign Grades</button>
                 </td>
