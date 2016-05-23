@@ -13,9 +13,9 @@ public class JsonConstants {
     public static final String ROOT_USERS = "users";
 
     /**
-     * The root o the user json format
+     * The root o the userVO json format
      */
-    public static final String ROOT_USER = "user";
+    public static final String ROOT_USER = "userVO";
 
     /**
      * The root string for persons json

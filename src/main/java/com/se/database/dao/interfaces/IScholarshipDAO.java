@@ -14,20 +14,20 @@ public interface IScholarshipDAO {
     List<ScholarshipVO> list();
 
     /**
-     * Get a user by id
-     * @return The user
+     * Get a userVO by id
+     * @return The userVO
      */
     ScholarshipVO getById(int id);
 
     /**
-     * Delete a user by id
+     * Delete a userVO by id
      * @param id The id
      * @return "Success" or "Failure"
      */
     void deleteById(int id);
 
     /**
-     * Update the user with a new one
+     * Update the userVO with a new one
      * @param newScolarship The ScholarshipVO to be updated
      */
     ScholarshipVO updateScholarship(ScholarshipVO newScolarship);

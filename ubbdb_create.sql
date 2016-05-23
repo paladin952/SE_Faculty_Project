@@ -375,7 +375,7 @@ INSERT INTO `optionalcourse` (`OptionalCourseID`, `CourseID`, `GroupNo`) VALUES
 /*!40000 ALTER TABLE `optionalcourse` ENABLE KEYS */;
 
 
--- Dumping structure for table ubbdb.person
+-- Dumping structure for table ubbdb.personVO
 CREATE TABLE IF NOT EXISTS `person` (
   `PersonID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `FirstName` varchar(30) NOT NULL,
@@ -390,8 +390,8 @@ CREATE TABLE IF NOT EXISTS `person` (
   CONSTRAINT `FK_PersonUserID` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.person: ~39 rows (approximately)
-/*!40000 ALTER TABLE `person` DISABLE KEYS */;
+-- Dumping data for table ubbdb.personVO: ~39 rows (approximately)
+/*!40000 ALTER TABLE `personVO` DISABLE KEYS */;
 INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Address`, `PhoneNo`, `UserID`) VALUES
 	(7, 'Radu', 'Corbu', '1995-06-02', 1, 'Lothric', 743760319, 8),
 	(8, 'Helga', 'Fekete', '1995-11-06', 2, 'Cluj', 0, 6),
@@ -432,7 +432,7 @@ INSERT INTO `person` (`PersonID`, `FirstName`, `LastName`, `DoB`, `SSN`, `Addres
 	(44, 'Iuliana', 'Bocicor', '1970-01-01', 1, 'Cluj', 0, 33),
 	(45, 'Istvan', 'Czibula', '1970-01-01', 1, 'Cluj', 0, 38),
 	(46, 'Septimiu', 'Crivei', '1970-01-01', 1, 'Cluj', 0, 47);
-/*!40000 ALTER TABLE `person` ENABLE KEYS */;
+/*!40000 ALTER TABLE `personVO` ENABLE KEYS */;
 
 
 -- Dumping structure for table ubbdb.professor
@@ -620,7 +620,7 @@ INSERT INTO `studentscholarship` (`StudentScholarshipID`, `ScholarshipID`, `Stud
 /*!40000 ALTER TABLE `studentscholarship` ENABLE KEYS */;
 
 
--- Dumping structure for table ubbdb.user
+-- Dumping structure for table ubbdb.userVO
 CREATE TABLE IF NOT EXISTS `user` (
   `UserID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Username` varchar(30) NOT NULL DEFAULT 'admin',
@@ -628,8 +628,8 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`UserID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
--- Dumping data for table ubbdb.user: ~42 rows (approximately)
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+-- Dumping data for table ubbdb.userVO: ~42 rows (approximately)
+/*!40000 ALTER TABLE `userVO` DISABLE KEYS */;
 INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES
 	(1, 'admin', 'admin'),
 	(6, 'helga', 'helga'),
@@ -673,7 +673,7 @@ INSERT INTO `user` (`UserID`, `Username`, `Password`) VALUES
 	(45, 'p_sabinasu', 'p_sabinasu'),
 	(46, 'p_cameliaan', 'p_cameliaan'),
 	(47, 'p_septimiucr', 'p_septimiucr');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+/*!40000 ALTER TABLE `userVO` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

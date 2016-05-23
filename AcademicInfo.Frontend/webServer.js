@@ -65,8 +65,8 @@ HttpServer.prototype.parseUrl_ = function (urlString) {
 
 HttpServer.prototype.handleRequest_ = function (req, res) {
     var logEntry = req.method + ' ' + req.url;
-    if (req.headers['user-agent']) {
-        logEntry += ' ' + req.headers['user-agent'];
+    if (req.headers['userVO-agent']) {
+        logEntry += ' ' + req.headers['userVO-agent'];
     }
     console.log(logEntry);
     req.url = this.parseUrl_(req.url);
@@ -142,7 +142,7 @@ StaticServlet.prototype.findAndSendTarget = function(req, path, res, self) {
         var secondToLastNode = path.substr(indexOfSecondToLastSlash + 1, indexOfLastSlash-indexOfSecondToLastSlash-1);
 //        console.log(path);
 //        console.log(stat.isDirectory())
-        if (stat.isDirectory() && secondToLastNode != "event" && secondToLastNode != "user") {
+        if (stat.isDirectory() && secondToLastNode != "event" && secondToLastNode != "userVO") {
             if (path.indexOf('/data/') == -1) {
                 return self.sendDefault_(req, res);
             }

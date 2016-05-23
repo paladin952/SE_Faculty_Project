@@ -8,7 +8,7 @@ import java.util.Date;
  * PersonVO database entity. Any PersonVO is a UserVO.
  */
 @Entity
-@Table(name = "person")
+@Table(name = "personVO")
 public class PersonVO implements Serializable {
 
     @Id

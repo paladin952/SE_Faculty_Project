@@ -7,11 +7,11 @@ import java.io.Serializable;
  * Created by Clapa Lucian on 4/3/2016.
  */
 @Entity
-@Table(name="user")
+@Table(name="userVO")
 public class UserVO implements Serializable {
 
     /**
-     * The user's id
+     * The userVO's id
      */
     @Id
     @GeneratedValue

@@ -2004,7 +2004,7 @@
       var object = {
         'user': 'fred',
         'greet': function(greeting) {
-          return this.user + ' says: ' + greeting;
+          return this.userVO + ' says: ' + greeting;
         }
       };
 
@@ -2012,7 +2012,7 @@
       assert.strictEqual(bound(), 'fred says: hi');
 
       object.greet = function(greeting) {
-        return this.user + ' says: ' + greeting + '!';
+        return this.userVO + ' says: ' + greeting + '!';
       };
 
       assert.strictEqual(bound(), 'fred says: hi!');
