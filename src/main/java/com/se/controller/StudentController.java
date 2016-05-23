@@ -59,4 +59,10 @@ public class StudentController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(value = "/get/{username}", method = RequestMethod.GET)
+    public ResponseEntity<StudentVO> getStudentForUsername(@PathVariable(value = "username") String username) {
+        StudentVO student = iStudentDAO.getStudentFor(username);
+        return new ResponseEntity<>(student, student != null ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
 }

@@ -4,6 +4,7 @@ import com.se.database.dao.interfaces.IStudentDAO;
 import com.se.database.dao.model.users.PersonVO;
 import com.se.database.dao.model.users.StudentVO;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -58,6 +59,8 @@ public class StudentDAOImpl implements IStudentDAO {
         }
     }
 
+
+
     @Override
     public Boolean deleteByID(int id) {
         Session session = sessionFactory.getCurrentSession();
@@ -67,5 +70,19 @@ public class StudentDAOImpl implements IStudentDAO {
 
         session.delete(student);
         return true;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public StudentVO getStudentFor(String username) {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "FROM StudentVO S WHERE S.personVO.userVO.username = :username";
+        Query select = session.createQuery(hql)
+                .setString("username", username);
+        List<StudentVO> student = (List<StudentVO>) select.list();
+        if (student.isEmpty())
+            return null;
+        else
+            return student.get(0);
     }
 }

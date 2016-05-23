@@ -16,4 +16,6 @@ public interface IStudentDAO {
     StudentVO updateOrSave(StudentVO studentVO);
 
     Boolean deleteByID(int id);
+
+    StudentVO getStudentFor(String username);
 }
