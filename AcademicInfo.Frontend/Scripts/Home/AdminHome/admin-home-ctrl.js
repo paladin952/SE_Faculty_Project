@@ -145,17 +145,13 @@
 
             $scope.deleteTeacher = function(teacher)
             {
-                console.log("id=");
-                console.log(teacher.id);
                 $http.delete('http://localhost:9001/professor/' + teacher.id)
                     .success(function () {
                         _.remove($scope.existingTeachers, { id: teacher.id });
                         _.remove($scope.existingDepartmentChiefs, { id: teacher.id });
-                        console.log("Successfuly deleted");
                     })
                     .error(function (err) {
                         alert(err);
-                        console.log("Error deleted");
                         console.error(err);
                     });
             };
@@ -171,10 +167,6 @@
                         console.error(err);
                     });
             };
-
-            $scope.init = function() {
-            }
-
 
         }]);
 })(this.angular, this.console, this._, this.Model.Student, this.Model.Teacher, this.Model.User, this.Model.Person, this.Model.Department);
