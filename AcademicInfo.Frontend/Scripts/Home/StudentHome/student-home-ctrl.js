@@ -52,7 +52,6 @@
                         $s.mandatoryCourses.push(course.course);
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
                 $http.delete('http://localhost:9001/optionalcourse/' + course.id)
@@ -60,7 +59,6 @@
                         $s.optionalCourses.splice(idx, 1);
                     })
                     .error(function (err) {
-                        alert(err);
                         console.error(err);
                     });
             };
