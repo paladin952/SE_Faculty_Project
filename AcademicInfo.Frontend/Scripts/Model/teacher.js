@@ -3,8 +3,8 @@
 
     function Teacher() {
         this.id = -1;
-        this.person = null;
-        this.department = null;
+        this.person = new Person();
+        this.department = new Department();
         this.wage = 0;
         this.chief = false;
     }
