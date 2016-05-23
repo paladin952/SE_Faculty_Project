@@ -19,6 +19,10 @@ public class ScholarshipVO implements Serializable {
     @Column(name = "Award")
     private float sum;
 
+    public ScholarshipVO(String name, float sum) {
+        this.name = name;
+        this.sum = sum;
+    }
 
     public ScholarshipVO(int id, String name, float sum) {
         this.id = id;

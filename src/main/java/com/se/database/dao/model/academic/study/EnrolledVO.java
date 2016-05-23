@@ -23,6 +23,9 @@ public class EnrolledVO implements Serializable {
     @JoinColumn(name = "CourseID")
     private CourseVO course;
 
+    public EnrolledVO() {
+    }
+
     public EnrolledVO(StudentVO student, CourseVO course) {
         this.student = student;
         this.course = course;

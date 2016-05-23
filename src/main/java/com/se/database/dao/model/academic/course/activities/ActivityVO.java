@@ -66,4 +66,8 @@ public class ActivityVO implements Serializable{
     public int getID() {
         return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

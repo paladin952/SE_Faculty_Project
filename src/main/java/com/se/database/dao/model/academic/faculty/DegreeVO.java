@@ -64,6 +64,10 @@ public class DegreeVO implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getField() {
         return field;
     }
