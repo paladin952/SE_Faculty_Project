@@ -5,8 +5,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.print.attribute.standard.MediaSize;
-
 import static org.junit.Assert.*;
 
 
