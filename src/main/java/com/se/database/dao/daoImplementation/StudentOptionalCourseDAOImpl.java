@@ -31,6 +31,13 @@ public class StudentOptionalCourseDAOImpl implements IStudentOptionalCourseDAO {
     }
 
     @Override
+    public StudentOptionalCourseDAOImpl save(StudentOptionalCourseVO student_optional_course) {
+        sessionFactory.getCurrentSession().save(student_optional_course);
+
+        return this;
+    }
+
+    @Override
     public Boolean deleteByIDs(int student_id, String optional_course_id) {
         Session session = sessionFactory.getCurrentSession();
         String hql = "DELETE FROM StudentOptionalCourseVO SOC WHERE studentVO.id = :student_id AND SOC.courseVO.id = :optional_course_id";

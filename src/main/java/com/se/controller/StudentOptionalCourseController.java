@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +24,12 @@ public class StudentOptionalCourseController {
         List<StudentOptionalCourseVO> student_optional_courses = iStudentOptionalCourseDAO.list();
 
         return new ResponseEntity<>(student_optional_courses, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.PUT)
+    public ResponseEntity<StudentOptionalCourseVO> addStudentOptionalCourse(@RequestBody StudentOptionalCourseVO studentOptionalCourseVO) {
+        iStudentOptionalCourseDAO.save(studentOptionalCourseVO);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{student_id}/{optional_course_id}", method = RequestMethod.DELETE)

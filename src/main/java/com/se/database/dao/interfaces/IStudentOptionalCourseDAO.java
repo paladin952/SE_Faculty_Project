@@ -10,6 +10,8 @@ import java.util.List;
 public interface IStudentOptionalCourseDAO {
     List<StudentOptionalCourseVO> list();
 
+    IStudentOptionalCourseDAO save(StudentOptionalCourseVO student_optional_course);
+
     Boolean deleteByIDs(int student_id, String optional_course_id);
 
     List<OptionalCourseVO> getStudentOptionalCoursesFor(int student_id);
