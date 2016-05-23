@@ -9,7 +9,7 @@
 
     function Enrolled(id, student, course) {
         this.id = id;
-        this.course = couse;
+        this.course = course;
         this.student = student;
     }
 

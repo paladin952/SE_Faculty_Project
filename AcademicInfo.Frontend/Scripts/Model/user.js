@@ -21,6 +21,7 @@
 
     User.prototype.toDto = function () {
         return {
+            "id": "-1",
             "username": this.username,
             "password": this.password,
             "userType": this.userType

@@ -8,7 +8,7 @@
     }
 
     function StudentOptionalCourse(student, course) {
-        this.course = couse;
+        this.course = course;
         this.student = student;
     }
 
