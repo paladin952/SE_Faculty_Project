@@ -31,14 +31,12 @@
                             <div class="modal-body">
 
                                 <table class="table-hover">
-                                    <tr ng-repeat="grade in studentGrades">
-                                        <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{grade.evaluationVO.courseVO.name}}">
-                                            <span>{{grade.grade}}   {{grade.evaluationVO.courseVO.name}} </span>
+                                    <tr ng-repeat="ev in studentEvaluations">
+                                        <td class="col-md-3">
+                                            <span>{{ev.evaluation.course.name}}</span>
                                         </td>
                                         <td class="col-md-2 pull-right">
-                                            <button class="btn btn-success disabled">
-                                                <span class="glyphicon glyphicon-check"></span>
-                                            </button>
+                                            <span>{{ev.grade}} </span>
                                         </td>
 
                                     </tr>
@@ -46,10 +44,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-success" data-dismiss="modal"
-                                        ng-click="watchGrades()">Next
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Ok
                                 </button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>

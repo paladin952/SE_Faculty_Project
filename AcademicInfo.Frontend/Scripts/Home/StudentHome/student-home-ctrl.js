@@ -1,4 +1,4 @@
-(function (ng, console, _,  Course, OptionalCourse, StudentEvaluation) {
+(function (ng, console, _,  Course, OptionalCourse, StudentEvaluation, StudentOptionalCourse, Enrolled) {
     'use strict';
 
     ng.module('studentHome')
@@ -7,6 +7,7 @@
             $s.studentEvaluations = [];
             $s.mandatoryCourses =[];
             $s.optionalCourses = [];
+            $s.evalForLoggedUser = [];
 
             $s.goToLogin = function(){
                 $location.path('/login');
@@ -17,6 +18,12 @@
                 .then(
                     function(response) {
                         $s.studentEvaluations= _.map(response.data, StudentEvaluation.fromDto);
+                        for (var ev in $s.studentEvaluations)
+                        {
+                            if(ev.student === $root.userToLogin){
+                                $s.evalForLoggedUser.push(ev);
+                            }
+                        }
                     },
                     function errorCallback(response) {
                         console.error(response);
@@ -41,6 +48,7 @@
                     });
 
 
+
             $s.addCourse = function(course) {
                 var idx = $s.optionalCourses.indexOf(course);
                 $("#addOptionalCourse" + course.course.name + "Button").removeClass("btn-info").addClass("btn-success");
@@ -63,7 +71,24 @@
                     });
             };
 
+            $s.saveContract = function(){
+                $http.put('http://localhost:9001/course/add', $s.course.toDto())
+                    .success(function (course) {
+                        $s.mandatoryCourses.push(course.course);
+                    })
+                    .error(function (err) {
+                        console.error(err);
+                    });
+                $http.delete('http://localhost:9001/optionalcourse/' + course.id)
+                    .success(function () {
+                        $s.optionalCourses.splice(idx, 1);
+                    })
+                    .error(function (err) {
+                        console.error(err);
+                    });
+            }
+
 
         }]);
 
-})(this.angular, this.console, this._, this.Model.Course, this.Model.OptionalCourse, this.Model.StudentEvaluation);
+})(this.angular, this.console, this._, this.Model.Course, this.Model.OptionalCourse, this.Model.StudentEvaluation, this.Model.StudentOptionalCourse, this.Model.Enrolled);
