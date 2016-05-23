@@ -46,6 +46,4 @@ public class OptionalCourseController {
 
         return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
     }
-
-
 }
