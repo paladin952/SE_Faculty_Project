@@ -45,7 +45,7 @@
                                         <tr>
                                             <td class="col-md-2">Degree</td>
                                             <td class="col-md-2">
-                                                <select class="form-control" id="selectDepartment" ng-options="depts.name for depts in existingDepartments" ng-model="teacherToAdd.department">
+                                                <select class="form-control" id="selectDepartment" ng-options="depts.name for depts in existingDepartments" ng-model="courseToAdd.department">
                                                     <option></option>
                                                 </select>
                                             </td>
@@ -101,7 +101,7 @@
                                         <tr>
                                             <td class="col-md-2">Select course</td>
                                             <td class="col-md-2">
-                                                <select class="form-control" ng-options="course.name for courses in existingCourses" ng-model="studEval.course">
+                                                <select class="form-control" ng-options="courses.name for courses in existingCourses" ng-model="studEval.course">
                                                     <option></option>
                                                 </select>
                                             </td>

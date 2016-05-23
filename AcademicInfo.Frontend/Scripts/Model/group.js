@@ -28,4 +28,4 @@
     this.Model = this.Model || {};
     this.Model.Group = Group;
 
-}).call(this, this._, );
+}).call(this, this._);
