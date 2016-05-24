@@ -40,10 +40,14 @@ public class StudentOptionalCourseDAOImpl implements IStudentOptionalCourseDAO {
     @Override
     public Boolean deleteByIDs(int student_id, String optional_course_id) {
         Session session = sessionFactory.getCurrentSession();
-        String hql = "DELETE FROM StudentOptionalCourseVO SOC WHERE studentVO.id = :student_id AND SOC.courseVO.id = :optional_course_id";
-        Query delete = session.createQuery(hql);
-        delete.setInteger("student_id", student_id)
-                .setString("optional_course_id", optional_course_id);
+        String sql = "DELETE SOC FROM ubbdb.studentoptionalcourse AS SOC\n" +
+                "INNER JOIN ubbdb.optionalcourse AS OC\n" +
+                "ON OC.OptionalCourseID = SOC.OptionalCourseID\n" +
+                "WHERE SOC.StudentID = :student_id AND OC.CourseID = :optional_course_id";
+        Query delete = session.createSQLQuery(sql)
+            .addEntity(StudentOptionalCourseVO.class)
+            .setInteger("student_id", student_id)
+            .setString("optional_course_id", optional_course_id);
         return delete.executeUpdate() > 0;
     }
 
@@ -53,8 +57,8 @@ public class StudentOptionalCourseDAOImpl implements IStudentOptionalCourseDAO {
         Session session = sessionFactory.getCurrentSession();
         String sql = "SELECT OC.OptionalCourseID, OC.CourseID, OC.GroupNo FROM ubbdb.optionalcourse AS OC\n" +
                 "INNER JOIN ubbdb.studentoptionalcourse AS SOC\n" +
-                "ON OC.OptionalCourseID = SOC.StudentOptionalCourseID\n" +
-                "WHERE SOC.StudentID = :student_id;";
+                "ON OC.OptionalCourseID = SOC.OptionalCourseID\n" +
+                "WHERE SOC.StudentID = :student_id";
         Query select = session.createSQLQuery(sql)
                 .addEntity(OptionalCourseVO.class)
                 .setInteger("student_id", student_id);

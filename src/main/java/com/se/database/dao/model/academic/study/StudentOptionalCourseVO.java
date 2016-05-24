@@ -1,6 +1,7 @@
 package com.se.database.dao.model.academic.study;
 
-import com.se.database.dao.model.academic.course.CourseVO;
+import com.se.database.dao.model.academic.course.OptionalCourseVO;
+import com.se.database.dao.model.academic.course.OptionalCourseVO;
 import com.se.database.dao.model.users.StudentVO;
 
 import javax.persistence.*;
@@ -16,8 +17,8 @@ public class StudentOptionalCourseVO implements Serializable {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "CourseID")
-    private CourseVO courseVO;
+    @JoinColumn(name = "OptionalCourseID")
+    private OptionalCourseVO optionalCourseVO;
 
     @ManyToOne
     @JoinColumn(name = "StudentID")
@@ -26,8 +27,8 @@ public class StudentOptionalCourseVO implements Serializable {
     public StudentOptionalCourseVO() {
     }
 
-    public StudentOptionalCourseVO(CourseVO courseVO, StudentVO studentVO) {
-        this.courseVO = courseVO;
+    public StudentOptionalCourseVO(OptionalCourseVO optionalCourseVO, StudentVO studentVO) {
+        this.optionalCourseVO = optionalCourseVO;
         this.studentVO = studentVO;
     }
 
@@ -35,11 +36,20 @@ public class StudentOptionalCourseVO implements Serializable {
         return id;
     }
 
-    public CourseVO getCourseVO() {
-        return courseVO;
+    public OptionalCourseVO getOptionalCourseVO() {
+        return optionalCourseVO;
     }
 
     public StudentVO getStudentVO() {
         return studentVO;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentOptionalCourseVO { " +
+                "id = " + id +
+                ", optionalCourseVO = " + optionalCourseVO +
+                ", studentVO = " + studentVO +
+                " }";
     }
 }
