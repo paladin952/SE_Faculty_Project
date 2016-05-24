@@ -1,30 +1,73 @@
 package com.se.database.dao.model.academic.course.activities;
 
+import com.se.database.dao.model.academic.course.CourseVO;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
+@Entity
+@Table(name = "activity")
 public class ActivityVO implements Serializable{
 
-    private int hoursPerWeek;
+    @Id
+    @GeneratedValue
+    @Column(name = "ActivityID")
+    private int id;
 
-    public ActivityVO(int hoursPerWeek) {
-        this.hoursPerWeek = hoursPerWeek;
+    @Column(name = "HoursPerWeek")
+    private int hours_per_week;
+
+    @Column(name = "ActivityType")
+    private int activity_type;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CourseID")
+    private CourseVO course;
+
+    public ActivityVO() {
     }
 
-    public int getHoursPerWeek() {
-        return hoursPerWeek;
+    public ActivityVO(int hours_per_week, int activity_type, CourseVO course) {
+        this.hours_per_week = hours_per_week;
+        this.activity_type = activity_type;
+        this.course = course;
     }
 
-    public void setHoursPerWeek(int hoursPerWeek) {
-        this.hoursPerWeek = hoursPerWeek;
+    public int getHours_per_week() {
+        return hours_per_week;
     }
 
-    @Override
-    public String toString() {
-        return "ActivityVO{" +
-                "hoursPerWeek=" + hoursPerWeek +
-                '}';
+    public ActivityVO setHours_per_week(int hours_per_week) {
+        this.hours_per_week = hours_per_week;
+
+        return this;
+    }
+
+    public int getActivity_type() {
+        return activity_type;
+    }
+
+    public ActivityVO setActivity_type(int activity_type) {
+        this.activity_type = activity_type;
+
+        return this;
+    }
+
+    public CourseVO getCourse() {
+        return course;
+    }
+
+    public ActivityVO setCourse(CourseVO course) {
+        this.course = course;
+
+        return this;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

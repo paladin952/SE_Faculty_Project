@@ -3,7 +3,6 @@ package com.se.database.dao.daoImplementation;
 import com.se.database.dao.interfaces.IEvaluationDAO;
 import com.se.database.dao.model.academic.course.EvaluationVO;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,9 +21,11 @@ public class EvaluationDAOImpl implements IEvaluationDAO {
     @Override
     @Transactional
     public List<EvaluationVO> list() {
+        @SuppressWarnings("unchecked")
         List<EvaluationVO> evaluationVOList = (List<EvaluationVO>) sessionFactory.getCurrentSession()
                 .createCriteria(EvaluationVO.class)
-                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .list();
 
         return evaluationVOList;
     }
@@ -39,21 +40,20 @@ public class EvaluationDAOImpl implements IEvaluationDAO {
     @Transactional
     public EvaluationVO updateOrSave(EvaluationVO evaluation) {
         Session session = sessionFactory.getCurrentSession();
+        EvaluationVO exists = (EvaluationVO) session.get(EvaluationVO.class, evaluation.getId());
+        if (exists != null)
+        {
+            EvaluationVO eval = (EvaluationVO) session.load(EvaluationVO.class, evaluation.getId());
+            eval.setType(evaluation.getType());
+            eval.setCourseVO(evaluation.getCourseVO());
 
-        try {
-            EvaluationVO tmp = (EvaluationVO) session.load(EvaluationVO.class, evaluation.getId());
-
-            tmp.setType(evaluation.getType());
-//            tmp.setGrade(evaluation.getGrade());
-//            tmp.setIsAbsent(evaluation.isAbsent());
-
-            //tmp?
-            return evaluation;
-        } catch (HibernateException e){
-            EvaluationVO new_evaluation = new EvaluationVO(evaluation.getType());
-            session.save(new_evaluation);
-
-            return new_evaluation;
+            return eval;
+        }
+        else
+        {
+            EvaluationVO new_eval = new EvaluationVO(evaluation.getType(), evaluation.getCourseVO());
+            session.save(new_eval);
+            return new_eval;
         }
     }
 

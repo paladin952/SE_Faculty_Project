@@ -1,0 +1,134 @@
+<div ng-controller="teacherHome" ng-init="init()">
+    <div>
+        <table>
+            <tr class="page-header">
+                <th class="col-md-8">
+                    <h1 >Welcome, {{userToLogin.username}}!</h1>
+                </th>
+                <th class="col-md-8"></th>
+                <th class="col-md-1">
+                    <div>
+                        <button type="button" class="btn btn-info" ng-click="goToLogin()">Sign Out</button>
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td class="col-md-5">
+                    <div id="proposeCourseModal" class="modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    Propose New Course
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td class="col-md-2">ID</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Abstract Name" title="Abstract Name" ng-model="courseToAdd.id">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Name</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Name" title="Name" ng-model="courseToAdd.name">
+                                            </td>
+                                        </tr>
+                                        <tr></tr>
+                                        <tr>
+                                            <td class="col-md-2">Degree</td>
+                                            <td class="col-md-2">
+                                                <select class="form-control" id="selectDepartment" ng-options="depts.name for depts in existingDepartments" ng-model="courseToAdd.department">
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                            </tr>
+                                        <tr>
+                                            <td class="col-md-2">Credits</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Credits" title="Credits" ng-model="courseToAdd.evaluationType">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Assigned Semester</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Assigned Semester" title="Assigned Semester" ng-model="courseToAdd.assignedSemester">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="proposeNewCourse()">Add</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-info" data-toggle="modal" data-target="#proposeCourseModal">Propose new optional course</button>
+                </td>
+
+                <td>
+                    <div id="assignGradesModal" class="modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    Assign Grades
+                                </div>
+                                <div class="modal-body">
+                                    <table>
+                                        <tr>
+                                            <td class="col-md-2">Select student</td>
+                                            <td class="col-md-2">
+                                                <select class="form-control" ng-options="students.personVO.firstName + students.personVO.lastName for students in existingStudents" ng-model="studEval.student">
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Select course</td>
+                                            <td class="col-md-2">
+                                                <select class="form-control" ng-options="courses.courseVO.name for courses in existingEvaluation" ng-model="studEval.evaluationVO">
+                                                    <option></option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Grade</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Grade" title="Grade" ng-model="studEval.grade">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="col-md-2">Absent</td>
+                                            <td class="col-md-2">
+                                                <input type="text" class="form-control" name="Absent" title="Absent" ng-model="studEval.absent">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="assign()">Assign</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <button class="btn btn-info" data-toggle="modal" data-target="#assignGradesModal">Assign Grades</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+

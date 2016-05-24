@@ -10,16 +10,20 @@ import java.util.List;
 /**
  * Created by Catalin on 03-Apr-16.
  */
-//@Entity
-//@Table(name = "optionalcourse")
+@Entity
+@Table(name = "optionalcourse")
 public class OptionalCourseVO {
 
-//    @Column(name = "GroupNo")
+    @Id
+    @GeneratedValue
+    @Column(name = "OptionalCourseID")
+    private int id;
+
+    @Column(name = "GroupNo")
     private int groupNo;
 
-//    @Id
-//    @OneToOne
-//    @JoinColumn(name = "CourseID")
+    @OneToOne
+    @JoinColumn(name = "CourseID")
     private CourseVO course;
 
     public OptionalCourseVO() {
@@ -34,25 +38,31 @@ public class OptionalCourseVO {
         this.course = course;
     }
 
-    public OptionalCourseVO(CourseVO course, int assignedSemester, int groupNo) {
-        this.groupNo = groupNo;
-        this.course = course;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public CourseVO getCourse() {
         return course;
     }
 
-    public void setCourse(CourseVO course) {
+    public OptionalCourseVO setCourse(CourseVO course) {
         this.course = course;
+        return this;
     }
 
     public int getGroupNo() {
         return groupNo;
     }
 
-    public void setGroupNo(int groupNo) {
+    public OptionalCourseVO setGroupNo(int groupNo) {
         this.groupNo = groupNo;
+
+        return this;
     }
 
     @Override

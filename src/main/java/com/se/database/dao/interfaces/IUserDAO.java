@@ -34,4 +34,13 @@ public interface IUserDAO {
      */
     UserVO updateUser(UserVO newUser);
 
+    /**
+     * Get a userVO by name and password
+     * USED FOR LOGIN
+     * @param name The name to be checked
+     * @param password The password
+     * @return an existing user or null
+     */
+    UserVO getByNameAndPass(String name, String password);
+
 }

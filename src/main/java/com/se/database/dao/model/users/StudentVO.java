@@ -17,24 +17,21 @@ public class StudentVO implements Serializable {
     @Column(name = "StudentID")
     private int id;
 
-    //    private int group;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "GroupID")
     private StudentGroupVO group;
 
     @Column(name = "Status")
     private String status;
 
-    //// FIXME: 08.05.2016
     @Column(name = "IsExtended")
-    private boolean isExtended;
+    private Boolean isExtended;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PersonID")
     private PersonVO personVO;
 
-    public StudentVO() {
-    }
+    public StudentVO() {}
 
     public StudentVO(String status, PersonVO personVO, boolean isExtended) {
         this.status = status;
@@ -57,20 +54,14 @@ public class StudentVO implements Serializable {
         this.id = id;
     }
 
-    public boolean isExtended() {
-        return isExtended;
-    }
-
-    public void setExtended(boolean extended) {
-        isExtended = extended;
-    }
-
     public PersonVO getPersonVO() {
         return personVO;
     }
 
-    public void setPersonVO(PersonVO personVO) {
+    public StudentVO setPersonVO(PersonVO personVO) {
         this.personVO = personVO;
+
+        return this;
     }
 
     public StudentGroupVO getGroup() {
@@ -107,7 +98,7 @@ public class StudentVO implements Serializable {
     public String toString() {
         StringBuilder sb = new StringBuilder(super.toString());
         sb.append("\n. Group ID: ");
-        sb.append(group);
+        sb.append(group.getId());
         sb.append(". Status: ");
         sb.append(status);
         sb.append(". Is extended: ");

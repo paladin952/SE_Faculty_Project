@@ -40,25 +40,25 @@ public class PersonDAOImpl implements IPersonDAO {
     @Transactional
     public PersonVO updateOrSave(PersonVO person) {
         Session session = sessionFactory.getCurrentSession();
-        PersonVO tmp = (PersonVO) session.load(PersonVO.class, person.getId());
-        if (tmp == null)
+        PersonVO exists = (PersonVO) session.get(PersonVO.class, person.getId());
+        if (exists != null)
         {
-            PersonVO new_person = new PersonVO(person.getUserVO(), person.getFirstName(), person.getLastName(), person.getDob(), person.getSsn(), person.getAddress(), person.getPhoneNo());
-            session.save(new_person);
+            PersonVO pers = (PersonVO) session.load(PersonVO.class, person.getId());
+//            pers.setUserVO(person.getUserVO());
+            pers.setFirstName(person.getFirstName());
+            pers.setLastName(person.getLastName());
+            pers.setAddress(person.getAddress());
+            pers.setDob(person.getDob());
+            pers.setPhoneNo(person.getPhoneNo());
+            pers.setSsn(person.getSsn());
 
-            return new_person;
+            return pers;
         }
         else
         {
-            tmp.setFirstName(person.getFirstName())
-                .setLastName(person.getLastName())
-                .setDob(person.getDob())
-                .setSsn(person.getSsn())
-                .setAddress(person.getAddress())
-                .setPhoneNo(person.getPhoneNo())
-                .setUserVO(person.getUserVO());
-
-            return person;
+            PersonVO new_person = new PersonVO(person.getUserVO(), person.getFirstName(), person.getLastName(), person.getDob(), person.getSsn(), person.getAddress(), person.getPhoneNo());
+            session.save(new_person);
+            return new_person;
         }
     }
 

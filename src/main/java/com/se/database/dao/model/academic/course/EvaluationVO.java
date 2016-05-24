@@ -1,7 +1,5 @@
 package com.se.database.dao.model.academic.course;
 
-import com.se.util.enums.ExamTypesEnum;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -17,79 +15,53 @@ public class EvaluationVO implements Serializable {
     @Column(name = "EvaluationID")
     private int id;
 
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "EvaluationType")
-    private ExamTypesEnum type;
+    private int type;
 
-//    @Column(name = )
-// FIXME: 10.05.2016
-    //check db
-//    @Column(insertable = "Grade")
-//    private float grade;
-
-    // FIXME: 10.05.2016
-//    @Column(name = "IsAbsent")
-//    private Boolean isAbsent;
+    @ManyToOne
+    @JoinColumn(name = "CourseID")
+    private CourseVO courseVO;
 
     public EvaluationVO() {
     }
 
-    public EvaluationVO(int id) {
-        this.id = id;
-    }
-
-    public EvaluationVO(ExamTypesEnum type) {
+    public EvaluationVO(int type, CourseVO courseVO) {
         this.type = type;
-    }
-
-    public EvaluationVO(ExamTypesEnum type, float grade, Boolean isAbsent) {
-        this.type = type;
-//        this.grade = grade;
-//        this.isAbsent = isAbsent;
-    }
-
-    public EvaluationVO(int id, ExamTypesEnum type, float grade, Boolean isAbsent) {
-        this.id = id;
-        this.type = type;
-//        this.grade = grade;
-//        this.isAbsent = isAbsent;
+        this.courseVO = courseVO;
     }
 
     public int getId() {
         return id;
     }
 
-    public ExamTypesEnum getType() {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getType() {
         return type;
     }
 
-    public void setType(ExamTypesEnum type) {
+    public EvaluationVO setType(int type) {
         this.type = type;
+
+        return this;
     }
 
-//    public float getGrade() {
-//        return grade;
-//    }
-//
-//    public void setGrade(float grade) {
-//        this.grade = grade;
-//    }
-//
-//    public Boolean isAbsent() {
-//        return isAbsent;
-//    }
-//
-//    public void setIsAbsent(Boolean absent) {
-//        isAbsent = absent;
-//    }
+    public CourseVO getCourseVO() {
+        return courseVO;
+    }
+
+    public void setCourseVO(CourseVO courseVO) {
+        this.courseVO = courseVO;
+    }
 
     @Override
     public String toString() {
-        return "EvaluationVO{" +
-                "id=" + id +
-                ", type=" + type +
-//                ", grade=" + grade +
-//                ", isAbsent=" + isAbsent +
-                '}';
+        return "EvaluationVO { " +
+                "id = " + id +
+                ", type = " + type +
+                ", course = " + courseVO +
+                " }";
     }
 }

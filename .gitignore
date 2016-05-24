@@ -10,7 +10,6 @@ bin
 .metadata
 
 # IntelliJ IDEA
-*.iml
 *.ipr
 *.iws
 
@@ -19,3 +18,4 @@ bin
 out
 MANIFEST.MF
 
+ProjectSe.iml

@@ -17,19 +17,17 @@ public class ProfessorVO implements Serializable {
     @Column(name = "ProfessorID")
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "DepartmentID")
     private DepartmentVO departmentVO;
-//    private final int departmentVO;
 
-    //// FIXME: 08.05.2016
     @Column(name = "IsChief")
     private boolean isChief;
 
     @Column(name = "Wage")
     private float wage;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PersonID")
     private PersonVO personVO;
 
@@ -94,10 +92,10 @@ public class ProfessorVO implements Serializable {
     @Override
     public String toString() {
         return "ProfessorVO{" +
-                "departmentVO=" + departmentVO +
-                ", isChief=" + isChief +
+                "departmentVO=" + ((departmentVO!=null)?departmentVO.toString():"null") +
+                ", chief=" + isChief +
                 ", wage=" + wage +
-                ", personVO=" + personVO +
+                ", personVO=" + ((personVO!=null)?personVO.toString():"null") +
                 '}';
     }
 }

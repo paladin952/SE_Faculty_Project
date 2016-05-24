@@ -1,0 +1,665 @@
+<div ng-controller="adminHome" ng-init="init()">
+
+<div>
+    <table>
+        <tr class="page-header">
+            <th class="col-md-8">
+                <h1 >Welcome, {{userToLogin.username}}!</h1>
+            </th>
+            <th class="col-md-8"></th>
+            <th class="col-md-1">
+                <div>
+                    <button type="button" class="btn btn-info" ng-click="goToLogin()">Sign Out</button>
+                </div>
+            </th>
+        </tr>
+    </table>
+</div>
+
+<br>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr class="headerCell">
+            <th class="col-md-5">
+                <table>
+                    <tr>
+                        <th class="col-xs-1"> Department Chiefs: </th>
+                        <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addChief">Add</button></th>
+                    </tr>
+                </table>
+            </th>
+            <th class="col-md-5">
+                <table>
+                    <tr>
+                        <th class="col-xs-1"> Teachers: </th>
+                        <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addTeacher">Add</button></th>
+                    </tr>
+                </table>
+            </th>
+            <th class="col-md-5">
+                <table>
+                    <tr>
+                        <th class="col-xs-1"> Students: </th>
+                        <th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addStudent">Add</button></th>
+                    </tr>
+                </table>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="col-md-5">
+                    <table class="table-hover">
+                    <tr ng-repeat="c in existingDepartmentChiefs">
+                        <td class="col-md-3" data-toggle="modal" data-target="#editChiefModal{{c.id}}">
+                            <span>{{c.personVO.firstName}} </span>
+                            <span>{{c.personVO.lastName}}</span>
+                            <div id="#editChiefModal{{c.id}}" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Edit {{c.personVO.firstName}}</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table>
+                                                <tr>
+                                                    <td class="col-md-2">Username</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="Username" title="Username" ng-model="c.personVO.userVO.username">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Password</td>
+                                                    <td class="col-md-2">
+                                                        <input type="password" class="form-control" name="Password" title="Password" ng-model="c.personVO.userVO.password">
+                                                    </td>
+                                                </tr>
+                                                <tr></tr>
+                                                <tr>
+                                                    <td class="col-md-2">First Name</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="First Name" title="First Name" ng-model="c.personVO.firstName">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Last Name</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="c.personVO.lastName">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Date of birth</td>
+                                                    <td class="col-md-2">
+                                                        <div class='input-group date'>
+                                                            <input type="text" class="form-control" name="DoB" title="DoB" ng-model="c.personVO.dob">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">SSN</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="c.personVO.ssn">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Address</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="Address" title="Address" ng-model="c.personVO.address">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Phone</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="Phone" title="Phone" ng-model="c.personVO.phoneNo">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Department</td>
+                                                    <td class="col-md-2">
+                                                        <select class="form-control" ng-options="depts.name for depts in existingDepartments" ng-model="c.department">
+                                                            <option></option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Wage</td>
+                                                    <td class="col-md-2">
+                                                        <input type="text" class="form-control" name="Wage" title="Wage" ng-model="c.wage">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">Is Chief</td>
+                                                    <td class="col-md-2">
+                                                        <div class="btn btn-info disabled">
+                                                            <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="c.chief">
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" ng-click="updateChief(c)" data-dismiss="modal">OK</button>
+                                            <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="col-md-2 pull-right">
+                            <div id="deleteChiefConfirmModal{{c.id}}" class="modal" role="dialog">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <p>Are you sure you want to delete this Department Chief?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="deleteChief(c)">Yes</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-info" data-toggle="modal" data-target="#deleteChiefConfirmModal{{c.id}}">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </td>
+
+                    </tr>
+                </table>
+                </td>
+
+                <td class="col-md-4">
+                    <table class="table-hover">
+                        <tr ng-repeat="t in existingTeachers">
+                            <td class="col-sm-1"  data-toggle="modal" data-target="#editTeacherModal{{t.id}}">
+                                <span>{{t.personVO.firstName}} </span>
+                                <span>{{t.personVO.lastName}} </span>
+                                <div id="#editTeacherModal{{t.id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Edit {{t.personVO.firstName}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table>
+                                                    <tr>
+                                                        <td class="col-md-2">Username</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Username" title="Username" ng-model="t.personVO.userVO.username">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Password</td>
+                                                        <td class="col-md-2">
+                                                            <input type="password" class="form-control" name="Password" title="Password" ng-model="t.personVO.userVO.password">
+                                                        </td>
+                                                    </tr>
+                                                    <tr></tr>
+                                                    <tr>
+                                                        <td class="col-md-2">First Name</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="First Name" title="First Name" ng-model="t.personVO.firstName">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Last Name</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="t.personVO.lastName">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Date of birth</td>
+                                                        <td class="col-md-2">
+                                                            <div class='input-group date' id=''>
+                                                                <input type="text" class="form-control" name="DoB" title="DoB" ng-model="t.personVO.dob">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">SSN</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="t.personVO.ssn">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Address</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Address" title="Address" ng-model="t.personVO.address">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Phone</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Phone" title="Phone" ng-model="t.personVO.phoneNo">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Department</td>
+                                                        <td class="col-md-2">
+                                                            <select class="form-control" ng-options="depts.name for depts in existingDepartments" ng-model="t.department">
+                                                                <option></option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Wage</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Wage" title="Wage" ng-model="teacherToAdd.wage">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Is Chief</td>
+                                                        <td class="col-md-2">
+                                                            <div class="btn btn-info disabled">
+                                                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" data-toggle="button" ng-model="teacherToAdd.chief">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" ng-click="updateChief(c)" data-dismiss="modal">OK</button>
+                                                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1">
+
+                                <div id="deleteTeacherConfirmModal{{t.id}}" class="modal" role="dialog">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this Teacher?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="deleteTeacher(t)">Yes</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-info" data-toggle="modal" data-target="#deleteTeacherConfirmModal{{t.id}}">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+
+                            </td>
+                        </tr>
+                </table></td>
+
+                <td class="col-md-5">
+                    <table class="table-hover">
+                        <tr ng-repeat="s in existingStudents">
+                            <td class="col-sm-1" data-toggle="modal" data-target="#editTeacherModal{{s.id}}">
+                                <span>{{s.personVO.firstName}}
+                                    {{s.personVO.lastName}}
+                                </span>
+                                <div id="#editStudentModal{{s.id}}" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">Edit {{s.personVO.firstName}}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <table>
+                                                    <tr>
+                                                        <td class="col-md-2">Username</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Username" title="Username" ng-model="s.personVO.userVO.username">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Password</td>
+                                                        <td class="col-md-2">
+                                                            <input type="password" class="form-control" name="Password" title="Password" ng-model="s.personVO.userVO.password">
+                                                        </td>
+                                                    </tr>
+                                                    <tr></tr>
+                                                    <tr>
+                                                        <td class="col-md-2">First Name</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="First Name" title="First Name" ng-model="s.personVO.firstName">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Last Name</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="s.personVO.lastName">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Date of birth</td>
+                                                        <td class="col-md-2">
+                                                                <input type="text" class="form-control" name="DoB" title="DoB" ng-model="s.personVO.dob">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">SSN</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="s.personVO.ssn">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Address</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Address" title="Address" ng-model="s.personVO.address">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="col-md-2">Phone</td>
+                                                        <td class="col-md-2">
+                                                            <input type="text" class="form-control" name="Phone" title="Phone" ng-model="s.personVO.phoneNo">
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" ng-click="updateStudent(s)" data-dismiss="modal">OK</button>
+                                                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#deleteStudentConfirmModal{{s.id}}"><span class="glyphicon glyphicon-trash"></span></button>
+
+                                <div id="deleteStudentConfirmModal{{s.id}}" class="modal" role="dialog">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete this Student?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="deleteStudent(s)">Yes</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+    <div id="addChief" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add new Department Chief</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td class="col-md-2">Username</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="chiefToAdd.personVO.userVO.username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Password</td>
+                            <td class="col-md-2">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="chiefToAdd.personVO.userVO.password">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td class="col-md-2">First Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="chiefToAdd.personVO.firstName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Last Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="chiefToAdd.personVO.lastName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Date of birth</td>
+                            <td class="col-md-2">
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control" name="DoB" title="DoB" ng-model="chiefToAdd.personVO.dob">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">SSN</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="chiefToAdd.personVO.ssn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Address</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="chiefToAdd.personVO.address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Phone</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="chiefToAdd.personVO.phoneNo">
+                            </td>
+                        </tr>
+                        <tr>
+                        <td class="col-md-2">Department</td>
+                        <td class="col-md-2">
+                            <select class="form-control" ng-options="depts.name for depts in existingDepartments" ng-model="chiefToAdd.department">
+                                <option></option>
+                            </select>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-2">Wage</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Wage" title="Wage" ng-model="chiefToAdd.wage">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="addChief()" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="addTeacher" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add new Teacher</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td class="col-md-2">Username</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="teacherToAdd.personVO.userVO.username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Password</td>
+                            <td class="col-md-2">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="teacherToAdd.personVO.userVO.password">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td class="col-md-2">First Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="teacherToAdd.personVO.firstName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Last Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="teacherToAdd.personVO.lastName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Date of birth</td>
+                            <td class="col-md-2">
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control" name="DoB" title="DoB" ng-model="teacherToAdd.personVO.dob">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">SSN</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="teacherToAdd.personVO.ssn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Address</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="teacherToAdd.personVO.address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Phone</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="teacherToAdd.personVO.phoneNo">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Department</td>
+                            <td class="col-md-2">
+                                <select class="form-control" id="selectDepartment" ng-options="depts.name for depts in existingDepartments" ng-model="teacherToAdd.department">
+                                    <option></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Wage</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Wage" title="Wage" ng-model="teacherToAdd.wage">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="addTeacher()" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="addStudent" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add new Student</h4>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td class="col-md-2">Username</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Username" title="Username" ng-model="studentToAdd.personVO.userVO.username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Password</td>
+                            <td class="col-md-2">
+                                <input type="password" class="form-control" name="Password" title="Password" ng-model="studentToAdd.personVO.userVO.password">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <td class="col-md-2">First Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="First Name" title="First Name" ng-model="studentToAdd.personVO.firstName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Last Name</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Last Name" title="LastName" ng-model="studentToAdd.personVO.lastName">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Date of birth</td>
+                            <td class="col-md-2">
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control" name="DoB" title="DoB" ng-model="studentToAdd.personVO.dob">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">SSN</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Ssn" title="Ssn" ng-model="studentToAdd.personVO.ssn">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Address</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Address" title="Address" ng-model="studentToAdd.personVO.address">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Phone</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Phone" title="Phone" ng-model="studentToAdd.personVO.phoneNo">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Group</td>
+                            <td class="col-md-2">
+                                <select class="form-control" ng-options="groups.id for groups in existingGroups" ng-model="studentToAdd.group">
+                                    <option></option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Is extended</td>
+                            <td class="col-md-2">
+                                <input type="checkbox" class="form-control" name="Is Chief" title="Is Chief" ng-model="studentToAdd.extended" checked>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-2">Status</td>
+                            <td class="col-md-2">
+                                <input type="text" class="form-control" name="Status" title="Status" ng-model="studentToAdd.status" checked>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="addStudent()" data-dismiss="modal">OK</button>
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

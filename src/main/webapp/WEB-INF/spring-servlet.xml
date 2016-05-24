@@ -21,7 +21,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/ubbdb"/>
+        <property name="url" value="jdbc:mysql://localhost:3307/ubbdb"/>
         <property name="username" value="root"/>
         <property name="password" value="admin"/>
     </bean>
@@ -47,6 +47,12 @@
     <bean id="personDao" class="com.se.database.dao.daoImplementation.PersonDAOImpl">
         <constructor-arg>
             <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="adminDao" class="com.se.database.dao.daoImplementation.AdminDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
         </constructor-arg>
     </bean>
 
@@ -78,6 +84,54 @@
         <constructor-arg>
             <ref bean="sessionFactory"/>
         </constructor-arg>
+    </bean>
+
+    <bean id="scholarshipDao" class="com.se.database.dao.daoImplementation.ScholarshipDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="studentScholarshipDao" class="com.se.database.dao.daoImplementation.StudentScholarshipDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+    <bean id="studentGroupDao" class="com.se.database.dao.daoImplementation.StudentGroupDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+    <bean id="studentEvaluationDao" class="com.se.database.dao.daoImplementation.StudentEvaluationDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+    <bean id="studentOptionalCourseDao" class="com.se.database.dao.daoImplementation.StudentOptionalCourseDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+    <bean id="courseDao" class="com.se.database.dao.daoImplementation.CourseDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+    <bean id="facultyDao" class="com.se.database.dao.daoImplementation.FacultyDAOImpl">
+        <constructor-arg ref="sessionFactory"/>
+    </bean>
+    <bean id="activityDao" class="com.se.database.dao.daoImplementation.ActivityDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+    <bean id="degreeDao" class="com.se.database.dao.daoImplementation.DegreeDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory"/>
+        </constructor-arg>
+    </bean>
+    <bean id="enrolledDao" class="com.se.database.dao.daoImplementation.EnrolledDAOImpl">
+        <constructor-arg ref="sessionFactory"/>
     </bean>
 
 </beans>

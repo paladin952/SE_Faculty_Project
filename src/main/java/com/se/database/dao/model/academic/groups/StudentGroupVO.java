@@ -1,5 +1,6 @@
 package com.se.database.dao.model.academic.groups;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.se.database.dao.model.users.StudentVO;
 
 import javax.persistence.*;
@@ -11,38 +12,44 @@ import java.util.List;
 public class StudentGroupVO implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name = "StudentGroupId")
-    private int groupId;
+    @Column(name = "StudentGroupID")
+    private int id;
 
     @Column(name = "CurrentSemester")
     private int currentSemester;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
     private List<StudentVO> students;
 
     public StudentGroupVO() {
     }
 
+    public StudentGroupVO(int groupId, int currentSemester, List<StudentVO> students){
+        this.id = id;
+        this.currentSemester = currentSemester;
+        this.students = students;
+    }
+
     public StudentGroupVO(int groupId, int currentSemester) {
 
-        this.groupId = groupId;
+        this.id = groupId;
         this.currentSemester = currentSemester;
     }
 
     public StudentGroupVO(int groupId, List<StudentVO> students, int currentSemester) {
 
-        this.groupId = groupId;
+        this.id = groupId;
         this.students = students;
         this.currentSemester = currentSemester;
     }
 
-    public int getGroupId() {
-        return groupId;
+    public int getId() {
+        return id;
     }
 
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
+    public void setId(int groupId) {
+        this.id = groupId;
     }
 
     public List<StudentVO> getStudents() {
@@ -64,7 +71,7 @@ public class StudentGroupVO implements Serializable {
     @Override
     public String toString() {
         return "StudentGroup{" +
-                "groupId=" + groupId +
+                "scholarshipId=" + id +
                 ", students=" + students +
                 ", currentSemester=" + currentSemester +
                 '}';

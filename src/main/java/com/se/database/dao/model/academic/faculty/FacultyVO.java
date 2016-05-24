@@ -1,24 +1,46 @@
 package com.se.database.dao.model.academic.faculty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Catalin on 03-Apr-16.
- */
+@Entity
+@Table(name = "faculty")
 public class FacultyVO implements Serializable {
 
-    private final String name;
+    @Id
+    @GeneratedValue
+    @Column(name = "FacultyID")
+    private int id;
 
+    @Column(name = "Name")
+    private String name;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "faculty")
     private List<DegreeVO> degrees;
+
+    public FacultyVO() {
+    }
 
     public FacultyVO(String name) {
         this.name = name;
     }
 
-    public FacultyVO(String name, List<DegreeVO> degrees) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public FacultyVO setName(String name) {
         this.name = name;
-        this.degrees = degrees;
+
+        return this;
     }
 
     public String getName() {
@@ -29,15 +51,16 @@ public class FacultyVO implements Serializable {
         return degrees;
     }
 
-    public void setDegrees(List<DegreeVO> degrees) {
+    public FacultyVO setDegrees(List<DegreeVO> degrees) {
         this.degrees = degrees;
+
+        return this;
     }
 
     @Override
     public String toString() {
         return "Faculty{" +
                 "name='" + name + '\'' +
-                ", degrees=" + degrees +
                 '}';
     }
 }

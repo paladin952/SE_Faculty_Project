@@ -3,7 +3,6 @@ package com.se.database.dao.daoImplementation;
 import com.se.database.dao.interfaces.IOptionalCourseDAO;
 import com.se.database.dao.model.academic.course.OptionalCourseVO;
 import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +21,7 @@ public class OptionalCourseDAOImpl implements IOptionalCourseDAO {
 
     @Transactional
     public List<OptionalCourseVO> list() {
+        @SuppressWarnings("unchecked")
         List<OptionalCourseVO> optionalCourses = (List<OptionalCourseVO>) sessionFactory.getCurrentSession()
                 .createCriteria(OptionalCourseVO.class)
                 .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
@@ -37,22 +37,23 @@ public class OptionalCourseDAOImpl implements IOptionalCourseDAO {
 
     @Override
     @Transactional
-    public OptionalCourseVO updateOrSave(OptionalCourseVO optionalCourse) {
+    public OptionalCourseVO updateOrSave(OptionalCourseVO optional_course_vo) {
         Session session = sessionFactory.getCurrentSession();
+        OptionalCourseVO exists = (OptionalCourseVO) session.get(OptionalCourseVO.class, optional_course_vo.getId());
+        if (exists != null)
+        {
+            OptionalCourseVO optional_course = (OptionalCourseVO) session.load(OptionalCourseVO.class, optional_course_vo.getId());
+            optional_course.setGroupNo(optional_course_vo.getGroupNo())
+                    .setCourse(optional_course_vo.getCourse());
 
-        try {
-            OptionalCourseVO tmp = (OptionalCourseVO) session.load(OptionalCourseVO.class, optionalCourse.getCourse());
+            return optional_course;
+        }
+        else
+        {
+            OptionalCourseVO new_optional_course = new OptionalCourseVO(optional_course_vo.getGroupNo(), optional_course_vo.getCourse());
 
-            tmp.setCourse(optionalCourse.getCourse());
-            tmp.setGroupNo(optionalCourse.getGroupNo());
-
-            //tmp
-            return optionalCourse;
-        } catch (HibernateException e){
-            OptionalCourseVO new_optionalCourse = new OptionalCourseVO(optionalCourse.getGroupNo(), optionalCourse.getCourse());
-            session.save(new_optionalCourse);
-
-            return new_optionalCourse;
+            session.save(new_optional_course);
+            return new_optional_course;
         }
     }
 

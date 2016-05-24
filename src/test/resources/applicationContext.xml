@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:annotation-config />
+    <mvc:annotation-driven/>
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <!--<bean class="com.myApp.util.PersistenceUnitEntityScanner"-->
+          <!--name="persistenceEntityScanner">-->
+        <!--<constructor-arg value="com.myApp.entities" />-->
+    <!--</bean>-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/ubbdb"/>
+        <property name="username" value="root"/>
+        <property name="password" value="admin"/>
+    </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--<property name="configLocation" value="resources/hibernate.cfg.xml"/>-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.se.database.dao.model.users.AdminVO</value>
+                <value>com.se.database.dao.model.users.PersonVO</value>
+                <value>com.se.database.dao.model.users.ProfessorVO</value>
+                <value>com.se.database.dao.model.users.StudentVO</value>
+                <value>com.se.database.dao.model.users.UserVO</value>
+                <value>com.se.database.dao.model.academic.course.CourseVO</value>
+                <value>com.se.database.dao.model.academic.course.EvaluationVO</value>
+                <value>com.se.database.dao.model.academic.course.OptionalCourseVO</value>
+                <value>com.se.database.dao.model.academic.course.activities.ActivityVO</value>
+                <value>com.se.database.dao.model.academic.faculty.DegreeVO</value>
+                <value>com.se.database.dao.model.academic.faculty.FacultyVO</value>
+                <value>com.se.database.dao.model.academic.grants.ScholarshipVO</value>
+                <value>com.se.database.dao.model.academic.grants.StudentScholarshipVO</value>
+                <value>com.se.database.dao.model.academic.groups.DepartmentVO</value>
+                <value>com.se.database.dao.model.academic.groups.StudentGroupVO</value>
+                <value>com.se.database.dao.model.academic.study.EnrolledVO</value>
+                <value>com.se.database.dao.model.academic.study.StudentEvaluationVO</value>
+                <value>com.se.database.dao.model.academic.study.StudentOptionalCourseVO</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!--<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager" name="transactionManager">-->
+        <!--<property name="sessionFactory">-->
+            <!--<ref local="sessionFactory" />-->
+        <!--</property>-->
+    <!--</bean>-->
+
+</beans>
