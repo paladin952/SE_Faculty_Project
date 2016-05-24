@@ -44,6 +44,6 @@ public class OptionalCourseController {
             @PathVariable("id") int id) {
         Boolean res = iOptionalCourseDAO.deleteByID(id);
 
-        return new ResponseEntity<>(res ? "SUCCESS" : "FAILURE", HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
