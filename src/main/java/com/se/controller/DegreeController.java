@@ -39,7 +39,7 @@ public class DegreeController {
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public ResponseEntity<List<DegreeVO>> getActivities() {
+    public ResponseEntity<List<DegreeVO>> getDegrees() {
         List<DegreeVO> degrees = iDegreeDAO.list();
         return new ResponseEntity<>(degrees, HttpStatus.OK);
     }
